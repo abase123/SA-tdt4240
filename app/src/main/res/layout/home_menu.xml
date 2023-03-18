@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C14FD5"
+        android:backgroundTint="@color/material_dynamic_tertiary60">
+
+
+    <TextView
+            android:text="@string/quizbattle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/GameNameLabel"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="80dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="34sp" android:textColor="#0B0B0B" android:textAlignment="gravity"
+            android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <Button
+            android:text="@string/start_quiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/StartQuiz"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/GameNameLabel" android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

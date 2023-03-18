@@ -1,29 +1,36 @@
-package com.example.myapplication.views
+package com.example.myapplication.controller
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
+import android.widget.Button
 import com.example.myapplication.R
-import com.example.myapplication.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity:AppCompatActivity(){
+    private lateinit var startQuiz:Button
+    override fun onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.home)
+        startQuiz = findViewById(R.id.StartQuiz)
+        startQuiz.setOnClickListener {
+            setContentView(R.layout.settings_activity)
+        }
+    }
+}
+
+
+/*class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    //private lateinit var binding: ActivityMainBinding
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setSupportActionBar(binding.toolbar)
+        setContentView(R.layout.home)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -56,4 +63,4 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
-}
+}*/
