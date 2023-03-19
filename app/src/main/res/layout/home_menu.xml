@@ -10,7 +10,7 @@
 
 
     <TextView
-            android:text="@string/quizbattle"
+            android:text="QuizBattle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/GameNameLabel"
@@ -22,7 +22,7 @@
             android:textStyle="bold" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
     <Button
-            android:text="@string/start_quiz"
+            android:text="Start Quiz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -30,6 +30,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/GameNameLabel" android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true" app:srcCompat="@android:drawable/ic_menu_preferences"
+            android:id="@+id/goto_settings"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="4dp" app:layout_constraintVertical_bias="0.949" app:backgroundTint="#B71C1C"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

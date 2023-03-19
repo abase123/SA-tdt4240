@@ -1,20 +1,24 @@
 package com.example.myapplication.controller
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import com.example.myapplication.R
 
 
-class MainActivity:AppCompatActivity(){
-    private lateinit var startQuiz:Button
-    override fun onCreate(savedInstanceState: Bundle?){
+class MainActivity:AppCompatActivity() {
+    private lateinit var startQuiz: Button
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home)
+        setContentView(R.layout.home_menu)
         startQuiz = findViewById(R.id.StartQuiz)
         startQuiz.setOnClickListener {
-            setContentView(R.layout.settings_activity)
+            Intent(this, QuizActivity::class.java).also {
+                startActivity(it)
+            }
         }
+
     }
 }
 
