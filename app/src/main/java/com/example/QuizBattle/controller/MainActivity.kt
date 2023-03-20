@@ -1,22 +1,41 @@
-package com.example.myapplication.controller
+package com.example.QuizBattle.controller
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
-import com.example.myapplication.R
+import com.example.QuizBattle.R
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 
 
 class MainActivity:AppCompatActivity() {
+
     private lateinit var startQuiz: Button
+    private lateinit var settingsButton: Button
+    private lateinit var leaderBoardButton: Button
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_menu)
         startQuiz = findViewById(R.id.StartQuiz)
+        settingsButton=findViewById((R.id.settings_button))
+        leaderBoardButton = findViewById(R.id.leader_board_id)
+
         startQuiz.setOnClickListener {
             Intent(this, QuizActivity::class.java).also {
+                Firebase.analytics.logEvent("Quiz_Started",null)
+                startActivity(it)
+
+            }
+        }
+        settingsButton.setOnClickListener {
+            Intent(this, SettingsActivity::class.java).also {
                 startActivity(it)
             }
+
         }
 
     }

@@ -1,70 +1,78 @@
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFF1F1"
-        android:padding="16dp"
-        android:elevation="8dp">
+<?xml version="1.0" encoding="utf-8"?>
 
-    <!-- Question Box -->
+
+
     <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#B785BF"
+            android:background="#FFF1F1"
             android:padding="16dp"
-            android:elevation="4dp">
+            android:elevation="8dp" android:id="@+id/quizview">
 
-        <!-- Question Text -->
-        <TextView
-                android:id="@+id/questionText"
+        <!-- Question Box -->
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="What is your favorite color?"
-                android:textSize="24sp" android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:fontFamily="sans-serif" android:typeface="normal" android:textStyle="bold"/>
+                android:background="#B785BF"
+                android:padding="16dp"
+                android:elevation="4dp">
+
+            <!-- Question Text -->
+
+            <TextView
+                    android:id="@+id/que"
+                    android:text=" noe "
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:fontFamily="sans-serif"
+                    android:typeface="normal"
+                    android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <!-- Answer Options -->
+        <RadioGroup
+                android:id="@+id/answerOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp">
+
+            <!-- Option 1 -->
+            <RadioButton
+                    android:id="@+id/option1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Blue"
+                    android:textSize="18sp"/>
+
+            <!-- Option 2 -->
+            <RadioButton
+                    android:id="@+id/option2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Green"
+                    android:textSize="18sp"/>
+
+            <!-- Option 3 -->
+            <RadioButton
+                    android:id="@+id/option3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Red"
+                    android:textSize="18sp"/>
+
+            <!-- Option 4 -->
+            <RadioButton
+                    android:id="@+id/option4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Yellow"
+                    android:textSize="18sp"/>
+
+        </RadioGroup>
 
     </LinearLayout>
-
-    <!-- Answer Options -->
-    <RadioGroup
-            android:id="@+id/answerOptions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="16dp">
-
-        <!-- Option 1 -->
-        <RadioButton
-                android:id="@+id/option1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Blue"
-                android:textSize="18sp"/>
-
-        <!-- Option 2 -->
-        <RadioButton
-                android:id="@+id/option2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Green"
-                android:textSize="18sp"/>
-
-        <!-- Option 3 -->
-        <RadioButton
-                android:id="@+id/option3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Red"
-                android:textSize="18sp"/>
-
-        <!-- Option 4 -->
-        <RadioButton
-                android:id="@+id/option4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Yellow"
-                android:textSize="18sp"/>
-
-    </RadioGroup>
-
-</LinearLayout>
