@@ -1,4 +1,11 @@
 package com.example.QuizBattle.controller
 
-class LeaderBoardActivity: MainActivity()  {
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+
+class LeaderBoardActivity: GameState {
+    override fun handleView(activity: MainActivity) {
+        TODO("Not yet implemented")
+    }
+
 }

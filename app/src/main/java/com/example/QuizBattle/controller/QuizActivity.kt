@@ -1,18 +1,31 @@
 package com.example.QuizBattle.controller
 
-import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.MainActivity
 
-class QuizActivity: MainActivity()  {
-    override fun onCreate(savedInstanceState: Bundle?){
+class QuizActivity: GameState  {
+
+
+    /*override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.question)
         val questionText: TextView=findViewById(R.id.que)
         val q : String ="A question here ...?"
         questionText.text = q
 
+        }*/
+    private lateinit var goback: Button
+    override fun handleView(activity: MainActivity) {
+        activity.setContentView(R.layout.question)
+        val questionText:TextView=activity.findViewById(R.id.que)
+        val q : String ="A question here ...?"
+        questionText.text = q
+        goback=activity.findViewById(R.id.GoBackQuiz)
+        goback.setOnClickListener {
+            // Transition to the next state
+            activity.setState(HomeMenuActivity())
         }
+    }
 
 }

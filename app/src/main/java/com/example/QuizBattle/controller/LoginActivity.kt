@@ -1,4 +1,11 @@
 package com.example.QuizBattle.controller
 
-class LoginActivity: MainActivity(){
+import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
+
+class LoginActivity: GameState{
+    override fun handleView(activity: MainActivity) {
+
+    }
+
 }

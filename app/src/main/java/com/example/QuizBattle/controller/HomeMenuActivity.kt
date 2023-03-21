@@ -1,20 +1,36 @@
 package com.example.QuizBattle.controller
 
+import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil.setContentView
 import com.example.QuizBattle.R
-import com.google.firebase.analytics.ktx.analytics
-import com.google.firebase.ktx.Firebase
 
 
-class HomeMenuActivity: MainActivity() {
+class HomeMenuActivity: GameState {
 
     private lateinit var startQuiz: Button
     private lateinit var settingsButton: Button
     private lateinit var leaderBoardButton: Button
+    override fun handleView(activity: MainActivity) {
+        activity.setContentView(R.layout.home_menu)
+        startQuiz = activity.findViewById(R.id.StartQuiz)
+        settingsButton=activity.findViewById((R.id.settings_button))
+        leaderBoardButton = activity.findViewById(R.id.leader_board_id)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+        startQuiz.setOnClickListener {
+            // Transition to the next state
+            activity.setState(QuizActivity())
+        }
+        settingsButton.setOnClickListener {
+            // Transition to the next state
+            activity.setState(SettingsActivity())
+        }
+    }
+
+
+    /*override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_menu)
         startQuiz = findViewById(R.id.StartQuiz)
@@ -35,7 +51,7 @@ class HomeMenuActivity: MainActivity() {
 
         }
 
-    }
+    }*/
 }
 
 

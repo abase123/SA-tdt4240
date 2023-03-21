@@ -86,5 +86,9 @@
             android:gravity="center"
             android:textColor="@android:color/background_dark"
             android:textSize="32sp" />
+    <Button
+            android:text="Goback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/GoBackQuiz"/>
 
 </LinearLayout>
