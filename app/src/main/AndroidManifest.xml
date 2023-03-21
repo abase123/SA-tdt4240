@@ -15,7 +15,7 @@
         <activity android:name=".controller.SettingsActivity"/>
         <activity android:name=".controller.QuizActivity" />
         <activity
-                android:name=".controller.MainActivity"
+                android:name=".controller.HomeMenuActivity"
                 android:exported="true"
                 android:theme="@style/Theme.MyApplication.NoActionBar">
             <intent-filter>
