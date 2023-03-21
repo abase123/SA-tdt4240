@@ -13,7 +13,7 @@
     <!-- Question Box -->
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="86dp"
+            android:layout_height="100dp"
             android:background="#B785BF"
             android:padding="16dp"
             android:elevation="4dp">
@@ -25,7 +25,7 @@
                 android:text=" noe "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:fontFamily="sans-serif"
                 android:typeface="normal"
@@ -37,7 +37,7 @@
     <RadioGroup
             android:id="@+id/answerOptions"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="239dp"
             android:paddingTop="16dp">
 
         <!-- Option 1 -->
@@ -57,14 +57,14 @@
                 android:textSize="18sp"/>
 
         <!-- Option 3 -->
+
+        <!-- Option 4 -->
         <RadioButton
                 android:id="@+id/option3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Red"
                 android:textSize="18sp"/>
-
-        <!-- Option 4 -->
         <RadioButton
                 android:id="@+id/option4"
                 android:layout_width="match_parent"

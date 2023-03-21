@@ -13,9 +13,9 @@
             android:theme="@style/Theme.MyApplication"
             tools:targetApi="33">
 
-
+        <activity android:name=".controller.MainActivity"/>
         <activity
-                android:name=".controller.MainActivity"
+                android:name=".controller.LoginActivity"
                 android:exported="true"
                 android:theme="@style/Theme.MyApplication.NoActionBar">
             <intent-filter>
@@ -28,6 +28,7 @@
                     android:name="android.app.lib_name"
                     android:value=""/>
         </activity>
+
     </application>
 
 </manifest>
