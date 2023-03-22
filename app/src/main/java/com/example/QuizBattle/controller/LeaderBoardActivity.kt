@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 
 class LeaderBoardActivity: GameState {
-    override fun handleView(activity: MainActivity) {
+    override fun handleView(activity: MenuActivity) {
         TODO("Not yet implemented")
     }
 

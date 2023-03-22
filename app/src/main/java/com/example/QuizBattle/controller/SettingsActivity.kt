@@ -9,7 +9,7 @@ import com.example.QuizBattle.R
 class SettingsActivity : GameState {
     private lateinit var saveButton: Button
     private lateinit var soundBar: SeekBar
-    override fun handleView(activity: MainActivity) {
+    override fun handleView(activity: MenuActivity) {
         activity.setContentView(R.layout.settings_activity)
         saveButton = activity.findViewById(R.id.button_save)
         soundBar=activity.findViewById(R.id.seekbar_sound)

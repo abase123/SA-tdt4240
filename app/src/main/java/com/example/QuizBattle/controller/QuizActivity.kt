@@ -16,7 +16,7 @@ class QuizActivity: GameState  {
 
         }*/
     private lateinit var goback: Button
-    override fun handleView(activity: MainActivity) {
+    override fun handleView(activity: MenuActivity) {
         activity.setContentView(R.layout.question)
         val questionText:TextView=activity.findViewById(R.id.que)
         val q : String ="A question here ...?"

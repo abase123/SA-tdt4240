@@ -13,7 +13,7 @@ class HomeMenuActivity: GameState {
     private lateinit var startQuiz: Button
     private lateinit var settingsButton: Button
     private lateinit var leaderBoardButton: Button
-    override fun handleView(activity: MainActivity) {
+    override fun handleView(activity: MenuActivity) {
         activity.setContentView(R.layout.home_menu)
         startQuiz = activity.findViewById(R.id.StartQuiz)
         settingsButton=activity.findViewById((R.id.settings_button))
