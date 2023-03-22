@@ -25,10 +25,14 @@ class MainActivity:AppCompatActivity() {
             if (user!=null) {
                 Intent(this, MenuActivity::class.java).also {
                     startActivity(it)
+                    finish()
                 }
             }
             else{
-                Intent(this,SignInActivity::class.java).also { startActivity(it) }
+                Intent(this,SignInActivity::class.java).also {
+                    startActivity(it)
+                    finish()
+                }
             }
             // Code to be executed after the delay
         }, 2000)
