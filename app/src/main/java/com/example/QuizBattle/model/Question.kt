@@ -1,20 +1,32 @@
 package com.example.QuizBattle.model
 
+import android.graphics.BitmapFactory.Options
 import java.util.Locale.Category
 
 
-class Question {
+class Question(private val questionText: String):QuizComponent{
+    private lateinit var questionId:String
+    private lateinit var questionType:String
+    private lateinit var options:MutableList<Option>
 
-    private lateinit var questionText: String
-    private lateinit var answerAlternatives:List<String>
-    private lateinit var questionCategory:String
-    private var questionScore:Float= 100.0F
-    fun createQuestion(){
-        questionText="Which of the following was not one of &quot;The Magnificent Seven&quot;?"
-
-
+    fun getQuestionTex():String=questionText
+    fun getOptions(): MutableList<Option> =options
+    fun addOption(option: Option){
+        options.add(option)
     }
 
+    fun removeOption(option: Option){
+        options.remove(option)
+    }
+
+
+    override fun getType(): String {
+        return questionType
+    }
+
+    override fun getId(): String {
+        return questionId
+    }
 
 
 }

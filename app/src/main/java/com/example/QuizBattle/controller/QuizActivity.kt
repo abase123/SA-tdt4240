@@ -27,5 +27,4 @@ class QuizActivity: GameState  {
             activity.setState(HomeMenuActivity())
         }
     }
-
 }
