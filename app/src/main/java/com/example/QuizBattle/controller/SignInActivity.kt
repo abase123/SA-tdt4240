@@ -81,7 +81,7 @@ class SignInActivity: AppCompatActivity(){
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("signInActivity", "signInWithCredential:success")
-                     Intent(this,HomeMenuActivity::class.java).also { startActivity(it) }
+                     Intent(this,MainActivity::class.java).also { startActivity(it) }
                     finish()
                 } else {
                     // If sign in fails, display a message to the user.
