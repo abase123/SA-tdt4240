@@ -1,16 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    // Add the Google services Gradle plugin
     id 'com.google.gms.google-services'
 }
 
 android {
-    namespace 'com.example.myapplication'
+    namespace 'com.example.QuizBattle'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.myapplication"
+        applicationId "com.example.QuizBattle"
         minSdk 30
         targetSdk 33
         versionCode 1
@@ -19,11 +18,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        buildFeatures{
+            dataBinding true
+        }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -44,19 +48,21 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation platform('com.google.firebase:firebase-bom:31.2.3')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth-ktx'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-
+    implementation 'com.google.android.material:material:1.3.0-alpha02'
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:31.2.3')
-
     // Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation 'com.google.firebase:firebase-analytics-ktx'
-
     // Add the dependencies for any other desired Firebase products
     // Check the list of available libraries at: https://firebase.google.com/docs/android/setup#available-libraries
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
 }
+

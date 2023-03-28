@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="#FFE5E5">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:title="Settings"
+            android:titleTextColor="@android:color/white" />
+
+    <!-- Sound options -->
+    <TextView
+            android:id="@+id/text_sound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Sound"
+            android:textStyle="bold" />
+
+    <ImageView
+            android:id="@+id/icon_sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="16dp"
+            android:src="@drawable/ic_sound" />
+
+    <SeekBar
+            android:id="@+id/seekbar_sound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:max="100"
+            android:progress="50" />
+
+
+    <!-- Notifications options -->
+    <TextView
+            android:id="@+id/text_notifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="Notifications"
+            android:textStyle="bold" />
+
+    <Switch
+            android:id="@+id/switch_notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp" tools:ignore="UseSwitchCompatOrMaterialXml"/>
+
+    <!-- Save button -->
+    <Button
+            android:id="@+id/button_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="save and exit"/>
+
+</LinearLayout>
