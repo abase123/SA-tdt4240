@@ -6,6 +6,6 @@ import java.security.AccessControlContext
 
 interface GameState {
 
-    abstract fun handleView(activity: MainActivity)
+    abstract fun handleView(activity: MenuActivity)
 
 }

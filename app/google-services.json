@@ -38,7 +38,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:144433741423:android:79fd72b37f6a3fcae5979a",
         "android_client_info": {
-          "package_name": "com.example.myapplication"
+          "package_name": "com.example.QuizBattle"
         }
       },
       "oauth_client": [
