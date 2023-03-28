@@ -9,7 +9,6 @@ import com.google.android.gms.common.SignInButton
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity:AppCompatActivity() {
-    private lateinit var loginButton:SignInButton
     private lateinit var mAuth:FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
