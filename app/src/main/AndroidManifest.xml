@@ -13,11 +13,10 @@
             android:theme="@style/Theme.MyApplication"
             tools:targetApi="33">
 
-
+        <!--This is the MainActivity in JetpackCompose -->
         <activity
-                android:name=".controller.MainActivity"
-                android:exported="true"
-                android:theme="@style/Theme.MyApplication.NoActionBar">
+            android:name=".view.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -25,12 +24,29 @@
             </intent-filter>
 
             <meta-data
-                    android:name="android.app.lib_name"
-                    android:value=""/>
+                android:name="android.app.lib_name"
+                android:value=""/>
+        </activity>
+
+        <!-- This is the old activity setup, for the xml files
+        <activity
+            android:name=".controller.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApplication.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value=""/>
         </activity>
 
         <activity android:name=".controller.MenuActivity"/>
         <activity android:name=".controller.SignInActivity"/>
+        -->
 
     </application>
 
