@@ -15,9 +15,10 @@
 
 
         <activity
-                android:name=".controller.MainActivity"
+                android:name=".controller.Ativity2"
                 android:exported="true"
                 android:theme="@style/Theme.MyApplication.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -29,8 +30,10 @@
                     android:value=""/>
         </activity>
 
+        <!--
         <activity android:name=".controller.MenuActivity"/>
         <activity android:name=".controller.SignInActivity"/>
+        -->
 
     </application>
 

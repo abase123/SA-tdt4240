@@ -19,6 +19,7 @@ class MainActivity:AppCompatActivity() {
 
         mAuth=FirebaseAuth.getInstance()
         val user= mAuth.currentUser
+        println(user)
 
         Handler().postDelayed({
             if (user!=null) {

@@ -3,26 +3,20 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/nav_graph"
-            app:startDestination="@id/FirstFragment">
-
+            app:startDestination="@id/home">
     <fragment
-            android:id="@+id/FirstFragment"
-            android:name="com.example.QuizBattle.controller.FirstFragment"
-            android:label="@string/first_fragment_label"
-            tools:layout="@layout/fragment_first">
-
-        <action
-                android:id="@+id/action_FirstFragment_to_SecondFragment"
-                app:destination="@id/SecondFragment"/>
-    </fragment>
+        android:id="@+id/home"
+        android:name="com.example.QuizBattle.controller.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
     <fragment
-            android:id="@+id/SecondFragment"
-            android:name="com.example.QuizBattle.views.SecondFragment"
-            android:label="@string/second_fragment_label"
-            tools:layout="@layout/fragment_second">
-
-        <action
-                android:id="@+id/action_SecondFragment_to_FirstFragment"
-                app:destination="@id/FirstFragment"/>
-    </fragment>
+        android:id="@+id/friends"
+        android:name="com.example.QuizBattle.controller.Friends"
+        android:label="fragment_friends"
+        tools:layout="@layout/fragment_friends" />
+    <fragment
+        android:id="@+id/leaderboard"
+        android:name="com.example.QuizBattle.controller.Leaderboard"
+        android:label="fragment_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
 </navigation>

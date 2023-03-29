@@ -5,9 +5,8 @@
     <item
         android:id="@+id/more"
         android:title="@string/app_name"
-        android:icon="@drawable/round_settings_24"
+        android:icon="@drawable/baseline_settings_24"
         android:contentDescription="@string/settingsIcon"
-        android:iconTint="@android:color/background_light"
         app:showAsAction="ifRoom"
         />
 
