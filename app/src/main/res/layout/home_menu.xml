@@ -10,6 +10,7 @@
         android:background="#C14FD5"
         android:backgroundTint="@color/material_dynamic_neutral95">
 
+    <!--
     <include
         android:id="@+id/topAppBar"
         layout="@layout/top_app_bar"
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent" />
+     -->
 
     <TextView
             android:text="QuizBattle"

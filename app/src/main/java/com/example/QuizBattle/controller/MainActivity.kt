@@ -23,7 +23,7 @@ class MainActivity:AppCompatActivity() {
 
         Handler().postDelayed({
             if (user!=null) {
-                Intent(this, MenuActivity::class.java).also {
+                Intent(this, Ativity2::class.java).also {
                     startActivity(it)
                     finish()
                 }

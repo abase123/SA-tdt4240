@@ -15,7 +15,7 @@
 
 
         <activity
-                android:name=".controller.Ativity2"
+                android:name=".controller.MainActivity"
                 android:exported="true"
                 android:theme="@style/Theme.MyApplication.NoActionBar">
 
@@ -30,10 +30,13 @@
                     android:value=""/>
         </activity>
 
-        <!--
-        <activity android:name=".controller.MenuActivity"/>
+
+        <activity
+            android:name=".controller.Ativity2"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+
         <activity android:name=".controller.SignInActivity"/>
-        -->
+
 
     </application>
 
