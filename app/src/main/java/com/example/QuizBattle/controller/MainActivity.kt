@@ -19,10 +19,11 @@ class MainActivity:AppCompatActivity() {
 
         mAuth=FirebaseAuth.getInstance()
         val user= mAuth.currentUser
+        println(user)
 
         Handler().postDelayed({
             if (user!=null) {
-                Intent(this, MenuActivity::class.java).also {
+                Intent(this, Ativity2::class.java).also {
                     startActivity(it)
                     finish()
                 }

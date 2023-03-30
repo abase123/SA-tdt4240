@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools">
-    package="com.example.myapplication"
 
     <application
             android:allowBackup="true"
@@ -19,6 +18,7 @@
                 android:name=".controller.MainActivity"
                 android:exported="true"
                 android:theme="@style/Theme.MyApplication.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -30,8 +30,13 @@
                     android:value=""/>
         </activity>
 
-        <activity android:name=".controller.MenuActivity"/>
+
+        <activity
+            android:name=".controller.Ativity2"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+
         <activity android:name=".controller.SignInActivity"/>
+
 
     </application>
 
