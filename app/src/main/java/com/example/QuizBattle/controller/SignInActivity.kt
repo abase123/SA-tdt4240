@@ -22,9 +22,11 @@ class SignInActivity: AppCompatActivity(){
     private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var signINButton: SignInButton
+
     companion object{
         private const val RC_SIGN_IN=120
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
@@ -35,26 +37,16 @@ class SignInActivity: AppCompatActivity(){
             .build()
 
 
-        /*val signInRequest=BeginSignInRequest.builder()
-            .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder().
-            setSupported(true).setServerClientId(getString(R.string.default_web_client_id)).
-            setFilterByAuthorizedAccounts(true).build())*/
-
         googleSignInClient=GoogleSignIn.getClient(this,gso)
-
         mAuth = FirebaseAuth.getInstance()
         signINButton.setOnClickListener {
             signIn()
         }
-
     }
-
     private fun signIn(){
         val signInIntent=googleSignInClient.signInIntent
         startActivityForResult(signInIntent,RC_SIGN_IN)
     }
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -81,7 +73,7 @@ class SignInActivity: AppCompatActivity(){
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("signInActivity", "signInWithCredential:success")
-                     Intent(this,MainActivity::class.java).also { startActivity(it) }
+                     Intent(this,Game::class.java).also { startActivity(it) }
                     finish()
                 } else {
                     // If sign in fails, display a message to the user.

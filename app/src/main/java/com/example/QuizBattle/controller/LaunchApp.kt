@@ -5,25 +5,22 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.QuizBattle.R
-import com.google.android.gms.common.SignInButton
+import com.example.QuizBattle.controller.statePattern.GameState
 import com.google.firebase.auth.FirebaseAuth
 
-class MainActivity:AppCompatActivity() {
+class LaunchApp:AppCompatActivity() {
+    private lateinit var currentState: GameState
     private lateinit var mAuth:FirebaseAuth
-
     override fun onCreate(savedInstanceState: Bundle?) {
        super.onCreate(savedInstanceState)
         setContentView(R.layout.loadingcreen)
-
        // 2000 milliseconds = 2 seconds
-
         mAuth=FirebaseAuth.getInstance()
         val user= mAuth.currentUser
-        println(user)
 
         Handler().postDelayed({
             if (user!=null) {
-                Intent(this, Ativity2::class.java).also {
+                Intent(this,Game::class.java).also {
                     startActivity(it)
                     finish()
                 }

@@ -1,11 +1,10 @@
-package com.example.QuizBattle.controller
+package com.example.QuizBattle.controller.statePattern
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
+import com.example.QuizBattle.controller.Game
 import java.security.AccessControlContext
 
 interface GameState {
-
-    abstract fun handleView(activity: MenuActivity)
-
+   abstract fun handle(context: Game)
 }
