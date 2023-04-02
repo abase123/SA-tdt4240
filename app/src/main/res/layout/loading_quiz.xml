@@ -1,0 +1,58 @@
+<!-- fragment_loading.xml -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".view.LoadingQuiz">
+
+    <ProgressBar
+            android:id="@+id/loadingProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+
+    <TextView
+            android:id="@+id/themeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginBottom="32dp"
+            android:text="Daily Quiz "
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-medium"
+            android:textAlignment="center"/>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/descriptionCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_gravity="center_horizontal|bottom"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+        <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="16dp"
+                android:text="Loading the quiz ...."
+                android:textColor="@android:color/black"
+                android:textSize="18sp" android:textAlignment="center"/>
+
+        </androidx.cardview.widget.CardView>
+    <Button
+            android:id="@+id/startQuizButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="32dp"
+            android:text="Start Quiz"
+            android:visibility="gone" />
+
+</FrameLayout>
