@@ -34,15 +34,14 @@ class LoadingQuiz: Fragment(){
         loadingProgressBar=view.findViewById(R.id.loadingProgressBar)
 
         descriptionTextView.text="Loading Today's quiz ..."
-        simulateLoading()
+
+        startQuizButton.visibility=View.GONE
+        loadingProgressBar.visibility=View.VISIBLE
     }
 
-    private fun simulateLoading(){
-        Handler(Looper.getMainLooper()).postDelayed({
-            loadingProgressBar.visibility=View.GONE
-            startQuizButton.visibility=View.VISIBLE
-
-        },5000)
+    fun onQuizLoaded(){
+        startQuizButton.visibility=View.VISIBLE
+        loadingProgressBar.visibility=View.GONE
 
 
     }

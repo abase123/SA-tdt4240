@@ -22,5 +22,4 @@ class Quiz: QuizComponent{
         return quizId
     }
 
-
 }

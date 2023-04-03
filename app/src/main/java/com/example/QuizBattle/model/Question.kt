@@ -6,7 +6,7 @@ import java.util.Locale.Category
 
 class Question(private val questionText: String):QuizComponent{
     private lateinit var questionId:String
-    private lateinit var questionType:String
+    private lateinit var questionCategory: String
     private lateinit var options:MutableList<Option>
 
     fun getQuestionTex():String=questionText
@@ -21,7 +21,7 @@ class Question(private val questionText: String):QuizComponent{
 
 
     override fun getType(): String {
-        return questionType
+        return questionCategory
     }
 
     override fun getId(): String {

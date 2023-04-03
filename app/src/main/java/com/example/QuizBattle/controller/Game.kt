@@ -23,7 +23,7 @@ class Game :AppCompatActivity(),UserInputListener{
             UserInputEvent.PLAY_DAILYQUIZ->newState(DailyQuiz())
             UserInputEvent.PLAY_FRIEND->newState(FriendQuiz())
             UserInputEvent.PLAY_SOLO->newState(SoloQuiz())
-            UserInputEvent.RETURN_Home->newState(StartMenu())
+            UserInputEvent.RETURN_HOME->newState(StartMenu())
 
         }
     }
