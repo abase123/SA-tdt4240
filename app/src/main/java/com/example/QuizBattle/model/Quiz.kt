@@ -5,7 +5,7 @@ import java.io.File
 class Quiz: QuizComponent{
     private lateinit var quizType:String
     private lateinit var quizId:String
-    private lateinit var  questions: MutableList<Question>
+    private lateinit var questions: MutableList<Question>
 
    suspend fun loadQuestions(){return}
 
