@@ -1,7 +1,6 @@
 package com.example.QuizBattle.controller.statePattern
 
 import android.util.Log
-import android.util.Printer
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
@@ -18,13 +17,16 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class LoadQuiz:GameState {
-    private lateinit var dailyQuiz:Quiz
+class LoadQuiz : GameState {
+    private lateinit var dailyQuiz: Quiz
 
     override fun handle(context: Game) {
-        val firebaseRepo=FirebaseRepo()
-        val quizId =getTodaysQuizID()
+        val firebaseRepo = FirebaseRepo()
+        val quizId = getTodaysQuizID()
 
+        loadQuizFromFirebase(context, firebaseRepo, quizId)
+    }
+    private fun loadQuizFromFirebase(context: Game, firebaseRepo: FirebaseRepo, quizId: String) {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 Log.d("FirebaseRepo", "Loading questions for quiz with ID:")
@@ -37,18 +39,19 @@ class LoadQuiz:GameState {
             }
         }
     }
-
-    private fun updateFragment(context: Game){
-        val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
-        val currentFragment = navHostFragment.childFragmentManager.fragments[0]
+    private fun updateFragment(context: Game) {
+        val currentFragment = getCurrentFragment(context)
         (currentFragment as? LoadingQuiz)?.onQuizLoaded(dailyQuiz.getTheme())
-
     }
+
+    private fun getCurrentFragment(context: Game): Fragment {
+        val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
+        return navHostFragment.childFragmentManager.fragments[0]
+    }
+
     private fun getTodaysQuizID(): String {
         val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
         val date = Date()
         return dateFormat.format(date)
     }
-
-
 }

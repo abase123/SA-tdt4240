@@ -67,7 +67,6 @@ class LoadingQuiz: Fragment(){
         }
     }
 
-
     @SuppressLint("SetTextI18n")
     fun onQuizLoaded(theme:String){
         startQuizButton.visibility=View.VISIBLE

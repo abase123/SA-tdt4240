@@ -60,16 +60,15 @@ class FirebaseRepo() {
         val questionText = document.get("text") as String
         val correctAnswer = document.get("correctAnswer") as String
         val question=Question(questionId,questionText,correctAnswer)
+        val options = listOf(
+            Option(document.getString("option1") as String),
+            Option(document.getString("option2") as String),
+            Option(document.getString("option3") as String),
+            Option(document.getString("option4") as String)
+        )
 
-        val option1 = Option(document.get("option1") as String)
-        val option2 = Option(document.get("option2") as String)
-        val option3 = Option(document.get("option3") as String)
-        val option4 = Option(document.get("option4") as String)
+        options.forEach { option -> question.addOption(option) }
 
-        question.addOption(option1)
-        question.addOption(option2)
-        question.addOption(option3)
-        question.addOption(option4)
 
         return question
 
