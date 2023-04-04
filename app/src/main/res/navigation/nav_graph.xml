@@ -15,8 +15,14 @@
         android:label="fragment_friends"
         tools:layout="@layout/fragment_friends" />
     <fragment
+            android:id="@+id/loadingQuiz"
+            android:name="com.example.QuizBattle.view.LoadingQuiz"
+            android:label="fragment_loading_quiz"
+            tools:layout="@layout/fragment_loading_quiz" />
+    <fragment
         android:id="@+id/leaderboard"
         android:name="com.example.QuizBattle.view.Leaderboard"
         android:label="fragment_leaderboard"
         tools:layout="@layout/fragment_leaderboard" />
+
 </navigation>

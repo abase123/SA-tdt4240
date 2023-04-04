@@ -22,7 +22,6 @@
 
         <TextView
                 android:id="@+id/que"
-                android:text=" noe "
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
@@ -45,7 +44,6 @@
                 android:id="@+id/option1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Blue"
                 android:textSize="18sp"/>
 
         <!-- Option 2 -->
@@ -53,7 +51,6 @@
                 android:id="@+id/option2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Green"
                 android:textSize="18sp"/>
 
         <!-- Option 3 -->
@@ -63,13 +60,11 @@
                 android:id="@+id/option3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Red"
                 android:textSize="18sp"/>
         <RadioButton
                 android:id="@+id/option4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Yellow"
                 android:textSize="18sp"/>
 
     </RadioGroup>
@@ -85,10 +80,10 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:textColor="@android:color/background_dark"
-            android:textSize="32sp" />
+            android:textSize="32sp" android:text="00:00"/>
     <Button
-            android:text="Goback"
+            android:text="EndQuiz"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/GoBackQuiz"/>
+            android:layout_height="wrap_content" android:id="@+id/EndQuiz"/>
 
 </LinearLayout>

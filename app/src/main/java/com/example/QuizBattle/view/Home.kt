@@ -17,10 +17,9 @@ import com.example.QuizBattle.controller.UserInputListener
  * Use the [Home.newInstance] factory method to
  * create an instance of this fragment.
  */
-
-
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+
 class Home : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -50,6 +49,8 @@ class Home : Fragment() {
         userInputListener = null
     }
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -70,7 +71,7 @@ class Home : Fragment() {
         }
 
         playDailyBtn.setOnClickListener {
-            userInputListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)
+            userInputListener?.onUserInput(UserInputEvent.LOAD_DAILY_QUIZ)
         }
     }
 
