@@ -7,10 +7,8 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.FirebaseRepo
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.Game
-import com.example.QuizBattle.model.Question
 import com.example.QuizBattle.model.Quiz
-import com.example.QuizBattle.view.Home
-import com.example.QuizBattle.view.LoadingQuiz
+import com.example.QuizBattle.view.LoadingQuizView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -41,7 +39,7 @@ class LoadQuiz : GameState {
     }
     private fun updateFragment(context: Game) {
         val currentFragment = getCurrentFragment(context)
-        (currentFragment as? LoadingQuiz)?.onQuizLoaded(dailyQuiz.getTheme())
+        (currentFragment as? LoadingQuizView)?.onQuizLoaded(dailyQuiz.getTheme())
     }
 
     private fun getCurrentFragment(context: Game): Fragment {

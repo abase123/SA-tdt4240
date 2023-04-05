@@ -3,7 +3,6 @@ package com.example.QuizBattle.view
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.UserInputListener
 
-class LoadingQuiz: Fragment(){
+class LoadingQuizView: Fragment(){
     private lateinit var descriptionTextView: TextView
     private lateinit var startQuizButton: Button
     private lateinit var goBackButton: Button

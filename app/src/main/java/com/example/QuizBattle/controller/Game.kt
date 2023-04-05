@@ -2,15 +2,12 @@ package com.example.QuizBattle.controller
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.statePattern.*
-import com.example.QuizBattle.view.LoadingQuiz
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.firestore.auth.User
 
 class Game : AppCompatActivity(), UserInputListener {
     private var state: GameState? = null
@@ -47,7 +44,7 @@ class Game : AppCompatActivity(), UserInputListener {
         val navController = getNavController()
         when (event) {
             UserInputEvent.LOAD_DAILY_QUIZ -> navController.navigate(R.id.loadingQuiz)
-            UserInputEvent.PLAY_DAILYQUIZ -> navController.navigate(R.id.EndQuiz)
+            UserInputEvent.PLAY_DAILYQUIZ -> navController.navigate(R.id.StartQuiz)
             UserInputEvent.PLAY_FRIEND -> navController.navigate(R.id.StartQuiz)
             UserInputEvent.RETURN_HOME -> navController.navigate(R.id.home)
         }

@@ -6,23 +6,29 @@
             app:startDestination="@id/home">
     <fragment
         android:id="@+id/home"
-        android:name="com.example.QuizBattle.view.Home"
+        android:name="com.example.QuizBattle.view.HomeView"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/friends"
-        android:name="com.example.QuizBattle.view.Friends"
+        android:name="com.example.QuizBattle.view.FriendsView"
         android:label="fragment_friends"
         tools:layout="@layout/fragment_friends" />
     <fragment
             android:id="@+id/loadingQuiz"
-            android:name="com.example.QuizBattle.view.LoadingQuiz"
+            android:name="com.example.QuizBattle.view.LoadingQuizView"
             android:label="fragment_loading_quiz"
             tools:layout="@layout/fragment_loading_quiz" />
     <fragment
         android:id="@+id/leaderboard"
-        android:name="com.example.QuizBattle.view.Leaderboard"
+        android:name="com.example.QuizBattle.view.LeaderboardView"
         android:label="fragment_leaderboard"
         tools:layout="@layout/fragment_leaderboard" />
+
+    <fragment
+            android:id="@+id/quiz"
+            android:name="com.example.QuizBattle.view.QuizView"
+            android:label="fragment_leaderboard"
+            tools:layout="@layout/fragment_quiz" />
 
 </navigation>

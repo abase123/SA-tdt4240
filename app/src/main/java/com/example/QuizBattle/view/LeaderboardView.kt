@@ -8,18 +8,15 @@ import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Friends.newInstance] factory method to
- * create an instance of this fragment.
- */
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-
-
-class Friends : Fragment(){
+/**
+ * A simple [Fragment] subclass.
+ * Use the [LeaderboardView.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class LeaderboardView : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -37,7 +34,7 @@ class Friends : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friends, container, false)
+        return inflater.inflate(R.layout.fragment_leaderboard, container, false)
     }
 
     companion object {
@@ -47,12 +44,12 @@ class Friends : Fragment(){
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment friends.
+         * @return A new instance of fragment leaderboard.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            Friends().apply {
+            LeaderboardView().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

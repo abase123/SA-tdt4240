@@ -8,19 +8,18 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.Game
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.UserInputListener
 
 /**
  * A simple [Fragment] subclass.
- * Use the [Home.newInstance] factory method to
+ * Use the [HomeView.newInstance] factory method to
  * create an instance of this fragment.
  */
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class Home : Fragment() {
+class HomeView : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -88,7 +87,7 @@ class Home : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            Home().apply {
+            HomeView().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
