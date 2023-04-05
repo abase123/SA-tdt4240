@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -20,6 +21,7 @@ class LoadingQuizView: Fragment(){
     private lateinit var goBackButton: Button
     private lateinit var loadingProgressBar: ProgressBar
     private var userInputListener: UserInputListener? = null
+    private lateinit var themeImage: ImageView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,6 +44,8 @@ class LoadingQuizView: Fragment(){
         userInputListener = null
     }
 
+
+
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,7 +54,7 @@ class LoadingQuizView: Fragment(){
         startQuizButton=view.findViewById(R.id.startQuizButton)
         loadingProgressBar=view.findViewById(R.id.loadingProgressBar)
         goBackButton=view.findViewById(R.id.goBackBtn)
-
+        themeImage=view.findViewById(R.id.imageView2)
         descriptionTextView.text="Loading Today's quiz ..."
 
         startQuizButton.visibility=View.INVISIBLE
@@ -70,7 +74,13 @@ class LoadingQuizView: Fragment(){
     fun onQuizLoaded(theme:String){
         startQuizButton.visibility=View.VISIBLE
         loadingProgressBar.visibility=View.GONE
-        descriptionTextView.text= "Quiz Theme : $theme"
+        descriptionTextView.text= "Today's  Theme : $theme"
+        if(theme=="Geografi"){
+            themeImage.setImageResource(R.drawable.geo)
+        }
+        if(theme=="Sports"){
+            themeImage.setImageResource(R.drawable.sports)
+        }
 
 
     }

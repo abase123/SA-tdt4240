@@ -49,6 +49,16 @@
                 android:textSize="24sp" android:textAlignment="center" tools:visibility="visible"
                 tools:layout_editor_absoluteX="24dp" app:layout_constraintBottom_toTopOf="@+id/startQuizButton"
                 app:layout_constraintTop_toTopOf="parent"/>
+        <ImageView
+                android:layout_width="345dp"
+                android:layout_height="239dp"
+                android:id="@+id/imageView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/goBackBtn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:visibility="visible"
+                app:layout_constraintVertical_bias="0.509"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -1,84 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        android:gravity="center_vertical">
-
-    <!-- Countdown Timer -->
-    <TextView
-            android:id="@+id/countdown_timer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:text="00:00"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@android:color/holo_blue_dark"/>
-
-    <!-- Question Text -->
-    <TextView
-            android:id="@+id/question_text"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".controller.Game">
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:textColor="@android:color/black"/>
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:gravity="center_vertical">
 
-    <!-- Answer Options (Radio Group) -->
-    <RadioGroup
-            android:id="@+id/answer_options"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+        <!-- Countdown Timer -->
+        <TextView
+                android:id="@+id/countdown_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:text="00:00"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/holo_blue_dark"/>
 
-        <!-- Option 1 -->
-        <RadioButton
-                android:id="@+id/option1"
+        <!-- Question Text -->
+        <TextView
+                android:id="@+id/question_text"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/black"/>
+
+        <!-- Answer Options (Radio Group) -->
+        <RadioGroup
+                android:id="@+id/answer_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:buttonTint="@android:color/holo_green_dark"
-                android:textColor="@android:color/darker_gray"/>
+                android:layout_marginTop="16dp">
 
-        <!-- Option 2 -->
-        <RadioButton
-                android:id="@+id/option2"
+            <!-- Option 1 -->
+            <RadioButton
+                    android:id="@+id/option1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:buttonTint="@android:color/holo_green_dark"
+                    android:textColor="@android:color/darker_gray"/>
+
+            <!-- Option 2 -->
+            <RadioButton
+                    android:id="@+id/option2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:buttonTint="@android:color/holo_red_dark"
+                    android:textColor="@android:color/darker_gray"/>
+
+            <!-- Option 3 -->
+            <RadioButton
+                    android:id="@+id/option3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:buttonTint="@android:color/holo_orange_dark"
+                    android:textColor="@android:color/darker_gray"/>
+
+            <!-- Option 4 -->
+            <RadioButton
+                    android:id="@+id/option4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:buttonTint="@android:color/holo_purple"
+                    android:textColor="@android:color/darker_gray"/>
+        </RadioGroup>
+        <Button
+                android:text="Check Answer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:buttonTint="@android:color/holo_red_dark"
-                android:textColor="@android:color/darker_gray"/>
-
-        <!-- Option 3 -->
-        <RadioButton
-                android:id="@+id/option3"
+                android:layout_height="wrap_content" android:id="@+id/buttonCheck"/>
+        <Button
+                android:text="End Quiz"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:buttonTint="@android:color/holo_orange_dark"
-                android:textColor="@android:color/darker_gray"/>
-
-        <!-- Option 4 -->
-        <RadioButton
-                android:id="@+id/option4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:buttonTint="@android:color/holo_purple"
-                android:textColor="@android:color/darker_gray"/>
-    </RadioGroup>
-    <Button
-            android:text="Check Answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/buttonCheck"/>
-    <Button
-            android:text="End Quiz"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/buttonEndQuiz"/>
+                android:layout_height="wrap_content" android:id="@+id/buttonEndQuiz"/>
 
 
-</LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>

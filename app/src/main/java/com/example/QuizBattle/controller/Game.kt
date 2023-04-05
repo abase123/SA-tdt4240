@@ -5,13 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.QuizBattle.FirebaseRepo
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.statePattern.*
+import com.example.QuizBattle.model.Quiz
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class Game : AppCompatActivity(), UserInputListener {
     private var state: GameState? = null
-
+    private var quiz:Quiz=Quiz("xx","xx","xx","xx")
     private fun newState(newState: GameState) {
         state = newState
         state?.handle(this)
@@ -33,8 +35,8 @@ class Game : AppCompatActivity(), UserInputListener {
     override fun onUserInput(event: UserInputEvent) {
         navigateTo(event)
         when (event) {
-            UserInputEvent.LOAD_DAILY_QUIZ -> newState(LoadQuiz())
-            UserInputEvent.PLAY_DAILYQUIZ -> newState(DailyQuiz())
+            UserInputEvent.LOAD_DAILY_QUIZ -> newState(LoadQuiz(quiz))
+            UserInputEvent.PLAY_DAILYQUIZ -> newState(DailyQuiz(quiz))
             UserInputEvent.PLAY_FRIEND -> newState(FriendsModeQuiz())
             else -> navigateTo(UserInputEvent.RETURN_HOME)
         }
@@ -44,7 +46,7 @@ class Game : AppCompatActivity(), UserInputListener {
         val navController = getNavController()
         when (event) {
             UserInputEvent.LOAD_DAILY_QUIZ -> navController.navigate(R.id.loadingQuiz)
-            UserInputEvent.PLAY_DAILYQUIZ -> navController.navigate(R.id.StartQuiz)
+            UserInputEvent.PLAY_DAILYQUIZ -> navController.navigate(R.id.quiz)
             UserInputEvent.PLAY_FRIEND -> navController.navigate(R.id.StartQuiz)
             UserInputEvent.RETURN_HOME -> navController.navigate(R.id.home)
         }

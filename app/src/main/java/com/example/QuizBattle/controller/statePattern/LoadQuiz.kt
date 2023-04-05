@@ -15,13 +15,11 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class LoadQuiz : GameState {
-    private lateinit var dailyQuiz: Quiz
-
+class LoadQuiz(private var quiz: Quiz): GameState {
+    private val firebaseRepo:FirebaseRepo=FirebaseRepo()
+    private  var dailyQuiz:Quiz=quiz
     override fun handle(context: Game) {
-        val firebaseRepo = FirebaseRepo()
-        val quizId = getTodaysQuizID()
-
+        val quizId =  "20230404"//getTodaysQuizID()
         loadQuizFromFirebase(context, firebaseRepo, quizId)
     }
     private fun loadQuizFromFirebase(context: Game, firebaseRepo: FirebaseRepo, quizId: String) {

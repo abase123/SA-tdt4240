@@ -5,7 +5,7 @@ package com.example.QuizBattle.model
 import java.text.SimpleDateFormat
 import java.util.*
 // Composite Class: Quiz
-class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponent{
+class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponent {
     private  var quizType:String
     private  var quizId:String
     private lateinit var questions: MutableList<Question>
