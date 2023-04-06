@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFF1F1"
-        android:padding="100dp"
-        android:elevation="10dp" android:id="@+id/quizview">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFF1F1"
+    android:padding="100dp"
+    android:elevation="10dp"
+    android:id="@+id/quizview">
 
     <!-- Question Box -->
     <LinearLayout
@@ -33,14 +34,16 @@
 
     </LinearLayout>
 
-    <!-- Answer Options -->
+
     <RadioGroup
+
             android:id="@+id/answerOptions"
             android:layout_width="match_parent"
             android:layout_height="239dp"
             android:paddingTop="16dp">
 
         <!-- Option 1 -->
+
         <RadioButton
                 android:id="@+id/option1"
                 android:layout_width="match_parent"

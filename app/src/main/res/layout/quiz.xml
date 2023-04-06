@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F5F5F5"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/question_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/question_background"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="What is the capital of the United States?"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <RadioGroup
+        android:id="@+id/answer_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:columnCount="2"
+            android:rowCount="2">
+
+            <!-- RadioButton A -->
+            <RadioButton
+                android:id="@+id/answer_A"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="4dp"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="New York"
+                android:textSize="18sp"
+                android:textColor="@drawable/text_color_selector"
+                android:background="@drawable/card_background_selector_checked" />
+
+            <!-- RadioButton B -->
+            <RadioButton
+                android:id="@+id/answer_B"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="4dp"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Los Angeles"
+                android:textSize="18sp"
+                android:textColor="@drawable/text_color_selector"
+                android:background="@drawable/card_background_selector_checked" />
+
+            <!-- RadioButton C -->
+            <RadioButton
+                android:id="@+id/answer_C"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="4dp"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Washington D.C."
+                android:textSize="18sp"
+                android:textColor="@drawable/text_color_selector"
+                android:background="@drawable/card_background_selector_checked" />
+
+            <!-- RadioButton D -->
+            <RadioButton
+                android:id="@+id/answer_D"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_margin="4dp"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Chicago"
+                android:textSize="18sp"
+                android:textColor="@drawable/text_color_selector"
+                android:background="@drawable/card_background_selector_checked" />
+
+        </GridLayout>
+    </RadioGroup>
+
+
+<Button
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:text="Submit"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_blue_light"
+        android:padding="12dp" />
+
+</LinearLayout>
