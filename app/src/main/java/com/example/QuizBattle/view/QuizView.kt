@@ -11,12 +11,17 @@ import android.widget.Button
 import android.widget.RadioButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.QuizBattle.R
+import com.example.QuizBattle.controller.QuizViewModel
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.UserInputListener
+import com.example.QuizBattle.controller.gameStates.DailyQuiz
 
 class QuizView: Fragment() {
 
+    private lateinit var quizViewModel: QuizViewModel
     private var userInputListener: UserInputListener? = null
     private lateinit var endQuizBtn:Button
     private lateinit var checkAnswer:Button
@@ -62,14 +67,22 @@ class QuizView: Fragment() {
         questionText=view.findViewById(R.id.question_text)
         timerText=view.findViewById(R.id.countdown_timer)
 
-
         endQuizBtn.setOnClickListener {
             userInputListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
         checkAnswer.setOnClickListener {
             userInputListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)
         }
-
+        quizViewModel = ViewModelProvider(requireActivity()).get(QuizViewModel::class.java)
+        quizViewModel.currentQuestion.observe(viewLifecycleOwner, Observer { question ->
+            showQuestion(
+                question.getQuestionText(),
+                question.getOptions()[0].getOptionText(),
+                question.getOptions()[1].getOptionText(),
+                question.getOptions()[2].getOptionText(),
+                question.getOptions()[3].getOptionText()
+            )
+        })
 
     }
 
