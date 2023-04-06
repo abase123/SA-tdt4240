@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.Home">
+    tools:context=".view.HomeView">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -86,10 +86,10 @@
                             android:layout_gravity="center">
 
                             <com.google.android.material.button.MaterialButton
-                                style="?attr/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/playButton" />
+                                    style="?attr/buttonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/playButton" android:id="@+id/playdailyButton"/>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -155,10 +155,10 @@
                             android:layout_gravity="center">
 
                             <com.google.android.material.button.MaterialButton
-                                style="?attr/buttonStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/playButton" />
+                                    style="?attr/buttonStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/playButton" android:id="@+id/playFriendButton"/>
                         </LinearLayout>
 
                     </LinearLayout>

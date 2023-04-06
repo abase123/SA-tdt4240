@@ -1,32 +1,36 @@
 package com.example.QuizBattle.model
 
-import android.graphics.BitmapFactory.Options
-import java.util.Locale.Category
 
 
-class Question(private val questionText: String):QuizComponent{
-    private lateinit var questionId:String
-    private lateinit var questionType:String
-    private lateinit var options:MutableList<Option>
+class Question(@JvmField val id: String, val text: String, private val correct: String) : QuizComponent {
+    private var questionId: String
+    private var questionText: String
+    private var options: MutableList<Option>  // Initialize the options list
+    private var correctAnswer: String = correct
 
-    fun getQuestionTex():String=questionText
-    fun getOptions(): MutableList<Option> =options
-    fun addOption(option: Option){
+    init {
+        questionId = id
+        questionText = text
+        correctAnswer = correct
+        options = mutableListOf()  // Initialize the options list in the init block
+    }
+
+    override fun getId(): String = questionId
+
+    fun getQuestionText(): String{
+        return   questionText
+    }
+    fun getOptions(): MutableList<Option> = options
+    fun addOption(option: Option) {
         options.add(option)
     }
 
-    fun removeOption(option: Option){
+    fun removeOption(option: Option) {
         options.remove(option)
     }
 
-
-    override fun getType(): String {
-        return questionType
+    fun getCorrectAnswer(): String {
+        return correctAnswer
     }
-
-    override fun getId(): String {
-        return questionId
-    }
-
 
 }
