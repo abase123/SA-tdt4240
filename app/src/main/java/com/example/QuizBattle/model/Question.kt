@@ -17,7 +17,9 @@ class Question(@JvmField val id: String, val text: String, private val correct: 
 
     override fun getId(): String = questionId
 
-    fun getQuestionText(): String = questionText
+    fun getQuestionText(): String{
+        return   questionText
+    }
     fun getOptions(): MutableList<Option> = options
     fun addOption(option: Option) {
         options.add(option)
@@ -30,4 +32,5 @@ class Question(@JvmField val id: String, val text: String, private val correct: 
     fun getCorrectAnswer(): String {
         return correctAnswer
     }
+
 }

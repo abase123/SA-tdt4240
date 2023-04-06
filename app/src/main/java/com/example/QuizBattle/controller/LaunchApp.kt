@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.statePattern.GameState
+import com.example.QuizBattle.controller.gameStates.GameState
 import com.google.firebase.auth.FirebaseAuth
 
 class LaunchApp:AppCompatActivity() {
@@ -20,7 +20,7 @@ class LaunchApp:AppCompatActivity() {
 
         Handler().postDelayed({
             if (user!=null) {
-                Intent(this,Game::class.java).also {
+                Intent(this,GameController::class.java).also {
                     startActivity(it)
                     finish()
                 }

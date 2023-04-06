@@ -1,9 +1,7 @@
 package com.example.QuizBattle.controller
 
 import android.content.Intent
-import android.nfc.Tag
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.QuizBattle.R
@@ -70,7 +68,7 @@ class SignInActivity: AppCompatActivity(){
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("signInActivity", "signInWithCredential:success")
-                     Intent(this,Game::class.java).also { startActivity(it) }
+                     Intent(this,GameController::class.java).also { startActivity(it) }
                     finish()
                 } else {
                     // If sign in fails, display a message to the user.

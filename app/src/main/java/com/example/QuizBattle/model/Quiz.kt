@@ -39,5 +39,12 @@ class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponen
     override fun getId(): String {
         return quizId
     }
+    fun getQuestions():MutableList<Question>{
+        return questions
+    }
+
+    override fun toString(): String {
+        return "Quiz(type='$quizType', id='$quizId', difficulty='$quizDifficulty', theme='$quizTheme')"
+    }
 
 }

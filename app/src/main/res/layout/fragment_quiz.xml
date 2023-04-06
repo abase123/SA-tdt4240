@@ -3,9 +3,8 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context=".controller.Game">
+             tools:context=".view.QuizView">
     <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -31,7 +30,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginTop="16dp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black" android:text=""/>
 
         <!-- Answer Options (Radio Group) -->
         <RadioGroup
@@ -47,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:buttonTint="@android:color/holo_green_dark"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray" android:checked="false" android:text=""/>
 
             <!-- Option 2 -->
             <RadioButton
@@ -56,34 +55,36 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:buttonTint="@android:color/holo_red_dark"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray" android:text=""/>
 
             <!-- Option 3 -->
+
+            <!-- Option 4 -->
             <RadioButton
                     android:id="@+id/option3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:buttonTint="@android:color/holo_orange_dark"
-                    android:textColor="@android:color/darker_gray"/>
-
-            <!-- Option 4 -->
+                    android:textColor="@android:color/darker_gray" android:text=""/>
             <RadioButton
                     android:id="@+id/option4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:buttonTint="@android:color/holo_purple"
-                    android:textColor="@android:color/darker_gray"/>
+                    android:textColor="@android:color/darker_gray" android:text=""/>
         </RadioGroup>
         <Button
                 android:text="Check Answer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/buttonCheck"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonCheck"/>
         <Button
                 android:text="End Quiz"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/buttonEndQuiz"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonEndQuiz"/>
 
 
     </LinearLayout>

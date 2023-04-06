@@ -48,6 +48,7 @@ class LoadingQuizView: Fragment(){
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
 
         descriptionTextView=view.findViewById(R.id.descriptionTextView)
@@ -61,13 +62,7 @@ class LoadingQuizView: Fragment(){
         loadingProgressBar.visibility=View.VISIBLE
 
 
-        startQuizButton.setOnClickListener {
-            userInputListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)
-        }
 
-        goBackButton.setOnClickListener {
-            userInputListener?.onUserInput(UserInputEvent.RETURN_HOME)
-        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -75,11 +70,19 @@ class LoadingQuizView: Fragment(){
         startQuizButton.visibility=View.VISIBLE
         loadingProgressBar.visibility=View.GONE
         descriptionTextView.text= "Today's  Theme : $theme"
-        if(theme=="Geografi"){
+        if(theme=="Geography"){
             themeImage.setImageResource(R.drawable.geo)
         }
         if(theme=="Sports"){
             themeImage.setImageResource(R.drawable.sports)
+        }
+
+        startQuizButton.setOnClickListener {
+            userInputListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)
+        }
+
+        goBackButton.setOnClickListener {
+            userInputListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
 
 
