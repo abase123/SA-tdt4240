@@ -29,6 +29,11 @@
     <string name="versusBannerDesc">PLAY WITH A FIREND</string>
     <string name="versusTitle">PLAY WITH A FIREND</string>
     <string name="versusDesc">Choose from different categories</string>
+    <string name="friendsTitle">FRIENDS</string>
+    <string name="addFriendsButton">ADD FRIENDS</string>
+    <string name="friendsScrollDescription">Friends List</string>
+    <string name="userName">User 1</string>
+    <string name="removeFriend">Remove Friend</string>
 
 
 </resources>
