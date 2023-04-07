@@ -1,7 +1,7 @@
 package com.example.QuizBattle
 import com.example.QuizBattle.model.Option
-import com.example.QuizBattle.model.Question
-import com.example.QuizBattle.model.Quiz
+import com.example.QuizBattle.model.QuizModel.Question
+import com.example.QuizBattle.model.QuizModel.Quiz
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.coroutines.resume
@@ -39,7 +39,7 @@ class FirebaseRepo() {
         return Quiz(type, id, diff, theme)
     }
 
-    suspend fun loadQuestions(quiz:Quiz):MutableList<Question>{
+    suspend fun loadQuestions(quiz: Quiz):MutableList<Question>{
         return suspendCoroutine { continuation ->
             quizRef.document(quiz.getId()).collection("questions").get()
                 .addOnSuccessListener { querySnapshot ->
@@ -59,7 +59,7 @@ class FirebaseRepo() {
         val questionId = document.id
         val questionText = document.get("text") as String
         val correctAnswer = document.get("correctAnswer") as String
-        val question=Question(questionId,questionText,correctAnswer)
+        val question= Question(questionId,questionText,correctAnswer)
         val options = listOf(
             Option(document.getString("option1") as String),
             Option(document.getString("option2") as String),

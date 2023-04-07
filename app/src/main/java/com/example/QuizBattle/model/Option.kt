@@ -1,6 +1,8 @@
 package com.example.QuizBattle.model
 
-class Option(private val optionText: String) : QuizComponent{
+import com.example.QuizBattle.model.QuizModel.QuizComponent
+
+class Option(private val optionText: String) : QuizComponent {
     private lateinit var optionId:String
     private lateinit var optionType:String
 
