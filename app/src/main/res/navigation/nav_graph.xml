@@ -29,6 +29,6 @@
             android:id="@+id/quiz"
             android:name="com.example.QuizBattle.view.QuizView"
             android:label="fragment_quiz"
-            tools:layout="@layout/fragment_quiz"/>
+            tools:layout="@layout/fragment_quiz_nima"/>
 
 </navigation>

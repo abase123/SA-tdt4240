@@ -23,14 +23,15 @@ class QuizView: Fragment() {
 
     private lateinit var quizViewModel: QuizViewModel
     private var userInputListener: UserInputListener? = null
-    private lateinit var endQuizBtn:Button
+
+    //private lateinit var endQuizBtn:Button
     private lateinit var checkAnswer:Button
     private lateinit var option1: RadioButton
     private lateinit var option2: RadioButton
     private lateinit var option3: RadioButton
     private lateinit var option4: RadioButton
     private  lateinit var questionText: TextView
-    private lateinit var timerText:TextView
+    //private lateinit var timerText:TextView
 
 
     override fun onCreateView(
@@ -38,7 +39,7 @@ class QuizView: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quiz, container, false)
+        return inflater.inflate(R.layout.fragment_quiz_nima, container, false)
     }
 
     override fun onAttach(context: Context) {
@@ -58,20 +59,18 @@ class QuizView: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        endQuizBtn=view.findViewById(R.id.buttonEndQuiz)
-        checkAnswer=view.findViewById(R.id.buttonCheck)
-        option1=view.findViewById(R.id.option1)
-        option2=view.findViewById(R.id.option2)
-        option3=view.findViewById(R.id.option3)
-        option4=view.findViewById(R.id.option4)
+        //endQuizBtn=view.findViewById(R.id.buttonEndQuiz)
+        checkAnswer=view.findViewById(R.id.submit_button)
+        option1=view.findViewById(R.id.answer_A)
+        option2=view.findViewById(R.id.answer_B)
+        option3=view.findViewById(R.id.answer_C)
+        option4=view.findViewById(R.id.answer_D)
         questionText=view.findViewById(R.id.question_text)
-        timerText=view.findViewById(R.id.countdown_timer)
 
-        endQuizBtn.setOnClickListener {
-            userInputListener?.onUserInput(UserInputEvent.RETURN_HOME)
-        }
+        //timerText=view.findViewById(R.id.countdown_timer)
+
         checkAnswer.setOnClickListener {
-            userInputListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)
+            userInputListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
         quizViewModel = ViewModelProvider(requireActivity()).get(QuizViewModel::class.java)
         quizViewModel.currentQuestion.observe(viewLifecycleOwner, Observer { question ->
@@ -86,9 +85,9 @@ class QuizView: Fragment() {
 
     }
 
-    fun showQuestion(queText:String,option1Text:String,
-                     option2Text:String,option3Text:String,
-                     option4Text:String)
+    private fun showQuestion(queText:String, option1Text:String,
+                             option2Text:String, option3Text:String,
+                             option4Text:String)
     {
         Log.d("Fragment", "Quiz accessed: $queText")
         questionText.text=queText
