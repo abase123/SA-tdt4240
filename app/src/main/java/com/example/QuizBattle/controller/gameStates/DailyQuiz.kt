@@ -8,12 +8,9 @@ import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.QuizHolder
 import com.example.QuizBattle.controller.QuizViewModel
-import com.example.QuizBattle.model.Option
-import com.example.QuizBattle.model.Question
-import com.example.QuizBattle.view.QuizView
+import com.example.QuizBattle.model.QuizModel.Question
 
 class DailyQuiz(override var quizHolder: QuizHolder):GameState{
-
 
     override fun handle(context: GameController) {
         val questions:MutableList<Question> = quizHolder.quiz.getQuestions()

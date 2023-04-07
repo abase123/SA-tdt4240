@@ -1,9 +1,10 @@
-package com.example.QuizBattle.model
+package com.example.QuizBattle.model.QuizModel
 
 
 
-import java.text.SimpleDateFormat
-import java.util.*
+import com.example.QuizBattle.model.QuizModel.Question
+import com.example.QuizBattle.model.QuizModel.QuizComponent
+
 // Composite Class: Quiz
 class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponent {
     private  var quizType:String

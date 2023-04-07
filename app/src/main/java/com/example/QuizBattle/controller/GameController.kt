@@ -7,7 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.gameStates.*
-import com.example.QuizBattle.model.Quiz
+import com.example.QuizBattle.model.QuizModel.Quiz
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class GameController : AppCompatActivity(), UserInputListener {

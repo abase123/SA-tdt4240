@@ -1,5 +1,6 @@
-package com.example.QuizBattle.model
+package com.example.QuizBattle.model.QuizModel
 
+import com.example.QuizBattle.model.Option
 
 
 class Question(@JvmField val id: String, val text: String, private val correct: String) : QuizComponent {
