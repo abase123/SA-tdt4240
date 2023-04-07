@@ -50,6 +50,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx:21.2.1'
     implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'nl.dionsegijn:konfetti:1.2.5'
     implementation 'com.google.firebase:firebase-database'
 
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
