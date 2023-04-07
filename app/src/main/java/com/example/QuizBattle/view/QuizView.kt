@@ -1,10 +1,11 @@
 package com.example.QuizBattle.view
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -13,23 +14,19 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.QuizViewModel
-import com.example.QuizBattle.controller.gameStates.DailyQuiz
-import com.google.android.material.animation.AnimationUtils
+import androidx.core.content.ContextCompat
 
 
-class QuizView : Fragment() {
-
+class QuizView: Fragment() {
     private lateinit var quizViewModel: QuizViewModel
     private lateinit var questionText: TextView
     private val options = mutableListOf<RadioButton>()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_quiz_nima, container, false)
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -41,20 +38,24 @@ class QuizView : Fragment() {
             questionText = findViewById(R.id.question_text)
             options.forEach { option ->
                 option.setOnClickListener {
-                    startScaleAnimation()
                     quizViewModel.updateChosenOption(option.text.toString())
-                    quizViewModel.updateQuizStage(DailyQuiz.QuizStage.CHECK_ANSWER)
+                    val isCorrect = quizViewModel.dailyQuiz.checkAnswer(option.text.toString())
+                    quizViewModel.setIsCorrectAnswer(isCorrect)
+                    if(isCorrect){
+                        option.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.correct_answer))
+                    }
+                    else
+                        option.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.incorrect_answer))
+
+                    showAnswer(options){
+                        quizViewModel.dailyQuiz.getNextQuestion()
+                    }
+
                 }
             }
         }
 
         quizViewModel = ViewModelProvider(requireActivity()).get(QuizViewModel::class.java)
-
-        quizViewModel.quizStage.observe(viewLifecycleOwner, Observer { newStage ->
-            quizViewModel.dailyQuiz.currStage = newStage
-            quizViewModel.triggerQuizLoop()
-        })
-
         quizViewModel.currentQuestion.observe(viewLifecycleOwner, Observer { question ->
             showQuestion(
                 question.getQuestionText(),
@@ -62,6 +63,7 @@ class QuizView : Fragment() {
             )
         })
     }
+
 
     private fun View.startScaleAnimation() {
         val scaleAnimation = android.view.animation.AnimationUtils.loadAnimation(context, R.anim.scale_animation)
@@ -73,5 +75,16 @@ class QuizView : Fragment() {
         optionTexts.forEachIndexed { index, optionText ->
             options[index].text = optionText
         }
+    }
+
+    private fun showAnswer(options: MutableList<RadioButton>, onNext:()->Unit){
+        Handler(Looper.getMainLooper()).postDelayed({
+            options.forEach { radioButton ->
+                radioButton.isChecked = false
+                radioButton.setBackgroundColor(ContextCompat.getColor(requireContext(),R.color.unanswered_color))
+            }
+            onNext()
+        }, 500)
+
     }
 }

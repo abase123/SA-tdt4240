@@ -7,29 +7,23 @@ import com.example.QuizBattle.controller.gameStates.DailyQuiz
 import com.example.QuizBattle.model.QuizModel.Question
 
 class QuizViewModel : ViewModel() {
-
     private val _currentQuestion = MutableLiveData<Question>()
-    private var _quizStage = MutableLiveData<DailyQuiz.QuizStage>()
-    private var _chosenOption = MutableLiveData<String>()
-    val currentQuestion: LiveData<Question> get() = _currentQuestion
-    val quizStage: LiveData<DailyQuiz.QuizStage> get() = _quizStage
-    val chosenOption: LiveData<String> get() = _chosenOption
     lateinit var dailyQuiz: DailyQuiz
+    private var _isCorrectAnswer = MutableLiveData<Boolean>()
+    val currentQuestion: LiveData<Question> get() = _currentQuestion
+    val isCorrectAnswer: LiveData<Boolean> get() = _isCorrectAnswer
 
+    fun setIsCorrectAnswer(value: Boolean) {
+        _isCorrectAnswer.value = value
+    }
 
     fun updateQuestion(question: Question) {
         _currentQuestion.value = question
     }
 
-    fun triggerQuizLoop() {
-        dailyQuiz.quizLoop()
-    }
-
-    fun updateQuizStage(newQuizStage: DailyQuiz.QuizStage) {
-        _quizStage.value = newQuizStage
-    }
-
     fun updateChosenOption(optionText:String){
-        dailyQuiz.choseOption = optionText
+        dailyQuiz.checkAnswer(optionText)
     }
+
+
 }

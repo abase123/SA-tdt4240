@@ -11,57 +11,42 @@ import com.example.QuizBattle.model.QuizModel.Question
 
 class DailyQuiz(override var quizHolder: QuizHolder) : GameState {
 
-    lateinit var currStage: QuizStage
     private var questionIndex: Int = 0
     private val questions = quizHolder.quiz.getQuestions()
     private lateinit var activeQuestion: Question
     private lateinit var quizViewModel: QuizViewModel
-    lateinit var choseOption:String
-    enum class QuizStage {
-        PRESENT_QUESTION,
-        CHECK_ANSWER,
-        SHOW_RESULTS
-    }
 
     override fun handle(context: GameController) {
         setViewModel(context)
-        currStage = QuizStage.PRESENT_QUESTION
-        quizLoop()
+        presentQuestion()
     }
-
-    fun quizLoop() {
-        when (currStage) {
-            QuizStage.PRESENT_QUESTION -> presentQuestion()
-            QuizStage.CHECK_ANSWER -> checkAnswer()
-            QuizStage.SHOW_RESULTS -> showResults()
-        }
-    }
-
     private fun setViewModel(context: GameController) {
         val currentFragment = getCurrentFragment(context)
         quizViewModel = ViewModelProvider(currentFragment.requireActivity())[QuizViewModel::class.java]
         quizViewModel.dailyQuiz = this
     }
 
-    private fun showResults() {
+    fun checkAnswer(choseOption:String):Boolean{
+        /// visitor here before feedback.
+        return choseOption==activeQuestion.getCorrectAnswer()
     }
-    private fun checkAnswer() {
-        // logic for checking question
-        // go to next question
-        getNextQuestion()
-    }
-
     private fun presentQuestion() {
         activeQuestion = questions[questionIndex]
         quizViewModel.updateQuestion(activeQuestion)
     }
-    private fun getNextQuestion(){
+
+    fun getNextQuestion(){
         questionIndex++
         if(questionIndex==questions.size){
-           return
+            return
         }
         else
             presentQuestion()
+    }
+
+
+    private fun showFinalResults() {
+
     }
     private fun getCurrentFragment(context: GameController): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
