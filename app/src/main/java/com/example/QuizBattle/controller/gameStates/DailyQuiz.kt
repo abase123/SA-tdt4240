@@ -26,6 +26,7 @@ class DailyQuiz(override var quizHolder: QuizHolder) : GameState {
         quizViewModel.dailyQuiz = this
     }
 
+
     fun checkAnswer(choseOption:String):Boolean{
         /// visitor here before feedback.
         return choseOption==activeQuestion.getCorrectAnswer()
@@ -38,7 +39,7 @@ class DailyQuiz(override var quizHolder: QuizHolder) : GameState {
     fun getNextQuestion(){
         questionIndex++
         if(questionIndex==questions.size){
-            return
+            showFinalResults()
         }
         else
             presentQuestion()

@@ -19,7 +19,7 @@ class LoadQuiz(override var quizHolder: QuizHolder): GameState {
     private val firebaseRepo:FirebaseRepo=FirebaseRepo()
 
     override fun handle(context: GameController) {
-        val quizId =getTodaysQuizID()
+        val quizId = "20230407" //getTodaysQuizID()
         loadQuizFromFirebase(context, firebaseRepo, quizId)
     }
 

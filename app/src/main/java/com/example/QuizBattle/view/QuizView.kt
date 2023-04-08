@@ -17,7 +17,7 @@ import com.example.QuizBattle.controller.QuizViewModel
 import androidx.core.content.ContextCompat
 
 
-class QuizView: Fragment() {
+class QuizView: Fragment(){
     private lateinit var quizViewModel: QuizViewModel
     private lateinit var questionText: TextView
     private val options = mutableListOf<RadioButton>()
