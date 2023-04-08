@@ -7,7 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.FirebaseRepo
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
-import com.example.QuizBattle.model.QuizModel.QuizHolder
+import com.example.QuizBattle.model.QuizModel.DailyQuizHolder
 import com.example.QuizBattle.view.LoadingQuizView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class LoadQuiz(override var quizHolder: QuizHolder): GameState {
+class LoadQuiz(override var quizHolder: DailyQuizHolder): GameState {
     private val firebaseRepo:FirebaseRepo=FirebaseRepo()
 
     override fun handle(context: GameController) {

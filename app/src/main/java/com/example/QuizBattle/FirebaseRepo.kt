@@ -1,5 +1,5 @@
 package com.example.QuizBattle
-import com.example.QuizBattle.model.Option
+import com.example.QuizBattle.model.QuizModel.Option
 import com.example.QuizBattle.model.QuizModel.Question
 import com.example.QuizBattle.model.QuizModel.Quiz
 import com.google.firebase.firestore.DocumentSnapshot

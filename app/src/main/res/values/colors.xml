@@ -13,6 +13,7 @@
     <color name="correct_answer">#007300</color> <!-- Green -->
     <color name="incorrect_answer">#990000</color>
     <color name="unanswered_color">#E0E0E0</color>
+    <color name="conf">#FF3BDE</color>
 
 
 
