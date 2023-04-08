@@ -12,14 +12,11 @@
             android:background="#FFFDD0">
 
 
-
         <nl.dionsegijn.konfetti.KonfettiView
                 android:id="@+id/konfetti_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-        />
-
-
+                tools:layout_editor_absoluteY="-119dp" tools:layout_editor_absoluteX="0dp"/>
         <TextView
                 android:id="@+id/tv_total_score"
                 android:layout_width="wrap_content"
@@ -44,15 +41,15 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginBottom="180dp"/>
         <RatingBar
-                android:layout_width="342dp"
-                android:layout_height="58dp"
+                android:layout_width="240dp"
+                android:layout_height="73dp"
                 android:isIndicator="true"
                 android:id="@+id/ratingBar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintBottom_toTopOf="@+id/BackHome"
-                android:layout_marginBottom="96dp"
+                android:layout_marginBottom="88dp"
                 android:contentDescription="@string/dailyQuizCategory"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

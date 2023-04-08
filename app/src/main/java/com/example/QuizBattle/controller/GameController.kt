@@ -9,13 +9,14 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.gameStates.*
 import com.example.QuizBattle.model.QuizModel.Quiz
-import com.example.QuizBattle.model.QuizModel.DailyQuizHolder
+import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.model.UserScore
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
+
 class GameController : AppCompatActivity(), UserInputListener {
     private lateinit var state: GameState
-    private var quizHolder = DailyQuizHolder(Quiz("xx", "xx", "xx", "xx"), UserScore(0))
+    private var quizHolder = QuizHolder(Quiz("xx", "xx", "xx", "xx"), UserScore(0))
 
     private fun newState(newState: GameState) {
         state = newState
@@ -40,13 +41,13 @@ class GameController : AppCompatActivity(), UserInputListener {
         navigateTo(event)
         when (event) {
             UserInputEvent.LOAD_DAILY_QUIZ -> newState(LoadQuiz(this.quizHolder))
-            UserInputEvent.PLAY_DAILYQUIZ -> newState(DailyQuiz(this.quizHolder))
-            UserInputEvent.PLAY_FRIEND -> newState(FriendsModeQuiz(this.quizHolder))
-            UserInputEvent.RESULTS -> newState(Results(quizHolder))
+            UserInputEvent.PLAY_DAILYQUIZ -> newState(PlayDailyQuiz(this.quizHolder))
+            UserInputEvent.PLAY_FRIEND -> newState(PlayFriendsQuiz(this.quizHolder))
+            UserInputEvent.RESULTS -> newState(PresentResults(quizHolder))
             UserInputEvent.RETURN_HOME -> return
-
         }
     }
+
     private fun navigateTo(event: UserInputEvent) {
         val navController = getNavController()
         when (event) {

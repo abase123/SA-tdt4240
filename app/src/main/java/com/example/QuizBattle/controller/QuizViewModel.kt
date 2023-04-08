@@ -3,13 +3,13 @@ package com.example.QuizBattle.controller
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.QuizBattle.controller.gameStates.DailyQuiz
+import com.example.QuizBattle.controller.gameStates.PlayDailyQuiz
 import com.example.QuizBattle.model.QuizModel.Question
 
 class QuizViewModel : ViewModel() {
 
     private val _currentQuestion = MutableLiveData<Question>()
-    lateinit var dailyQuiz: DailyQuiz
+    lateinit var dailyQuiz: PlayDailyQuiz
     private var _isCorrectAnswer = MutableLiveData<Boolean>()
     private var _isQuizEnded = MutableLiveData<Boolean>()
     val currentQuestion: LiveData<Question> get() = _currentQuestion

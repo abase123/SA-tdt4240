@@ -1,5 +1,6 @@
 package com.example.QuizBattle.view
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.UserInputListener
+import com.google.android.material.color.utilities.Score
 
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
@@ -49,18 +51,16 @@ class ResultsView:Fragment()
         backHomeBtn=view.findViewById(R.id.BackHome)
         ratingBar=view.findViewById(R.id.ratingBar)
         totalScore=view.findViewById(R.id.tv_total_score)
-
-
-
+        
         backHomeBtn.setOnClickListener{
             userInputListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
-
-
         startConfettiAnimation()
-
     }
 
+    fun setScore(score:Int){
+        totalScore.text=score.toString()
+    }
 
     private fun startConfettiAnimation() {
         val konfettiView = requireView().findViewById<nl.dionsegijn.konfetti.KonfettiView>(R.id.konfetti_view)
@@ -71,9 +71,24 @@ class ResultsView:Fragment()
             .setFadeOutEnabled(true)
             .setTimeToLive(5200L)
             .addShapes(Shape.Square, Shape.Circle)
-            .addSizes(Size(30))
+            .addSizes(Size(10))
             .setPosition(konfettiView.width / 2f, konfettiView.height / 2f) // Set the explosion center
             .burst(300) // Set the number of particles in the explosion
+    }
+
+    private fun animateScoreBar(score: Int){
+        val startRating=score/2.0f
+        val animationDuration=2000L
+
+        val animator = ValueAnimator.ofFloat(0f, startRating).apply {
+            duration = animationDuration
+            addUpdateListener { animation ->
+                val animatedValue = animation.animatedValue as Float
+                ratingBar.rating = animatedValue
+            }
+            start()
+        }
+
     }
 
 
