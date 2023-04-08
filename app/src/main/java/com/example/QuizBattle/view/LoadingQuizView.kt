@@ -58,6 +58,10 @@ class LoadingQuizView: Fragment(){
         themeImage=view.findViewById(R.id.imageView2)
         descriptionTextView.text="Loading Today's quiz ..."
 
+        goBackButton.setOnClickListener {
+            userInputListener?.onUserInput(UserInputEvent.RETURN_HOME)
+        }
+
         startQuizButton.visibility=View.INVISIBLE
         loadingProgressBar.visibility=View.VISIBLE
 
@@ -79,10 +83,6 @@ class LoadingQuizView: Fragment(){
 
         startQuizButton.setOnClickListener {
             userInputListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)
-        }
-
-        goBackButton.setOnClickListener {
-            userInputListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
 
 

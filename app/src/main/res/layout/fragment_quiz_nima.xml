@@ -1,12 +1,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context=".view.QuizView">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:app="http://schemas.android.com/apk/res-auto"
-                  xmlns:tools="http://schemas.android.com/tools"
-                  android:layout_width="match_parent"
+    <LinearLayout
+            android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:orientation="vertical"
                   android:padding="16dp"
@@ -23,7 +22,7 @@
                 android:padding="16dp"
                 android:text="What is the capital of the United States?"
                 android:textColor="@android:color/white"
-                android:textSize="24sp" />
+                android:textSize="24sp" android:backgroundTint="#662E2E"/>
 
         <RadioGroup
                 android:id="@+id/answer_group"
@@ -35,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:columnCount="2"
-                    android:rowCount="2">
+                    android:rowCount="2" android:background="#E2BABA">
 
                 <!-- RadioButton A -->
                 <RadioButton
@@ -51,7 +50,7 @@
                         android:text="New York"
                         android:textSize="18sp"
                         android:textColor="@drawable/text_color_selector"
-                        android:background= " @drawable/card_background_selector_checked" />
+                        android:background=" @drawable/card_background_selector_checked" android:textStyle="bold"/>
 
                 <!-- RadioButton B -->
                 <RadioButton
@@ -67,7 +66,7 @@
                         android:text="Los Angeles"
                         android:textSize="18sp"
                         android:textColor="@drawable/text_color_selector"
-                        android:background= "@drawable/card_background_selector_checked"/>
+                        android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
 
                 <!-- RadioButton C -->
                 <RadioButton
@@ -83,7 +82,7 @@
                         android:text="Washington D.C."
                         android:textSize="18sp"
                         android:textColor="@drawable/text_color_selector"
-                        android:background="@drawable/card_background_selector_checked" />
+                        android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
 
                 <!-- RadioButton D -->
                 <RadioButton
@@ -96,25 +95,12 @@
                         android:button="@null"
                         android:gravity="center"
                         android:padding="16dp"
-                        android:text="Chicago"
                         android:textSize="18sp"
                         android:textColor="@drawable/text_color_selector"
-                        android:background="@drawable/card_background_selector_checked" />
+                        android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
 
             </GridLayout>
         </RadioGroup>
-
-        <Button
-                android:id="@+id/submit_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:text="Submit"
-                android:textSize="18sp"
-                android:textColor="@android:color/white"
-                android:background="@android:color/holo_blue_light"
-                android:padding="12dp" />
 
     </LinearLayout>
 
