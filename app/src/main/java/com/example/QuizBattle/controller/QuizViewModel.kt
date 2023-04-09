@@ -25,10 +25,6 @@ class QuizViewModel : ViewModel() {
         _currentQuestion.value = question
     }
 
-    fun updateChosenOption(optionText:String){
-        dailyQuiz.checkAnswer(optionText)
-    }
-
     fun endQuiz(endQuiz:Boolean){
         _quizEnded.value=endQuiz
 

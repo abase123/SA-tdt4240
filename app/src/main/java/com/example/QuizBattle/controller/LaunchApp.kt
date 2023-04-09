@@ -34,8 +34,6 @@ class LaunchApp:AppCompatActivity() {
             // Code to be executed after the delay
         }, 2000)
 
-
-
     }
 }
 

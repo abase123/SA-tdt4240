@@ -9,7 +9,7 @@ import com.example.QuizBattle.model.QuizModel.QuizComponent
 class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponent {
     private  var quizType:String
     private  var quizId:String
-    private lateinit var questions: MutableList<Question>
+    private  var questions: MutableList<Question>
     private  var quizDifficulty:String
     private  var quizTheme:String
 

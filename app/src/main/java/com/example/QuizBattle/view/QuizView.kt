@@ -49,10 +49,8 @@ class QuizView: Fragment(){
         userInputListener = null
     }
 
-
     private fun ShowResults(){
         userInputListener?.onUserInput(UserInputEvent.RESULTS)
-
     }
 
 
@@ -68,7 +66,6 @@ class QuizView: Fragment(){
             questionText = findViewById(R.id.question_text)
             options.forEach { option ->
                 option.setOnClickListener {
-                    quizViewModel.updateChosenOption(option.text.toString())
                     val isCorrect = quizViewModel.dailyQuiz.checkAnswer(option.text.toString())
                     quizViewModel.setIsCorrectAnswer(isCorrect)
                     if(isCorrect){

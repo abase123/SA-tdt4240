@@ -1,5 +1,6 @@
 package com.example.QuizBattle.controller.gameStates
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
@@ -18,6 +19,7 @@ class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
 
     override fun handle(context: GameController) {
         quizEnded=false
+        quizHolder.gainedPoints.resetPoint()
         questionIndex=0
         setViewModel(context)
         presentQuestion()
@@ -33,7 +35,8 @@ class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
     fun checkAnswer(choseOption:String):Boolean{
         val isCorrectOption=choseOption==activeQuestion.getCorrectAnswer()
         if(isCorrectOption){
-            quizHolder.userScore.addPoints(100)
+            quizHolder.gainedPoints.addPoints(1)
+            Log.d("Points", "Quiz accessed: ${quizHolder.gainedPoints.getScore()}")
         }
         return isCorrectOption
     }

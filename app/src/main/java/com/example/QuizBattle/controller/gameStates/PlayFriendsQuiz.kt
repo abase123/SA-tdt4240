@@ -8,7 +8,4 @@ class PlayFriendsQuiz(override var quizHolder: QuizHolder) :GameState {
         TODO("Not yet implemented")
     }
 
-
-
-
 }

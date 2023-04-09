@@ -1,18 +1,24 @@
 package com.example.QuizBattle.view
 
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
+import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.UserInputListener
+import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.google.android.material.color.utilities.Score
 
 import nl.dionsegijn.konfetti.models.Shape
@@ -22,6 +28,8 @@ class ResultsView:Fragment()
 {
     private lateinit var backHomeBtn:Button
     private lateinit var totalScore:TextView
+    private lateinit var rankText:TextView
+    private lateinit var pointsGainedText:TextView
     private lateinit var ratingBar:RatingBar
     private var userInputListener: UserInputListener? = null
 
@@ -50,21 +58,67 @@ class ResultsView:Fragment()
 
         backHomeBtn=view.findViewById(R.id.BackHome)
         ratingBar=view.findViewById(R.id.ratingBar)
+        rankText=view.findViewById(R.id.rankText)
+        pointsGainedText=view.findViewById(R.id.pointsGainedText)
         totalScore=view.findViewById(R.id.tv_total_score)
-        
+        backHomeBtn.visibility= View.INVISIBLE
+
         backHomeBtn.setOnClickListener{
             userInputListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
-        startConfettiAnimation()
     }
 
-    fun setScore(score:Int){
-        totalScore.text=score.toString()
+
+    fun presentQuizResults(score:Int? ,newRank:String,pointsGained:GainedPoints){
+        showGainedPoints(pointsGained)
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (score != null) {
+                animateScoreBar(score.toInt())
+            }
+        }, 1000)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            if (score != null) {
+                setScore(score)
+                setRank(newRank)
+                startConfettiAnimation()
+            }
+        }, 1000)
+
+        startConfettiAnimation()
+        backHomeBtn.visibility=View.VISIBLE
+
+
     }
+
+    @SuppressLint("SetTextI18n")
+    fun showGainedPoints(pointsGained: GainedPoints){
+        val targetNumber = pointsGained.getScore()
+        val animationDuration=2000L
+
+        val valueAnimator = ValueAnimator.ofInt(0, targetNumber).apply {
+            duration = animationDuration
+            addUpdateListener { animation ->
+                val currentValue = animation.animatedValue as Int
+                pointsGainedText.text = "Points achieved: $targetNumber"
+            }
+        }
+        // Start the animation
+        valueAnimator.start()
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun setScore(score:Int){
+        totalScore.text="Total Score: $score"
+    }
+    @SuppressLint("SetTextI18n")
+    fun setRank(rank:String){
+        rankText.text="rank: $rank"
+    }
+
 
     private fun startConfettiAnimation() {
         val konfettiView = requireView().findViewById<nl.dionsegijn.konfetti.KonfettiView>(R.id.konfetti_view)
-
         konfettiView.build()
             .setDirection(0.0, 359.0) // Set the direction for an explosion effect
             .setSpeed(4f, 18f) // Adjust the speed range for a more explosive effect
@@ -86,8 +140,9 @@ class ResultsView:Fragment()
                 val animatedValue = animation.animatedValue as Float
                 ratingBar.rating = animatedValue
             }
-            start()
+
         }
+        animator.start()
 
     }
 
