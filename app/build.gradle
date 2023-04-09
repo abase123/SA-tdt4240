@@ -52,7 +52,6 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'nl.dionsegijn:konfetti:1.2.5'
     implementation 'com.google.firebase:firebase-database'
-
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -71,6 +70,7 @@ dependencies {
     // kotlin coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+    implementation 'nl.dionsegijn:konfetti:1.2.5'
 
 }
 

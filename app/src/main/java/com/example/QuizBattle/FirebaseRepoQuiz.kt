@@ -1,5 +1,5 @@
 package com.example.QuizBattle
-import com.example.QuizBattle.model.Option
+import com.example.QuizBattle.model.QuizModel.Option
 import com.example.QuizBattle.model.QuizModel.Question
 import com.example.QuizBattle.model.QuizModel.Quiz
 import com.google.firebase.firestore.DocumentSnapshot
@@ -8,12 +8,10 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-
-class FirebaseRepo() {
+class FirebaseRepoQuiz() {
 
     private val database = FirebaseFirestore.getInstance()
     private val quizRef = database.collection("quizzes")
-
     suspend fun loadQuiz(quizId: String): Quiz {
         return suspendCoroutine { continuation ->
             quizRef.document(quizId).get().addOnSuccessListener { documentSnapshot ->
@@ -28,17 +26,13 @@ class FirebaseRepo() {
             }
         }
     }
-
     private fun documentSnapshotToQuiz(snapshot: DocumentSnapshot): Quiz {
-
         val id = snapshot.id
         val type = snapshot.get("Type") as String
         val theme = snapshot.get("Theme") as String
         val diff = snapshot.getString("Diff") as String
-
         return Quiz(type, id, diff, theme)
     }
-
     suspend fun loadQuestions(quiz: Quiz):MutableList<Question>{
         return suspendCoroutine { continuation ->
             quizRef.document(quiz.getId()).collection("questions").get()
@@ -53,9 +47,7 @@ class FirebaseRepo() {
                 }
         }
     }
-
     private fun documentToQuestion(document: DocumentSnapshot): Question {
-
         val questionId = document.id
         val questionText = document.get("text") as String
         val correctAnswer = document.get("correctAnswer") as String
@@ -66,10 +58,7 @@ class FirebaseRepo() {
             Option(document.getString("option3") as String),
             Option(document.getString("option4") as String)
         )
-
         options.forEach { option -> question.addOption(option) }
-
-
         return question
 
     }

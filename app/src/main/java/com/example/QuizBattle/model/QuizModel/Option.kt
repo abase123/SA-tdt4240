@@ -1,4 +1,4 @@
-package com.example.QuizBattle.model
+package com.example.QuizBattle.model.QuizModel
 
 import com.example.QuizBattle.model.QuizModel.QuizComponent
 

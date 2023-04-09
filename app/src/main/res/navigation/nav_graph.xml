@@ -31,4 +31,10 @@
             android:label="fragment_quiz"
             tools:layout="@layout/fragment_quiz_nima"/>
 
+    <fragment
+            android:id="@+id/results"
+            android:name="com.example.QuizBattle.view.ResultsView"
+            android:label="fragment_results"
+            tools:layout="@layout/fragment_results"/>
+
 </navigation>

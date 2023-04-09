@@ -66,7 +66,6 @@ class LoadingQuizView: Fragment(){
         loadingProgressBar.visibility=View.VISIBLE
 
 
-
     }
 
     @SuppressLint("SetTextI18n")

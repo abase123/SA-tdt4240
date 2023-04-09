@@ -4,7 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.QuizBattle.FireBaseRepoUser
+import com.example.QuizBattle.FirebaseRepoQuiz
 import com.example.QuizBattle.R
+import com.example.QuizBattle.model.Player
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -12,12 +16,13 @@ import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import kotlinx.coroutines.launch
 
 class SignInActivity: AppCompatActivity(){
     private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var signINButton: SignInButton
-
+    private val firebaseRepoUser: FireBaseRepoUser= FireBaseRepoUser()
     companion object{
         private const val RC_SIGN_IN=120
     }
@@ -30,7 +35,6 @@ class SignInActivity: AppCompatActivity(){
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
-
 
         googleSignInClient=GoogleSignIn.getClient(this,gso)
         mAuth = FirebaseAuth.getInstance()
@@ -66,20 +70,37 @@ class SignInActivity: AppCompatActivity(){
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
                     Log.d("signInActivity", "signInWithCredential:success")
-                     Intent(this,GameController::class.java).also { startActivity(it) }
+                    val user= mAuth.currentUser
+                    if (user != null){
+                       lifecycleScope.launch{
+                           addUserToFireStore(user.uid)
+                       }
+                    }
+                    Intent(this,GameController::class.java).also { startActivity(it) }
                     finish()
-                } else {
+                }
+
+                else {
                     // If sign in fails, display a message to the user.
                     Log.w("signInActivity", "signInWithCredential:failure", task.exception)
                     finish()
                 }
             }
     }
-
-
-
-
+    private suspend fun addUserToFireStore(uid: String) {
+        val userSnapshot = firebaseRepoUser.getUser(uid)
+        if (!userSnapshot.exists()) {
+            val user = mAuth.currentUser
+            val newPlayer = Player(
+                displayName = user?.displayName ?: "",
+                email = user?.email ?: "",
+                score = 0,
+                dailyQuizTaken = false,
+                ranking="Noob"
+            )
+            firebaseRepoUser.addUser(newPlayer, uid)
+        }
+    }
 
 }

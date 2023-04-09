@@ -5,6 +5,7 @@ enum class UserInputEvent{
     PLAY_DAILYQUIZ,
     PLAY_FRIEND,
     LOAD_DAILY_QUIZ,
+    RESULTS,
     RETURN_HOME
 }
 

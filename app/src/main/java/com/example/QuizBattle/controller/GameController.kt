@@ -1,6 +1,7 @@
 package com.example.QuizBattle.controller
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -9,14 +10,17 @@ import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.gameStates.*
 import com.example.QuizBattle.model.QuizModel.Quiz
 import com.example.QuizBattle.model.QuizModel.QuizHolder
+import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 class GameController : AppCompatActivity(), UserInputListener {
     private lateinit var state: GameState
-    private var quizHolder = QuizHolder(Quiz("xx", "xx", "xx", "xx"))
+    private var quizHolder = QuizHolder(Quiz("xx", "xx", "xx", "xx"), GainedPoints(0))
 
     private fun newState(newState: GameState) {
         state = newState
+        Log.d("STATE", "Quiz accessed: $state")
         state.handle(this)
     }
 
@@ -37,11 +41,13 @@ class GameController : AppCompatActivity(), UserInputListener {
         navigateTo(event)
         when (event) {
             UserInputEvent.LOAD_DAILY_QUIZ -> newState(LoadQuiz(this.quizHolder))
-            UserInputEvent.PLAY_DAILYQUIZ -> newState(DailyQuiz(this.quizHolder))
-            UserInputEvent.PLAY_FRIEND -> newState(FriendsModeQuiz(this.quizHolder))
+            UserInputEvent.PLAY_DAILYQUIZ -> newState(PlayDailyQuiz(this.quizHolder))
+            UserInputEvent.PLAY_FRIEND -> newState(PlayFriendsQuiz(this.quizHolder))
+            UserInputEvent.RESULTS -> newState(PresentQuizResults(quizHolder))
             UserInputEvent.RETURN_HOME -> return
         }
     }
+
     private fun navigateTo(event: UserInputEvent) {
         val navController = getNavController()
         when (event) {
@@ -49,6 +55,8 @@ class GameController : AppCompatActivity(), UserInputListener {
             UserInputEvent.PLAY_DAILYQUIZ -> navController.navigate(R.id.quiz)
             UserInputEvent.PLAY_FRIEND -> navController.navigate(R.id.quiz)
             UserInputEvent.RETURN_HOME -> navController.navigate(R.id.home)
+            UserInputEvent.RESULTS -> navController.navigate(R.id.results)
+
         }
     }
      private fun getNavController(): NavController {
