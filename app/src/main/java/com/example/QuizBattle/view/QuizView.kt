@@ -1,5 +1,6 @@
 package com.example.QuizBattle.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -25,6 +26,7 @@ class QuizView: Fragment(){
     private lateinit var quizViewModel: QuizViewModel
     private lateinit var questionText: TextView
     private val options = mutableListOf<RadioButton>()
+    private lateinit var correctOption:RadioButton
     private var userInputListener: UserInputListener? = null
 
     private lateinit var rootView: ViewGroup
@@ -54,6 +56,7 @@ class QuizView: Fragment(){
     }
 
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -73,6 +76,8 @@ class QuizView: Fragment(){
                     }
                     else
                         option.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.incorrect_answer))
+                        showCorrectOption()
+
                     resetButtons(options){
                         quizViewModel.dailyQuiz.getNextQuestion()
                     }
@@ -80,10 +85,9 @@ class QuizView: Fragment(){
                 }
             }
         }
-        quizViewModel = ViewModelProvider(requireActivity()).get(QuizViewModel::class.java)
         quizViewModel.currentQuestion.observe(viewLifecycleOwner, Observer { question ->
-            showQuestion(
-                question.getQuestionText(),
+            setQuestion(
+                question.getQuestionText(),question.getCorrectAnswer(),
                 *question.getOptions().map { it.getOptionText() }.toTypedArray()
             )
         })
@@ -94,12 +98,23 @@ class QuizView: Fragment(){
         })
     }
 
-    private fun showQuestion(queText: String, vararg optionTexts: String) {
+
+
+    private fun setQuestion(queText: String,correctOptionText:String,vararg optionTexts: String) {
         questionText.text = queText
         optionTexts.forEachIndexed { index, optionText ->
             options[index].text = optionText
+            if(options[index].text==correctOptionText){
+                correctOption=options[index]
+            }
         }
     }
+
+
+    private fun showCorrectOption(){
+        correctOption.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.correct_answer))
+    }
+
     private fun resetButtons(options: MutableList<RadioButton>, onNext:()->Unit){
         options.forEach { radioButton ->
             radioButton.isEnabled = false

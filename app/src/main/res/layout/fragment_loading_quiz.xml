@@ -24,8 +24,8 @@
                 tools:visibility="invisible"
                 app:layout_constraintTop_toBottomOf="@+id/startQuizButton"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.032"/>
         <Button
                 android:text="Start"
                 android:layout_width="wrap_content"
@@ -34,8 +34,8 @@
                 tools:visibility="invisible"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="20dp"
+                app:layout_constraintHorizontal_bias="0.498"/>
         <TextView
                 android:id="@+id/descriptionTextView"
                 android:layout_width="0dp"
@@ -52,12 +52,42 @@
                 app:layout_constraintBottom_toTopOf="@+id/imageView2"/>
 
         <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:id="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
-                app:layout_constraintBottom_toTopOf="@+id/startQuizButton"
+                android:layout_width="390dp"
+                android:layout_height="269dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+                app:layout_constraintHorizontal_bias="0.476" android:layout_marginTop="84dp"/>
+        <androidx.cardview.widget.CardView
+                android:layout_width="364dp"
+                android:layout_height="135dp"
+                app:layout_constraintTop_toBottomOf="@+id/goBackBtn" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:cardBackgroundColor="@color/material_dynamic_neutral99"
+                app:layout_constraintVertical_bias="0.495" app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="135dp"
+                    android:text="• Only your first attempt counts towards your alltime score.\n• The faster you finish, the more points you get.\n• Good luck!"
+                    android:textAlignment="textStart"
+                    android:textColor="#B42222"
+                    android:textSize="18sp"
+                    android:lineSpacingExtra="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textStyle="bold"/>
+        </androidx.cardview.widget.CardView>
+        <TextView
+                android:text="TextView"
+                android:layout_width="66dp"
+                android:layout_height="24dp" android:id="@+id/diffText"
+                tools:layout_editor_absoluteX="173dp" app:layout_constraintBottom_toTopOf="@+id/imageView2"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" android:textStyle="italic"
+                android:textAlignment="textStart" android:textSize="16sp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

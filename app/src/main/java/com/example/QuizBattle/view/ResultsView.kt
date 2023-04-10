@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,7 @@ class ResultsView:Fragment()
     private lateinit var rankText:TextView
     private lateinit var pointsGainedText:TextView
     private lateinit var ratingBar:RatingBar
+    private lateinit var timeUsedText:TextView
     private var userInputListener: UserInputListener? = null
 
     override fun onCreateView(
@@ -61,6 +63,7 @@ class ResultsView:Fragment()
         rankText=view.findViewById(R.id.rankText)
         pointsGainedText=view.findViewById(R.id.pointsGainedText)
         totalScore=view.findViewById(R.id.tv_total_score)
+        timeUsedText=view.findViewById(R.id.timeUsedText)
         backHomeBtn.visibility= View.INVISIBLE
 
         backHomeBtn.setOnClickListener{
@@ -69,30 +72,31 @@ class ResultsView:Fragment()
     }
 
 
-    fun presentQuizResults(score:Int? ,newRank:String,pointsGained:GainedPoints){
+    fun presentQuizResults(score:Int ,newRank:String,pointsGained:GainedPoints, timeUsed:Float){
         showGainedPoints(pointsGained)
+        showTimeUsed(timeUsed)
         Handler(Looper.getMainLooper()).postDelayed({
-            if (score != null) {
-                animateScoreBar(score.toInt())
-            }
+            animateScoreBar(pointsGained.getScore())
         }, 1000)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            if (score != null) {
-                setScore(score)
-                setRank(newRank)
-                startConfettiAnimation()
-            }
+            setScore(score)
+            setRank(newRank)
+            startConfettiAnimation()
         }, 1000)
 
         startConfettiAnimation()
         backHomeBtn.visibility=View.VISIBLE
+    }
 
 
+    @SuppressLint("SetTextI18n")
+    private fun showTimeUsed(timeUsed: Float){
+        timeUsedText.text="Quiz time: $timeUsed"
     }
 
     @SuppressLint("SetTextI18n")
-    fun showGainedPoints(pointsGained: GainedPoints){
+    private fun showGainedPoints(pointsGained: GainedPoints){
         val targetNumber = pointsGained.getScore()
         val animationDuration=2000L
 
@@ -131,7 +135,9 @@ class ResultsView:Fragment()
     }
 
     private fun animateScoreBar(score: Int){
-        val startRating=score/2.0f
+        Log.d("star", "Quiz accessed: $score")
+        val startRating=score/200f
+        Log.d("star", "Quiz accessed: $startRating")
         val animationDuration=2000L
 
         val animator = ValueAnimator.ofFloat(0f, startRating).apply {

@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.QuizBattle.FireBaseRepoUser
-import com.example.QuizBattle.FirebaseRepoQuiz
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.Player
 import com.google.android.gms.auth.api.signin.GoogleSignIn
