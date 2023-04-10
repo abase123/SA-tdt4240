@@ -29,7 +29,6 @@ class FireBaseRepoUser {
         userCollection.document(uid).update("score",newScore).await()
     }
 
-
     suspend fun getRank(uid: String):String{
         val userSnapshot = userCollection.document(uid).get().await()
         return userSnapshot.getString("rank").toString()

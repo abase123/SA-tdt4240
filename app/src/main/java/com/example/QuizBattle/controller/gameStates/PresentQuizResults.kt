@@ -40,11 +40,11 @@ class PresentQuizResults(override var quizHolder: QuizHolder) :GameState {
                     val oldRank=fireBaseRepoUser.getRank(uid)
                     val score =fireBaseRepoUser.getscore(uid)
                     showResults(score,oldRank,quizHolder.gainedPoints,context)
-
                 }
             }
         }
     }
+
     private fun showResults(score:Int? ,newRank:String,pointsGained:GainedPoints,context: GameController){
         val currentFragment=getCurrentFragment(context)
         (currentFragment as? ResultsView)?.presentQuizResults(score,newRank,pointsGained)
