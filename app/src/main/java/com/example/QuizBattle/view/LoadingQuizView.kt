@@ -80,6 +80,13 @@ class LoadingQuizView: Fragment(){
             themeImage.setImageResource(R.drawable.sports)
         }
 
+        if(theme=="History"){
+            themeImage.setImageResource(R.drawable.history)
+        }
+        if(theme=="General Knowledge"){
+            themeImage.setImageResource(R.drawable.gk)
+        }
+
         startQuizButton.setOnClickListener {
             userInputListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)
         }

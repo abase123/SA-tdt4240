@@ -4,7 +4,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
-import com.example.QuizBattle.FirebaseRepoQuiz
+import com.example.QuizBattle.FirebaseRepoDailyQuiz
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.model.QuizModel.QuizHolder
@@ -15,15 +15,15 @@ import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
-class LoadQuiz(override var quizHolder: QuizHolder): GameState {
-    private val firebaseRepo:FirebaseRepoQuiz=FirebaseRepoQuiz()
+class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
+    private val firebaseRepo:FirebaseRepoDailyQuiz=FirebaseRepoDailyQuiz()
 
     override fun handle(context: GameController) {
-        val quizId = "20230407" //getTodaysQuizID()
+        val quizId = getTodaysQuizID()
         loadQuizFromFirebase(context, firebaseRepo, quizId)
     }
 
-    private fun loadQuizFromFirebase(context: GameController, firebaseRepo: FirebaseRepoQuiz, quizId: String) {
+    private fun loadQuizFromFirebase(context: GameController, firebaseRepo: FirebaseRepoDailyQuiz, quizId: String) {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 Log.d("LoadQuiz", "Quiz accessed: ${quizHolder.quiz}")

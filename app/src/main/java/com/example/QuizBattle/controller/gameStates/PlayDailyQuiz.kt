@@ -41,6 +41,7 @@ class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
         return isCorrectOption
     }
     private fun presentQuestion() {
+
         activeQuestion = questions[questionIndex]
         quizViewModel.updateQuestion(activeQuestion)
     }
@@ -57,6 +58,7 @@ class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
         questionIndex=0
         quizViewModel.endQuiz(quizEnded)
     }
+
 
     private fun getCurrentFragment(context: GameController): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment

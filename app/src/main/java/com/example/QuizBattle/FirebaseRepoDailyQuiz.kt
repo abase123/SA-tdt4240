@@ -8,10 +8,10 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class FirebaseRepoQuiz() {
+class FirebaseRepoDailyQuiz() {
 
     private val database = FirebaseFirestore.getInstance()
-    private val quizRef = database.collection("quizzes")
+    private val quizRef = database.collection("daily_quizzes")
     suspend fun loadQuiz(quizId: String): Quiz {
         return suspendCoroutine { continuation ->
             quizRef.document(quizId).get().addOnSuccessListener { documentSnapshot ->
