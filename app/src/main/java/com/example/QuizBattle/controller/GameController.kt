@@ -8,13 +8,13 @@ import com.example.QuizBattle.controller.gameStates.*
 import com.example.QuizBattle.model.QuizModel.Quiz
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.model.QuizModel.GainedPoints
-
+import com.example.QuizBattle.model.QuizModel.QuizTimer
 
 
 class GameController : AppCompatActivity(), UserInputListener {
 
     private lateinit var state: GameState
-    private var quizHolder = QuizHolder(Quiz("xx", "xx", "xx", "xx"), GainedPoints(0))
+    private var quizHolder = QuizHolder(Quiz("xx", "xx", "xx", "xx"), GainedPoints(0), QuizTimer())
     private  val screenNavigator:ScreenNavigator= ScreenNavigator(this)
 
     private fun newState(newState: GameState) {

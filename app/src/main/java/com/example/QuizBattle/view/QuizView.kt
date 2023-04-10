@@ -1,5 +1,6 @@
 package com.example.QuizBattle.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -55,6 +56,7 @@ class QuizView: Fragment(){
     }
 
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

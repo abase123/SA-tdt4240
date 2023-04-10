@@ -3,6 +3,7 @@ package com.example.QuizBattle.controller
 import android.media.MediaPlayer
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.AudioTrack
+import kotlin.random.Random
 
 class MediaController(private val context:GameController)
 {
@@ -15,6 +16,8 @@ class MediaController(private val context:GameController)
         mediaPlayer = MediaPlayer.create(context,backGroundTrack.resourceId)
         mediaPlayer?.apply {
             isLooping = true
+            val duration= mediaPlayer!!.duration
+            seekTo(Random.nextInt(duration))
             setVolume(0.6f, 0.6f) // Adjust the volume, if needed
             start()
         }

@@ -1,16 +1,16 @@
 package com.example.QuizBattle.model
 
 private val rankNames = mapOf(
-    "Noob" to (0..20),
-    "Smarty_Pants" to (21..100),
-    "Brianic" to (101..300),
-    "Trivia Titan" to (301..800),
-    "Supreme QuizMaster" to (801 ..2000))
+    "Noob" to (0..2000),
+    "Smarty_Pants" to (2001..4500),
+    "Brianic" to (4501..7500),
+    "Trivia Titan" to (7501..20000),
+    "Supreme QuizMaster" to (20001 ..100000))
 fun getRankForScore(score: Int): String {
     for ((rank, range) in rankNames) {
         if (score in range) {
             return rank
         }
     }
-    return "GO FIND GOD! YOU HAVE MASTERED THE GAME."
+    return "GO FIND GOD!"
 }

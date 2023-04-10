@@ -30,10 +30,6 @@ class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponen
     fun removeQuestion(question: Question){
         questions.remove(question)
     }
-    fun getType(): String {
-        return quizType
-    }
-
     fun getTheme():String{
         return quizTheme
     }

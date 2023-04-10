@@ -22,6 +22,7 @@ class LoadingQuizView: Fragment(){
     private lateinit var loadingProgressBar: ProgressBar
     private var userInputListener: UserInputListener? = null
     private lateinit var themeImage: ImageView
+    private lateinit var diffTextView: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,6 +57,7 @@ class LoadingQuizView: Fragment(){
         loadingProgressBar=view.findViewById(R.id.loadingProgressBar)
         goBackButton=view.findViewById(R.id.goBackBtn)
         themeImage=view.findViewById(R.id.imageView2)
+        diffTextView=view.findViewById(R.id.diffText)
         descriptionTextView.text="Loading Today's quiz ..."
 
         goBackButton.setOnClickListener {
@@ -73,19 +75,15 @@ class LoadingQuizView: Fragment(){
         startQuizButton.visibility=View.VISIBLE
         loadingProgressBar.visibility=View.GONE
         descriptionTextView.text= "Today's  Theme : $theme"
-        if(theme=="Geography"){
-            themeImage.setImageResource(R.drawable.geo)
-        }
-        if(theme=="Sports"){
-            themeImage.setImageResource(R.drawable.sports)
+        when (theme) {
+            "Geography" -> themeImage.setImageResource(R.drawable.geo)
+            "Sports" -> themeImage.setImageResource(R.drawable.sports)
+            "History" -> themeImage.setImageResource(R.drawable.history)
+            "General Knowledge" -> themeImage.setImageResource(R.drawable.gk)
         }
 
-        if(theme=="History"){
-            themeImage.setImageResource(R.drawable.history)
-        }
-        if(theme=="General Knowledge"){
-            themeImage.setImageResource(R.drawable.gk)
-        }
+
+
 
         startQuizButton.setOnClickListener {
             userInputListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)

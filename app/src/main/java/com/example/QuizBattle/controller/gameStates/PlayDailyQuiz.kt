@@ -9,6 +9,8 @@ import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.controller.QuizViewModel
 import com.example.QuizBattle.model.QuizModel.Question
+import com.example.QuizBattle.model.QuizModel.Quiz
+
 class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
 
     private var questionIndex: Int = 0
@@ -21,6 +23,7 @@ class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
         quizEnded=false
         quizHolder.gainedPoints.resetPoint()
         questionIndex=0
+        quizHolder.timer.initTimer()
         setViewModel(context)
         presentQuestion()
     }
@@ -32,19 +35,36 @@ class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
         quizViewModel.endQuiz(quizEnded)
     }
 
+
+    private fun calTimePenalty():Float{
+        val timeUsed=quizHolder.timer.getElapsedTime()
+        Log.d("timeUsed", "Quiz accessed: $timeUsed")
+        val penalty= (10-timeUsed) / 10.0f
+        if (penalty <= 0){
+            return 0f
+        }
+        return penalty
+    }
     fun checkAnswer(choseOption:String):Boolean{
         val isCorrectOption=choseOption==activeQuestion.getCorrectAnswer()
+        val timePenalty = calTimePenalty()
+        Log.d("timePenalty", "penalty : $timePenalty")
+        val pointsToAdd= (200f * timePenalty)
+        Log.d("pointsToAdd", "points add : $pointsToAdd")
+        quizHolder.timer.resetTimer()
         if(isCorrectOption){
-            quizHolder.gainedPoints.addPoints(1)
-            Log.d("Points", "Quiz accessed: ${quizHolder.gainedPoints.getScore()}")
+            quizHolder.gainedPoints.addPoints(pointsToAdd.toInt())
+            Log.d("PointsTotal", "Quiz accessed: ${quizHolder.gainedPoints.getScore()}")
         }
         return isCorrectOption
     }
-    private fun presentQuestion() {
 
+    private fun presentQuestion() {
+        quizHolder.timer.startTimer()
         activeQuestion = questions[questionIndex]
         quizViewModel.updateQuestion(activeQuestion)
     }
+
     fun getNextQuestion(){
         questionIndex++
         if(questionIndex==questions.size){
