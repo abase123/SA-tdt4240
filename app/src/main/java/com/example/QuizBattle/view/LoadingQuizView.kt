@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.UserInputListener
+import com.google.type.Color
 
 class LoadingQuizView: Fragment(){
     private lateinit var descriptionTextView: TextView
@@ -66,28 +67,34 @@ class LoadingQuizView: Fragment(){
 
         startQuizButton.visibility=View.INVISIBLE
         loadingProgressBar.visibility=View.VISIBLE
-
+        diffTextView.visibility = View.INVISIBLE
 
     }
 
-    @SuppressLint("SetTextI18n")
-    fun onQuizLoaded(theme:String){
+    @SuppressLint("SetTextI18n", "ResourceAsColor")
+    fun onQuizLoaded(theme:String,quizDiff:String){
         startQuizButton.visibility=View.VISIBLE
         loadingProgressBar.visibility=View.GONE
-        descriptionTextView.text= "Today's  Theme : $theme"
+        descriptionTextView.text= "Today's  Theme : '$theme'"
         when (theme) {
             "Geography" -> themeImage.setImageResource(R.drawable.geo)
             "Sports" -> themeImage.setImageResource(R.drawable.sports)
             "History" -> themeImage.setImageResource(R.drawable.history)
             "General Knowledge" -> themeImage.setImageResource(R.drawable.gk)
         }
-
-
-
-
         startQuizButton.setOnClickListener {
             userInputListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)
         }
+
+
+        when (quizDiff) {
+            "Easy"   -> diffTextView.setTextColor(R.color.easy)
+            "Medium" -> diffTextView.setTextColor(R.color.medium)
+            "Hard"   -> diffTextView.setTextColor(R.color.hard)
+        }
+        diffTextView.text= "Difficulty: $quizDiff "
+        diffTextView.visibility=View.VISIBLE
+
 
 
     }

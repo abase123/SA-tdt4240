@@ -1,91 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context=".view.QuizView">
     <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp"
-            android:gravity="center_vertical">
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:padding="16dp"
+                  android:background="#F5F5F5"
+                  tools:context=".MainActivity">
 
-        <!-- Countdown Timer -->
-        <TextView
-                android:id="@+id/countdown_timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:text="00:00"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@android:color/holo_blue_dark"/>
-
-        <!-- Question Text -->
         <TextView
                 android:id="@+id/question_text"
                 android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:textColor="@android:color/black" android:text=""/>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/question_background"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="What is the capital of the United States?"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" android:backgroundTint="#662E2E"/>
 
-        <!-- Answer Options (Radio Group) -->
         <RadioGroup
-                android:id="@+id/answer_options"
+                android:id="@+id/answer_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp">
-
-            <!-- Option 1 -->
-            <RadioButton
-                    android:id="@+id/option1"
+                android:layout_weight="1">
+            <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:buttonTint="@android:color/holo_green_dark"
-                    android:textColor="@android:color/darker_gray" android:checked="false" android:text=""/>
+                    android:layout_weight="1"
+                    android:columnCount="2"
+                    android:rowCount="2" android:background="#E2BABA">
 
-            <!-- Option 2 -->
-            <RadioButton
-                    android:id="@+id/option2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:buttonTint="@android:color/holo_red_dark"
-                    android:textColor="@android:color/darker_gray" android:text=""/>
+                <!-- RadioButton A -->
+                <RadioButton
+                        android:id="@+id/answer_A"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="New York"
+                        android:textSize="18sp"
+                        android:textColor="@drawable/text_color_selector"
+                        android:background=" @drawable/card_background_selector_checked" android:textStyle="bold"/>
 
-            <!-- Option 3 -->
+                <!-- RadioButton B -->
+                <RadioButton
+                        android:id="@+id/answer_B"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="Los Angeles"
+                        android:textSize="18sp"
+                        android:textColor="@drawable/text_color_selector"
+                        android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
 
-            <!-- Option 4 -->
-            <RadioButton
-                    android:id="@+id/option3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:buttonTint="@android:color/holo_orange_dark"
-                    android:textColor="@android:color/darker_gray" android:text=""/>
-            <RadioButton
-                    android:id="@+id/option4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:buttonTint="@android:color/holo_purple"
-                    android:textColor="@android:color/darker_gray" android:text=""/>
+                <!-- RadioButton C -->
+                <RadioButton
+                        android:id="@+id/answer_C"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="Washington D.C."
+                        android:textSize="18sp"
+                        android:textColor="@drawable/text_color_selector"
+                        android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
+
+                <!-- RadioButton D -->
+                <RadioButton
+                        android:id="@+id/answer_D"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:textSize="18sp"
+                        android:textColor="@drawable/text_color_selector"
+                        android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
+
+            </GridLayout>
         </RadioGroup>
-        <Button
-                android:text="Check Answer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/buttonCheck"/>
-        <Button
-                android:text="End Quiz"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/buttonEndQuiz"/>
-
 
     </LinearLayout>
 

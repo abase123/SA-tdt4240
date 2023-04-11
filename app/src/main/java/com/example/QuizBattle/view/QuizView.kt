@@ -34,7 +34,7 @@ class QuizView: Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        rootView= inflater.inflate(R.layout.fragment_quiz_nima, container, false) as ViewGroup
+        rootView= inflater.inflate(R.layout.fragment_quiz, container, false) as ViewGroup
         return rootView
     }
 

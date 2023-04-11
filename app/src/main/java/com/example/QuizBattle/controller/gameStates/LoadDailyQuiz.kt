@@ -39,7 +39,8 @@ class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
 
     private fun updateFragment(context: GameController) {
         val currentFragment = getCurrentFragment(context)
-        (currentFragment as? LoadingQuizView)?.onQuizLoaded(quizHolder.quiz.getTheme())
+        Log.d("Diff", "Quiz accessed: ${quizHolder.quiz.getDiff()}")
+        (currentFragment as? LoadingQuizView)?.onQuizLoaded(quizHolder.quiz.getTheme(),quizHolder.quiz.getDiff())
     }
 
     private fun getCurrentFragment(context: GameController): Fragment {
