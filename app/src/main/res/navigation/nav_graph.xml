@@ -29,7 +29,7 @@
             android:id="@+id/quiz"
             android:name="com.example.QuizBattle.view.QuizView"
             android:label="fragment_quiz"
-            tools:layout="@layout/fragment_quiz_nima"/>
+            tools:layout="@layout/fragment_quiz"/>
 
     <fragment
             android:id="@+id/results"

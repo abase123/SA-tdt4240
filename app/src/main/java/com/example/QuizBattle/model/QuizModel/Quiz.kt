@@ -33,6 +33,9 @@ class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponen
     fun getTheme():String{
         return quizTheme
     }
+    fun getDiff():String{
+        return quizDifficulty
+    }
     override fun getId(): String {
         return quizId
     }

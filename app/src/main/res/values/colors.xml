@@ -15,6 +15,10 @@
     <color name="unanswered_color">#E0E0E0</color>
     <color name="conf">#FF3BDE</color>
 
+    <color name="easy">#007300</color>
+    <color name="medium">#FFC107</color>
+    <color name="hard">#E91E1E</color>
+
 
 
 </resources>
