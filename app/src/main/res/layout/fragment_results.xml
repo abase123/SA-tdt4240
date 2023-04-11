@@ -40,7 +40,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginBottom="88dp" app:layout_constraintTop_toBottomOf="@+id/ratingBar"
-                app:layout_constraintVertical_bias="1.0"/>
+                app:layout_constraintVertical_bias="1.0" app:layout_constraintHorizontal_bias="0.534"/>
         <RatingBar
                 android:layout_width="240dp"
                 android:layout_height="73dp"
@@ -48,7 +48,7 @@
                 android:id="@+id/ratingBar"
                 android:contentDescription="@string/dailyQuizCategory"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.549"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintTop_toBottomOf="@+id/timeUsedText" android:layout_marginTop="56dp"
                 app:layout_constraintBottom_toBottomOf="@+id/konfetti_view" app:layout_constraintVertical_bias="0.0"/>
         <TextView
@@ -60,8 +60,8 @@
                 android:textAlignment="viewStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.556"
-                app:layout_constraintTop_toBottomOf="@+id/tv_total_score" android:layout_marginTop="52dp"
-                app:layout_constraintBottom_toBottomOf="@+id/konfetti_view" app:layout_constraintVertical_bias="0.012"/>
+                app:layout_constraintTop_toBottomOf="@+id/tv_total_score" android:layout_marginTop="40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/konfetti_view" app:layout_constraintVertical_bias="0.047"/>
         <TextView
                 android:layout_width="219dp"
                 android:layout_height="52dp"
@@ -74,7 +74,7 @@
                 android:textStyle="bold|italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.489"
-                app:layout_constraintTop_toBottomOf="@+id/rankText" android:layout_marginTop="40dp"
+                app:layout_constraintTop_toBottomOf="@+id/rankText" android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/konfetti_view" app:layout_constraintVertical_bias="0.026"/>
         <TextView
                 android:layout_width="224dp"
@@ -85,9 +85,10 @@
                 android:minHeight="48dp" android:textStyle="bold" android:textColor="#009688"
                 android:textSize="20sp" android:textAlignment="viewStart"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/konfetti_view" app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintTop_toBottomOf="@+id/pointsGainedText" android:layout_marginTop="40dp"
-                app:layout_constraintBottom_toBottomOf="@+id/konfetti_view" app:layout_constraintVertical_bias="0.055"/>
+                app:layout_constraintEnd_toEndOf="@+id/konfetti_view"
+                app:layout_constraintTop_toBottomOf="@+id/pointsGainedText" android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/konfetti_view" app:layout_constraintVertical_bias="0.055"
+                android:layout_marginBottom="24dp"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
