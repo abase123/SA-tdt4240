@@ -136,7 +136,7 @@ class ResultsView:Fragment()
 
     private fun animateScoreBar(score: Int){
         Log.d("star", "Quiz accessed: $score")
-        val startRating=score/200f
+        val startRating=score/333f
         Log.d("star", "Quiz accessed: $startRating")
         val animationDuration=2000L
 

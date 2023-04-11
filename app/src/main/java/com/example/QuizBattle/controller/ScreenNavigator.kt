@@ -1,5 +1,6 @@
 package com.example.QuizBattle.controller
 
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -9,6 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ScreenNavigator(private val gameController: GameController) {
     private  var mediaController: MediaController= MediaController(gameController)
+   private lateinit var bottomNavigationMenu:BottomNavigationView
     private fun getNavController(): NavController {
         val navHostFragment = gameController.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.navController
@@ -25,11 +27,14 @@ class ScreenNavigator(private val gameController: GameController) {
             UserInputEvent.RESULTS -> navController.navigate(R.id.results)
         }
 
+
     }
 
     fun init(){
         setupBottomNavigation()
         mediaController.playBackGroundTrack()
+
+
     }
     private fun setScreenMusic(event: UserInputEvent,navController:NavController){
         mediaController.pause()
@@ -39,15 +44,27 @@ class ScreenNavigator(private val gameController: GameController) {
             UserInputEvent.RESULTS -> mediaController.playResultsTrack()
             else -> {mediaController.playBackGroundTrack()}
         }
+        hideBottomNavigation(event)
 
     }
 
 
+    private fun hideBottomNavigation(event: UserInputEvent){
+        if (event!=UserInputEvent.RETURN_HOME){
+            bottomNavigationMenu.visibility=View.GONE
+        }
+
+        else{
+            bottomNavigationMenu.visibility=View.VISIBLE
+        }
+
+    }
     private fun setupBottomNavigation() {
-        val bottomNavigationView = gameController.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val bottomNavigationView: BottomNavigationView = gameController.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navHostFragment = gameController.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         val navController = navHostFragment.navController
         bottomNavigationView.setupWithNavController(navController)
+        bottomNavigationMenu=bottomNavigationView
     }
 
 }
