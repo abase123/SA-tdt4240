@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:id="@+id/profileCard"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+
+            android:elevation="@dimen/cardview_default_elevation"
+            android:background="@drawable/user_card_shape">
+
+        <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:cardCornerRadius="150dp"
+                android:layout_margin="5dp"
+                android:elevation="10dp"
+                android:layout_gravity="center">
+
+            <ImageView
+                    android:id="@+id/roundedImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/sports"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="@string/profilePictureDesc"
+                    />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+                android:id="@+id/usernameUsercard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+
+                android:layout_gravity="center"
+                android:text="@string/userName"
+                android:textSize="40sp"
+                android:textColor="@color/material_on_surface_emphasis_high_type"
+                />
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false">
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:id="@+id/allTimeScoreTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+
+                        android:text="@string/allTimeScoreTitle"
+                        android:layout_gravity="center"
+                        android:textSize="25sp"
+                        android:textColor="@color/material_on_surface_emphasis_high_type"
+                        />
+
+                <TextView
+                        android:id="@+id/allTimeScore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+
+
+                        android:text="@string/allTimeScore"
+                        android:layout_gravity="center"
+                        android:textSize="20sp"
+                        android:background="@drawable/label_shape"
+                        android:textColor="@color/design_default_color_on_primary"
+                        />
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                <TextView
+                        android:id="@+id/quizzesPlayedTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+
+                        android:text="@string/quizzesPlayedTitle"
+                        android:layout_gravity="center"
+                        android:textSize="25sp"
+                        android:textColor="@color/material_on_surface_emphasis_high_type"
+                        />
+
+                <TextView
+                        android:id="@+id/quizzesPlayed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+
+
+                        android:text="@string/quizzesPlayed"
+                        android:layout_gravity="center"
+                        android:textSize="20sp"
+                        android:background="@drawable/label_shape"
+                        android:textColor="@color/design_default_color_on_primary"
+                        />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

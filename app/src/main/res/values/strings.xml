@@ -13,7 +13,7 @@
 
     <!-- Strings Used for Navigation Bar-->
     <string name="navItem1">Home</string>
-    <string name="navItem2">Friends</string>
+    <string name="navItem2">Social</string>
     <string name="navItem3">Leaderboard</string>
     <!-- Strings used for TopAppBar -->
     <string name="settingsIcon">Settings</string>
@@ -29,6 +29,17 @@
     <string name="versusBannerDesc">PLAY WITH A FIREND</string>
     <string name="versusTitle">PLAY WITH A FIREND</string>
     <string name="versusDesc">Choose from different categories</string>
+    <string name="friendsTitle">FRIENDS</string>
+    <string name="addFriendsButton">ADD FRIENDS</string>
+    <string name="friendsScrollDescription">Friends List</string>
+    <string name="userName">User 1</string>
+    <string name="removeFriend">Remove Friend</string>
+    <string name="profileTitle">PROFILE</string>
+    <string name="profilePictureDesc">Profile Picture</string>
+    <string name="allTimeScore">6871p</string>
+    <string name="quizzesPlayedTitle">Quizzes Played</string>
+    <string name="allTimeScoreTitle">All Time Score</string>
+    <string name="quizzesPlayed">4</string>
 
 
 </resources>
