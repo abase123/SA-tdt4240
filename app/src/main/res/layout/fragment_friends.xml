@@ -5,66 +5,92 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.FriendsView">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-                android:id="@+id/friendsFragmentTitle"
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
+                android:layout_height="wrap_content">
 
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+            <TextView
+                    android:id="@+id/profileTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
 
-                android:text="@string/friendsTitle"
-                android:textSize="32sp"
-                android:textAlignment="center"
-                android:textColor="@color/material_on_surface_emphasis_high_type"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
 
-        <com.google.android.material.button.MaterialButton
-                android:text="@string/addFriendsButton" android:id="@+id/addFriendsButton"
-                android:drawableLeft="@drawable/baseline_person_add_24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                    android:text="@string/profileTitle"
+                    android:textSize="32sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_surface_emphasis_high_type" />
 
-                app:layout_constraintBottom_toTopOf="@+id/FriendsScroll"
-                app:layout_constraintTop_toBottomOf="@+id/friendsFragmentTitle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                 />
+            <include
+                    android:id="@+id/profileCard"
+                    layout="@layout/profile_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-        <ScrollView
-                android:id="@+id/FriendsScroll"
-                android:contentDescription="@string/friendsScrollDescription"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="20dp"
-                android:elevation="@dimen/cardview_default_elevation"
-                android:background="@drawable/user_card_shape"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
 
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="130dp"
+                    app:layout_constraintTop_toBottomOf="@id/profileTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                     />
 
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintVertical_bias="0.0">
+            <TextView
+                    android:id="@+id/friendsFragmentTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+
+                    app:layout_constraintTop_toBottomOf="@id/profileCard"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+
+
+                    android:text="@string/friendsTitle"
+                    android:textSize="32sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_surface_emphasis_high_type"/>
+
+            <com.google.android.material.button.MaterialButton
+                    android:text="@string/addFriendsButton" android:id="@+id/addFriendsButton"
+                    android:drawableLeft="@drawable/baseline_person_add_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+
+
+                    app:layout_constraintTop_toBottomOf="@+id/friendsFragmentTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                     />
 
 
             <LinearLayout
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:elevation="2dp"
+                    android:background="@drawable/user_card_shape"
+
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+
+                    app:layout_constraintTop_toBottomOf="@id/addFriendsButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    >
 
                 <include
                         android:id="@+id/userCard1"
@@ -95,8 +121,8 @@
                         layout="@layout/user_card" />
             </LinearLayout>
 
-        </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </FrameLayout>
