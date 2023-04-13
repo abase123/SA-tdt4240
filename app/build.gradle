@@ -68,9 +68,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
     // kotlin coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
     implementation 'nl.dionsegijn:konfetti:1.2.5'
+    //notification
+    implementation 'com.google.firebase:firebase-messaging:23.1.2'
 
 }
 
