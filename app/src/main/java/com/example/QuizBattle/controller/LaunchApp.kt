@@ -33,8 +33,8 @@ class LaunchApp:AppCompatActivity() {
                     finish()
                 }
             }
-            else{
-                Intent(this,SignInActivity::class.java).also {
+            else {
+                Intent(this, SignInActivity::class.java).also {
                     startActivity(it)
                     finish()
                 }
