@@ -51,6 +51,8 @@ class GameController : AppCompatActivity(), ViewChangeListener {
             }
         }
     }
+
+    //// The player stuff should be done in another place
     private fun loadPlayerData() {
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null) {

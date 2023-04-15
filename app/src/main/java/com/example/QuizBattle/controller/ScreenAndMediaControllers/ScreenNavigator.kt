@@ -13,6 +13,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class ScreenNavigator(private val gameController: GameController,private  val fragmentLoadingState: FragmentLoadingState) {
     private  var mediaController: MediaController = MediaController(gameController)
    private lateinit var bottomNavigationMenu:BottomNavigationView
+
+    fun init(){
+        setupBottomNavigation()
+        mediaController.playBackGroundTrack()
+
+    }
     private fun getNavController(): NavController {
         val navHostFragment = gameController.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.navController
@@ -29,14 +35,9 @@ class ScreenNavigator(private val gameController: GameController,private  val fr
             UserInputEvent.RETURN_HOME -> navController.navigate(R.id.home)
             UserInputEvent.RESULTS -> navController.navigate(R.id.results)
         }
+        hideBottomNavigation(event)
     }
 
-    fun init(){
-        setupBottomNavigation()
-        mediaController.playBackGroundTrack()
-
-
-    }
     private fun setScreenMusic(event: UserInputEvent){
         mediaController.pause()
         when (event) {
@@ -45,9 +46,7 @@ class ScreenNavigator(private val gameController: GameController,private  val fr
             UserInputEvent.RESULTS -> mediaController.playResultsTrack()
             else -> {mediaController.playBackGroundTrack()}
         }
-        hideBottomNavigation(event)
     }
-
 
     private fun hideBottomNavigation(event: UserInputEvent){
         if (event!= UserInputEvent.RETURN_HOME){
