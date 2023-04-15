@@ -24,21 +24,21 @@ class LaunchApp:AppCompatActivity() {
         val user= mAuth.currentUser
 
         Handler().postDelayed({
-            if (user!=null) {
+            //if (user!=null) {
                 Intent(this,GameController::class.java).also {
-                    lifecycleScope.launch{
+                    /*lifecycleScope.launch{
                         addUserToFireStore(user.uid)
-                    }
+                    }*/
                     startActivity(it)
                     finish()
             }
-             }
+            /* }
             else {
                 Intent(this, SignInActivity::class.java).also {
                     startActivity(it)
                     finish()
                 }
-            }
+            }*/
             // Code to be executed after the delay
         }, 2000)
 

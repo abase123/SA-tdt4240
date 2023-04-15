@@ -3,6 +3,7 @@ package com.example.QuizBattle.model
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
@@ -26,6 +27,13 @@ class PlayerAdapter : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
     override fun onBindViewHolder(holder: PlayerViewHolder, position: Int) {
         val player = players[position]
         holder.bind(player)
+
+        // Add click listener for "Send Request" button
+        holder.btnSendRequest.setOnClickListener {
+            // Perform action when "Send Request" button is clicked
+            // You can implement the functionality to send friend request here
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -36,6 +44,8 @@ class PlayerAdapter : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
 
         private val tvDisplayName: TextView = itemView.findViewById(R.id.tvDisplayName)
         private val tvEmail: TextView = itemView.findViewById(R.id.tvEmail)
+        val btnSendRequest: Button = itemView.findViewById(R.id.btnSendRequest)
+
 
         fun bind(player: Player) {
             tvDisplayName.text = player.displayName
