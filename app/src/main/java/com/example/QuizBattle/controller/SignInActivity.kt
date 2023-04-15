@@ -62,7 +62,6 @@ class SignInActivity: AppCompatActivity(){
                 Log.w("SingInActivity", "Google sign in failed", e)
             }
         }
-
     }
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
@@ -96,7 +95,8 @@ class SignInActivity: AppCompatActivity(){
                 email = user?.email ?: "",
                 score = 0,
                 dailyQuizTaken = false,
-                ranking="Noob"
+                ranking="Noob",
+                friends = mutableListOf()
             )
             firebaseRepoUser.addUser(newPlayer, uid)
         }

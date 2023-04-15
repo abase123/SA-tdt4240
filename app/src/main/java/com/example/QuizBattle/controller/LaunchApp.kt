@@ -31,8 +31,8 @@ class LaunchApp:AppCompatActivity() {
                     }
                     startActivity(it)
                     finish()
-                }
             }
+             }
             else {
                 Intent(this, SignInActivity::class.java).also {
                     startActivity(it)
@@ -54,7 +54,8 @@ class LaunchApp:AppCompatActivity() {
                 email = user?.email ?: "",
                 score = 0,
                 dailyQuizTaken = false,
-                ranking="Noob"
+                ranking="Noob",
+                friends = mutableListOf()
             )
             firebaseRepoUser.addUser(newPlayer, uid)
         }

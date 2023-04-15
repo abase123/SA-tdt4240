@@ -8,7 +8,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" android:id="@+id/appBarLayout">
         <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
+                android:id="@+id/topAppBarId"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:textAlignment="center"
