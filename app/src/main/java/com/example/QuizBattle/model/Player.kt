@@ -13,6 +13,14 @@ class Player(
     var ranking: String,
     var friends: MutableList<Player>
 ) {
+    // Primary constructor
+    init {
+        // Class initialization logic
+    }
+    // Secondary constructor for deserialization
+    constructor() : this("", "", 0, false, "", mutableListOf()) {
+        // Empty constructor required for deserialization
+    }
     fun addPoints(point:Int){
         score += point
     }

@@ -65,7 +65,7 @@ class SearchFriendsView : Fragment() {
 
     private fun searchPlayers(query: String) {
         // Query Firestore to search for players with matching display names
-        firestore.collection("players")
+        firestore.collection("Users")
             .orderBy("displayName")
             .startAt(query)
             .endAt(query + "\uf8ff")
