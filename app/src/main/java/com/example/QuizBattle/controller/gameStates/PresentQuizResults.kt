@@ -2,54 +2,46 @@ package com.example.QuizBattle.controller.gameStates
 
 import android.util.Log
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
-import com.example.QuizBattle.FireBaseRepoUser
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
-import com.example.QuizBattle.controller.QuizViewModel
+import com.example.QuizBattle.controller.GameState
+import com.example.QuizBattle.model.PlayerModel.Player
 import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.QuizHolder
-import com.example.QuizBattle.model.getRankForScore
-import com.example.QuizBattle.view.LoadingQuizView
-import com.example.QuizBattle.view.ResultsView
-import com.google.android.material.color.utilities.Score
-import com.google.firebase.auth.FirebaseAuth
+import com.example.QuizBattle.views.ResultsView
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
-class PresentQuizResults(override var quizHolder: QuizHolder) :GameState {
-    private val fireBaseRepoUser:FireBaseRepoUser = FireBaseRepoUser()
-    private val mAuth = FirebaseAuth.getInstance()
+class PresentQuizResults(override var quizHolder: QuizHolder) : GameState {
 
     override fun handle(context: GameController) {
-        val currentUser=mAuth.currentUser
-        if (currentUser != null){
-            val uid=currentUser.uid
-            context.lifecycleScope.launch{
-                val isDailyQuizTaken=fireBaseRepoUser.getDailyQuizState(uid)
-                if(!isDailyQuizTaken){
-                    val newScore=quizHolder.gainedPoints.getScore()
-                    fireBaseRepoUser.updateScore(uid,newScore)
-                    val newRank= getRankForScore(newScore)
-                    fireBaseRepoUser.updateRank(uid,newRank)
-                    fireBaseRepoUser.upDateDailyQuizState(uid,true)
-                    showResults(newScore,newRank,quizHolder.gainedPoints,context)
-                }
-                else{
-                    val oldRank=fireBaseRepoUser.getRank(uid)
-                    val score =fireBaseRepoUser.getscore(uid)
-                    if (score != null) {
-                        showResults(score,oldRank,quizHolder.gainedPoints,context)
-                    }
-                }
+        if (context.player != null) {
+            val player = context.player!!
+            if (!player.dailyQuizTaken) {
+                val newScore = player.score + quizHolder.gainedPoints.getScore()
+                player.dailyQuizTaken = true
+                player.score = newScore
+                player.numQuizzesTaken=player.numQuizzesTaken+1
+                updateFireStore(context,player,newScore,true)
+                showResults(newScore, quizHolder.gainedPoints, context)
+            } else {
+                showResults(player.score, quizHolder.gainedPoints, context)
             }
         }
     }
 
-    private fun showResults(score:Int ,newRank:String,pointsGained:GainedPoints,context: GameController){
+    private fun updateFireStore(context: GameController, player: Player, newScore:Int, newDailyQuizState:Boolean){
+        context.lifecycleScope.launch {
+            context.fireStoreRepoUser.updateScore(player.email, newScore)
+            context.fireStoreRepoUser.upDateDailyQuizState(player.email, true)
+        }
+    }
+    private fun showResults(score:Int ,pointsGained:GainedPoints,context: GameController){
         val currentFragment=getCurrentFragment(context)
-        (currentFragment as? ResultsView)?.presentQuizResults(score,newRank,pointsGained,quizHolder.timer.getTotalTimeUsed())
+        (currentFragment as? ResultsView)?.presentQuizResults(score,pointsGained,quizHolder.timer.getTotalTimeUsed())
+        Log.d("plis","fkefkeofkef")
     }
 
     private fun getCurrentFragment(context: GameController): Fragment {

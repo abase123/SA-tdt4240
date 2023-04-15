@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.FriendsView">
+    tools:context=".views.FriendsView">
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -26,8 +26,7 @@
                     android:text="@string/profileTitle"
                     android:textSize="32sp"
                     android:textAlignment="center"
-                    android:textColor="@color/material_on_surface_emphasis_high_type" />
-
+                    android:textColor="@color/material_on_surface_emphasis_high_type"/>
             <include
                     android:id="@+id/profileCard"
                     layout="@layout/profile_card"
