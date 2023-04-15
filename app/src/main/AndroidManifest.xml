@@ -15,7 +15,7 @@
 
 
         <activity
-                android:name=".controller.LaunchApp"
+                android:name=".controller.LaunchActivities.LaunchApp"
                 android:exported="true"
                 android:theme="@style/Theme.MyApplication.NoActionBar">
 
@@ -35,7 +35,7 @@
             android:name=".controller.GameController"
             android:theme="@style/Theme.MyApplication.NoActionBar"/>
 
-        <activity android:name=".controller.SignInActivity"/>
+        <activity android:name=".controller.LaunchActivities.SignInActivity"/>
 
 
     </application>

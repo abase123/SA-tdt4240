@@ -10,6 +10,6 @@ enum class UserInputEvent{
 }
 
 
-interface UserInputListener {
+interface ViewChangeListener {
     abstract fun onUserInput(event:UserInputEvent)
 }
