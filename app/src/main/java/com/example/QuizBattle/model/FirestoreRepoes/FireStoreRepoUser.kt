@@ -44,4 +44,21 @@ class FireStoreRepoUser {
         return userSnapshot.getLong("score")?.toInt()
     }
 
+    suspend fun getTopPlayers(limit: Int = 10): List<Player> {
+        val querySnapshot = userCollection
+            .orderBy("score", Query.Direction.DESCENDING)
+            .limit(limit.toLong())
+            .get()
+            .await()
+
+        return querySnapshot.documents.mapNotNull { documentSnapshot ->
+            if (documentSnapshot.exists()) {
+                Player(documentSnapshot)
+            } else {
+                null
+            }
+        }
+    }
+
+
 }
