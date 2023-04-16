@@ -6,7 +6,7 @@ import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.model.AudioTrack
 import kotlin.random.Random
 
-class MediaController(private val context: GameController)
+class MediaPlayer(private val context: GameController)
 {
     private var mediaPlayer: MediaPlayer?=null
     private val backGroundTrack: AudioTrack= AudioTrack("CASIOPERA",R.raw.music)

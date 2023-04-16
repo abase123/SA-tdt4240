@@ -25,11 +25,11 @@ class GameController : AppCompatActivity(), ViewChangeListener {
     var player: Player?=null
     val fireStoreRepoUser: FireStoreRepoUser = FireStoreRepoUser()
     val fragmentLoadingState = FragmentLoadingState()
-    private  val screenNavigator: ScreenNavigator = ScreenNavigator(this,fragmentLoadingState)
+    private val screenNavigator: ScreenNavigator = ScreenNavigator(this,fragmentLoadingState)
     private fun newState(newState: GameState) {
         state = newState
         Log.d("STATE", "Quiz accessed: $state")
-        state.handle(this)
+        state.handleState(this)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,13 +46,12 @@ class GameController : AppCompatActivity(), ViewChangeListener {
                 UserInputEvent.LOAD_DAILY_QUIZ -> newState(LoadDailyQuiz(this@GameController.quizHolder))
                 UserInputEvent.PLAY_DAILYQUIZ -> newState(PlayDailyQuiz(this@GameController.quizHolder))
                 UserInputEvent.PLAY_FRIEND -> newState(PlayFriendsQuiz(this@GameController.quizHolder))
-                UserInputEvent.RESULTS -> newState(PresentQuizResults(this@GameController.quizHolder))
+                UserInputEvent.RESULTS -> newState(QuizResults(this@GameController.quizHolder))
                 UserInputEvent.RETURN_HOME -> return@launch
             }
         }
     }
 
-    //// The player stuff should be done in another place
     private fun loadPlayerData() {
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null) {

@@ -6,6 +6,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 
 
 class Player(
+    var uid:String,
     var displayName: String,
     var email: String,
     var score: Int = 0,
@@ -13,6 +14,7 @@ class Player(
     var numQuizzesTaken: Int =0
 ) {
     constructor(documentSnapshot: DocumentSnapshot):this(
+        uid=documentSnapshot.id,
         displayName = documentSnapshot.getString("displayName") ?: "",
         email = documentSnapshot.getString("email") ?: "",
         score = documentSnapshot.getLong("score")?.toInt() ?: 0,
@@ -34,6 +36,5 @@ class Player(
     fun setDailyQuizState(newState:Boolean){
         dailyQuizTaken=newState
     }
-
 
 }

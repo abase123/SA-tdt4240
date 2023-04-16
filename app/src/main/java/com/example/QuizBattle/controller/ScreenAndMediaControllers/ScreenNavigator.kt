@@ -11,19 +11,18 @@ import com.example.QuizBattle.controller.FragmentLoadingState
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ScreenNavigator(private val gameController: GameController,private  val fragmentLoadingState: FragmentLoadingState) {
-    private  var mediaController: MediaController = MediaController(gameController)
+    private  var mediaPlayer: MediaPlayer = MediaPlayer(gameController)
    private lateinit var bottomNavigationMenu:BottomNavigationView
 
     fun init(){
         setupBottomNavigation()
-        mediaController.playBackGroundTrack()
+        mediaPlayer.playBackGroundTrack()
 
     }
     private fun getNavController(): NavController {
         val navHostFragment = gameController.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.navController
     }
-
     fun navigateTo(event: UserInputEvent) {
         val navController = getNavController()
         setScreenMusic(event)
@@ -37,14 +36,13 @@ class ScreenNavigator(private val gameController: GameController,private  val fr
         }
         hideBottomNavigation(event)
     }
-
     private fun setScreenMusic(event: UserInputEvent){
-        mediaController.pause()
+        mediaPlayer.pause()
         when (event) {
-            UserInputEvent.PLAY_DAILYQUIZ -> mediaController.playQuizTrack()
-            UserInputEvent.LOAD_DAILY_QUIZ -> mediaController.playQuizTrack()
-            UserInputEvent.RESULTS -> mediaController.playResultsTrack()
-            else -> {mediaController.playBackGroundTrack()}
+            UserInputEvent.PLAY_DAILYQUIZ -> mediaPlayer.playQuizTrack()
+            UserInputEvent.LOAD_DAILY_QUIZ -> mediaPlayer.playQuizTrack()
+            UserInputEvent.RESULTS -> mediaPlayer.playResultsTrack()
+            else -> {mediaPlayer.playBackGroundTrack()}
         }
     }
 
@@ -52,7 +50,6 @@ class ScreenNavigator(private val gameController: GameController,private  val fr
         if (event!= UserInputEvent.RETURN_HOME){
             bottomNavigationMenu.visibility=View.GONE
         }
-
         else{
             bottomNavigationMenu.visibility=View.VISIBLE
         }

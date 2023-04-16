@@ -12,11 +12,9 @@ import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.views.ResultsView
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
-class PresentQuizResults(override var quizHolder: QuizHolder) : GameState {
-
-    override fun handle(context: GameController) {
+class QuizResults(override var quizHolder: QuizHolder) : GameState {
+    override fun handleState(context: GameController) {
         if (context.player != null) {
             val player = context.player!!
             if (!player.dailyQuizTaken) {

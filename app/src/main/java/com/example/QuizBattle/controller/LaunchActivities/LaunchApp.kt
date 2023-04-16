@@ -44,18 +44,19 @@ class LaunchApp:AppCompatActivity() {
 
     }
 
-    private suspend fun addUserToFireStore(uid: String) {
-        val userSnapshot = firebaseRepoUser.getUser(uid)
+    private suspend fun addUserToFireStore(Useruid: String) {
+        val userSnapshot = firebaseRepoUser.getUser(Useruid)
         if (!userSnapshot.exists()) {
             val user = mAuth.currentUser
             val newPlayer = Player(
+                uid=Useruid,
                 displayName = user?.displayName ?: "",
                 email = user?.email ?: "",
                 score = 0,
                 dailyQuizTaken = false,
                 numQuizzesTaken = 0
             )
-            firebaseRepoUser.addUser(newPlayer, uid)
+            firebaseRepoUser.addUser(newPlayer, Useruid)
         }
     }
 }

@@ -17,7 +17,7 @@ class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
     private lateinit var playDailyQuizViewModel: PlayDailyQuizViewModel
     private var quizEnded=false
 
-    override fun handle(context: GameController) {
+    override fun handleState(context: GameController) {
         quizEnded=false
         quizHolder.gainedPoints.resetPoint()
         questionIndex=0

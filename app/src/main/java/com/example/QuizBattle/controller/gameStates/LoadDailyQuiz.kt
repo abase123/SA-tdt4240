@@ -18,7 +18,7 @@ import java.util.*
 
 class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
     private val firebaseRepo: FireStoreRepoDailyQuiz = FireStoreRepoDailyQuiz()
-    override fun handle(context: GameController) {
+    override fun handleState(context: GameController) {
         val quizId = "20230404"//getTodaysQuizID()
         loadQuizFromFirebase(context, firebaseRepo, quizId)
     }
