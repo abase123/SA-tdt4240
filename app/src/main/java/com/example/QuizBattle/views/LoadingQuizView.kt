@@ -53,8 +53,7 @@ class LoadingQuizView: Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-        gameController = activity as GameController
-        gameController.fragmentLoadingState.setLoading(false)
+
         
         descriptionTextView=view.findViewById(R.id.descriptionTextView)
         startQuizButton=view.findViewById(R.id.startQuizButton)
@@ -71,6 +70,8 @@ class LoadingQuizView: Fragment(){
         startQuizButton.visibility=View.INVISIBLE
         loadingProgressBar.visibility=View.VISIBLE
         diffTextView.visibility = View.INVISIBLE
+        gameController = activity as GameController
+        gameController.fragmentLoadingState.setLoading(false)
 
     }
 
