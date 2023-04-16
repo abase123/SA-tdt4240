@@ -4,6 +4,7 @@ import com.example.QuizBattle.model.PlayerModel.Player
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
+import com.google.firebase.firestore.Query
 
 class FireStoreRepoUser {
     private val db = Firebase.firestore
