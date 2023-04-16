@@ -50,7 +50,7 @@ class SearchFriendsView : Fragment() {
         }
 
         // Get current user from Firestore
-        /*firestore.collection("players")
+        firestore.collection("players")
             .document(auth.currentUser?.uid ?: "")
             .get()
             .addOnSuccessListener { documentSnapshot ->
@@ -58,7 +58,7 @@ class SearchFriendsView : Fragment() {
             }
             .addOnFailureListener { exception ->
                 exception.printStackTrace()
-            }*/
+            }
 
         return binding.root
     }
@@ -77,9 +77,9 @@ class SearchFriendsView : Fragment() {
                     val player = document.toObject(Player::class.java)
                     player?.let { player ->
                         // Exclude current user from search results
-                        //if (player.email != auth.currentUser?.email && !currentUser.friends.contains(player)) {
+                        if (player.email != auth.currentUser?.email && !currentUser.friends.contains(player)) {
                             players.add(player)
-                        //}
+                        }
                     }
                 }
                 playerAdapter.setPlayers(players)
