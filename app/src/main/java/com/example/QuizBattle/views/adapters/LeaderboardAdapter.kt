@@ -1,5 +1,6 @@
 package com.example.QuizBattle.views.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,13 +26,14 @@ class LeaderboardAdapter(private var players: List<Player>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val player = players[position]
         holder.playerName.text = player.displayName
-        holder.playerScore.text = player.score.toString()
+        holder.playerScore.text = player.allTimeScore.toString()
     }
 
     override fun getItemCount(): Int {
         return players.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateData(newPlayers: List<Player>) {
         players = newPlayers
         notifyDataSetChanged()

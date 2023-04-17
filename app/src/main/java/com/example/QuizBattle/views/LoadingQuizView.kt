@@ -47,14 +47,11 @@ class LoadingQuizView: Fragment(){
         viewChangeListener = null
     }
 
-
-
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
 
-        
         descriptionTextView=view.findViewById(R.id.descriptionTextView)
         startQuizButton=view.findViewById(R.id.startQuizButton)
         loadingProgressBar=view.findViewById(R.id.loadingProgressBar)
@@ -70,6 +67,7 @@ class LoadingQuizView: Fragment(){
         startQuizButton.visibility=View.INVISIBLE
         loadingProgressBar.visibility=View.VISIBLE
         diffTextView.visibility = View.INVISIBLE
+
         gameController = activity as GameController
         gameController.fragmentLoadingState.setLoading(false)
 
@@ -98,7 +96,6 @@ class LoadingQuizView: Fragment(){
         }
         diffTextView.text= "Difficulty: $quizDiff "
         diffTextView.visibility=View.VISIBLE
-
 
 
     }

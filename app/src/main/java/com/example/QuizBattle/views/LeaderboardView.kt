@@ -9,12 +9,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
+import com.example.QuizBattle.model.FirestoreRepoes.FireStoreRepoLeaderBoard
 import com.example.QuizBattle.views.adapters.LeaderboardAdapter
 import com.example.QuizBattle.model.FirestoreRepoes.FireStoreRepoUser
 import kotlinx.coroutines.launch
 
 class LeaderboardView : Fragment() {
-    private val fireStoreRepoUser = FireStoreRepoUser()
+    private val fireStoreRepoLeaderBoard = FireStoreRepoLeaderBoard()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +41,7 @@ class LeaderboardView : Fragment() {
 
         // Retrieve the leaderboard data from Firestore and update the adapter
         lifecycleScope.launch {
-            val topPlayers = fireStoreRepoUser.getTopPlayers()
+            val topPlayers = fireStoreRepoLeaderBoard.getTopPlayers()
             leaderboardAdapter.updateData(topPlayers)
         }
     }

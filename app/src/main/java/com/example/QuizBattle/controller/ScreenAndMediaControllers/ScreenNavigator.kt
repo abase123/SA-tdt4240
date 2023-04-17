@@ -56,8 +56,8 @@ class ScreenNavigator(private val gameController: GameController,private  val fr
         else{
             bottomNavigationMenu.visibility=View.VISIBLE
         }
-
     }
+
     private fun setupBottomNavigation() {
         val bottomNavigationView: BottomNavigationView = gameController.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navHostFragment = gameController.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment

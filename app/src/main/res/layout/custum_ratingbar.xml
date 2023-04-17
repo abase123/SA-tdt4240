@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RatingBar xmlns:android="http://schemas.android.com/apk/res/android"
-           android:id="@+id/ratingBar"
-           style="?android:attr/ratingBarStyleIndicator"
-           android:layout_width="240dp"
-           android:layout_height="73dp"
-           android:isIndicator="true"
-           android:progressDrawable="@drawable/ratingbar_style"
-           android:contentDescription="@string/dailyQuizCategory" />

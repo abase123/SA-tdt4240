@@ -60,7 +60,7 @@ class ResultsView:Fragment()
         pointsGainedText=view.findViewById(R.id.pointsGainedText)
         totalScore=view.findViewById(R.id.tv_total_score)
         timeUsedText=view.findViewById(R.id.timeUsedText)
-        backHomeBtn.visibility= View.INVISIBLE
+        backHomeBtn.visibility= View.VISIBLE
 
         gameController = activity as GameController
         gameController.fragmentLoadingState.setLoading(false)

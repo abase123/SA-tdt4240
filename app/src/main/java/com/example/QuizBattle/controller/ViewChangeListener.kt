@@ -9,7 +9,6 @@ enum class UserInputEvent{
     RETURN_HOME
 }
 
-
 interface ViewChangeListener {
     abstract fun onUserInput(event:UserInputEvent)
 }

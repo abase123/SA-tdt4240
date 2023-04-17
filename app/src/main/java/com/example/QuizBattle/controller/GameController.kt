@@ -3,6 +3,7 @@ package com.example.QuizBattle.controller
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.QuizBattle.model.FirestoreRepoes.FireStoreRepoUser
 import com.example.QuizBattle.R
@@ -22,20 +23,19 @@ import kotlinx.coroutines.launch
 class GameController : AppCompatActivity(), ViewChangeListener {
     private lateinit var state: GameState
     private var quizHolder = QuizHolder(Quiz("xx", "xx", "xx", "xx"), GainedPoints(0), QuizTimer())
-    var player: Player?=null
-    val fireStoreRepoUser: FireStoreRepoUser = FireStoreRepoUser()
+    private lateinit var playerViewModel: PlayerViewModel
     val fragmentLoadingState = FragmentLoadingState()
-    private  val screenNavigator: ScreenNavigator = ScreenNavigator(this,fragmentLoadingState)
+    private val screenNavigator: ScreenNavigator = ScreenNavigator(this,fragmentLoadingState)
     private fun newState(newState: GameState) {
         state = newState
-        Log.d("STATE", "Quiz accessed: $state")
         state.handle(this)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+        playerViewModel= ViewModelProvider(this)[PlayerViewModel::class.java]
+        playerViewModel.loadPlayerData()
         screenNavigator.init()
-        loadPlayerData()
     }
 
     override fun onUserInput(event: UserInputEvent) {
@@ -46,21 +46,9 @@ class GameController : AppCompatActivity(), ViewChangeListener {
                 UserInputEvent.LOAD_DAILY_QUIZ -> newState(LoadDailyQuiz(this@GameController.quizHolder))
                 UserInputEvent.PLAY_DAILYQUIZ -> newState(PlayDailyQuiz(this@GameController.quizHolder))
                 UserInputEvent.PLAY_FRIEND -> newState(PlayFriendsQuiz(this@GameController.quizHolder))
-                UserInputEvent.RESULTS -> newState(PresentQuizResults(this@GameController.quizHolder))
+                UserInputEvent.RESULTS -> newState(PresentQuizResults(this@GameController.quizHolder,playerViewModel))
                 UserInputEvent.RETURN_HOME -> return@launch
             }
         }
     }
-
-    //// The player stuff should be done in another place
-    private fun loadPlayerData() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            val uid = currentUser.uid
-            lifecycleScope.launch {
-                player = fireStoreRepoUser.getAsPlayer(uid)
-            }
-        }
-    }
-
 }
