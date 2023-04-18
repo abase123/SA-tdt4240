@@ -17,7 +17,7 @@ class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
     private lateinit var playDailyQuizViewModel: PlayDailyQuizViewModel
     private var quizEnded=false
 
-    override fun handle(context: GameController) {
+    override fun handleState(context: GameController) {
         quizEnded=false
         quizHolder.gainedPoints.resetPoint()
         questionIndex=0
@@ -46,13 +46,10 @@ class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
     fun checkAnswer(choseOption:String):Boolean{
         val isCorrectOption=choseOption==activeQuestion.getCorrectAnswer()
         val timePenalty = calTimePenalty()
-        Log.d("timePenalty", "penalty : $timePenalty")
         val pointsToAdd= (200f * timePenalty)
-        Log.d("pointsToAdd", "points add : $pointsToAdd")
         quizHolder.timer.resetTimer()
         if(isCorrectOption){
             quizHolder.gainedPoints.addPoints(pointsToAdd.toInt())
-            Log.d("PointsTotal", "Quiz accessed: ${quizHolder.gainedPoints.getScore()}")
         }
         return isCorrectOption
     }
@@ -76,7 +73,6 @@ class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
         questionIndex=0
         playDailyQuizViewModel.endQuiz(quizEnded)
     }
-
 
     private fun getCurrentFragment(context: GameController): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment

@@ -1,4 +1,4 @@
-package com.example.QuizBattle.views
+package com.example.QuizBattle.fragment_ui_controls
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +9,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
-import com.example.QuizBattle.model.FirestoreRepoes.FireStoreRepoLeaderBoard
-import com.example.QuizBattle.views.adapters.LeaderboardAdapter
-import com.example.QuizBattle.model.FirestoreRepoes.FireStoreRepoUser
+import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoLeaderboard
+import com.example.QuizBattle.fragment_ui_controls.adapters.LeaderboardAdapter
 import kotlinx.coroutines.launch
 
 class LeaderboardView : Fragment() {
-    private val fireStoreRepoLeaderBoard = FireStoreRepoLeaderBoard()
+    private val fireStoreRepoLeaderBoard = FirestoreRepoLeaderboard()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

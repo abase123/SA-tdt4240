@@ -9,11 +9,11 @@ import com.example.QuizBattle.controller.PlayerViewModel
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.QuizHolder
-import com.example.QuizBattle.views.ResultsView
+import com.example.QuizBattle.fragment_ui_controls.ResultsView
 
 class PresentQuizResults(override var quizHolder: QuizHolder, private var playerViewModel: PlayerViewModel) : GameState {
 
-    override fun handle(context: GameController) {
+    override fun handleState(context: GameController) {
         val player= playerViewModel.player.value
         if (player != null) {
             if (!player.dailyQuizTaken) {

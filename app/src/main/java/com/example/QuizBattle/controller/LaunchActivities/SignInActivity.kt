@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.QuizBattle.model.FirestoreRepoes.FireStoreRepoUser
+import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.model.PlayerModel.Player
@@ -22,7 +22,7 @@ class SignInActivity: AppCompatActivity(){
     private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var signINButton: SignInButton
-    private val firebaseRepoUser: FireStoreRepoUser = FireStoreRepoUser()
+    private val firebaseRepoUser: FirestoreRepoUser = FirestoreRepoUser()
     companion object{
         private const val RC_SIGN_IN=120
     }

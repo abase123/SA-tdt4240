@@ -8,7 +8,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class FireStoreRepoDailyQuiz() {
+class FirestoreRepoDailyQuiz() {
 
     private val database = FirebaseFirestore.getInstance()
     private val quizRef = database.collection("daily_quizzes")

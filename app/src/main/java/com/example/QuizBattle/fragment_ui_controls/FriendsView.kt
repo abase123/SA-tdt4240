@@ -1,4 +1,4 @@
-package com.example.QuizBattle.views
+package com.example.QuizBattle.fragment_ui_controls
 
 import android.os.Bundle
 import android.view.LayoutInflater

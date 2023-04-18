@@ -11,7 +11,7 @@ import com.example.QuizBattle.controller.FragmentLoadingState
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ScreenNavigator(private val gameController: GameController,private  val fragmentLoadingState: FragmentLoadingState) {
-    private  var mediaController: MediaController = MediaController(gameController)
+    private val mediaController: MediaController = MediaController(gameController)
    private lateinit var bottomNavigationMenu:BottomNavigationView
 
     fun init(){
@@ -52,7 +52,6 @@ class ScreenNavigator(private val gameController: GameController,private  val fr
         if (event!= UserInputEvent.RETURN_HOME){
             bottomNavigationMenu.visibility=View.GONE
         }
-
         else{
             bottomNavigationMenu.visibility=View.VISIBLE
         }
@@ -60,9 +59,7 @@ class ScreenNavigator(private val gameController: GameController,private  val fr
 
     private fun setupBottomNavigation() {
         val bottomNavigationView: BottomNavigationView = gameController.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        val navHostFragment = gameController.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        bottomNavigationView.setupWithNavController(navController)
+        bottomNavigationView.setupWithNavController(getNavController())
         bottomNavigationMenu=bottomNavigationView
     }
 

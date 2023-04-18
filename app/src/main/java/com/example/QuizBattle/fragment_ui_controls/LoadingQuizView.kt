@@ -1,4 +1,4 @@
-package com.example.QuizBattle.views
+package com.example.QuizBattle.fragment_ui_controls
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -48,35 +48,48 @@ class LoadingQuizView: Fragment(){
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        super.onViewCreated(view, savedInstanceState)
-
+    private fun setup(view: View){
         descriptionTextView=view.findViewById(R.id.descriptionTextView)
         startQuizButton=view.findViewById(R.id.startQuizButton)
         loadingProgressBar=view.findViewById(R.id.loadingProgressBar)
         goBackButton=view.findViewById(R.id.goBackBtn)
         themeImage=view.findViewById(R.id.imageView2)
         diffTextView=view.findViewById(R.id.diffText)
+
         descriptionTextView.text="Loading Today's quiz ..."
+        startQuizButton.visibility=View.INVISIBLE
+        loadingProgressBar.visibility=View.VISIBLE
+        diffTextView.visibility = View.INVISIBLE
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setup(view)
 
         goBackButton.setOnClickListener {
             viewChangeListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
 
-        startQuizButton.visibility=View.INVISIBLE
-        loadingProgressBar.visibility=View.VISIBLE
-        diffTextView.visibility = View.INVISIBLE
-
         gameController = activity as GameController
         gameController.fragmentLoadingState.setLoading(false)
-
     }
 
     @SuppressLint("SetTextI18n", "ResourceAsColor")
     fun onQuizLoaded(theme:String,quizDiff:String){
         startQuizButton.visibility=View.VISIBLE
         loadingProgressBar.visibility=View.GONE
+        setTheme(theme)
+        setDiff(quizDiff)
+        startQuizButton.setOnClickListener {
+            viewChangeListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)
+        }
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setTheme(theme:String){
         descriptionTextView.text= "Today's  Theme : '$theme'"
         when (theme) {
             "Geography" -> themeImage.setImageResource(R.drawable.geo)
@@ -84,21 +97,21 @@ class LoadingQuizView: Fragment(){
             "History" -> themeImage.setImageResource(R.drawable.history)
             "General Knowledge" -> themeImage.setImageResource(R.drawable.gk)
         }
-        startQuizButton.setOnClickListener {
-            viewChangeListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)
-        }
 
+    }
 
+    @SuppressLint("ResourceAsColor", "SetTextI18n")
+    private fun setDiff(quizDiff:String){
+        diffTextView.text= "Difficulty: $quizDiff "
         when (quizDiff) {
             "Easy"   -> diffTextView.setTextColor(R.color.easy)
             "Medium" -> diffTextView.setTextColor(R.color.medium)
             "Hard"   -> diffTextView.setTextColor(R.color.hard)
         }
-        diffTextView.text= "Difficulty: $quizDiff "
         diffTextView.visibility=View.VISIBLE
-
-
     }
+
+
 
 
 }

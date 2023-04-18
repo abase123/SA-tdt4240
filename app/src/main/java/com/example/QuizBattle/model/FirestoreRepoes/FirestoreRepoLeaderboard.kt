@@ -6,7 +6,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 
-class FireStoreRepoLeaderBoard {
+class FirestoreRepoLeaderboard {
     private val db = Firebase.firestore
     private val userCollection = db.collection("Users")
     suspend fun getTopPlayers(limit: Int = 10): List<Player> {

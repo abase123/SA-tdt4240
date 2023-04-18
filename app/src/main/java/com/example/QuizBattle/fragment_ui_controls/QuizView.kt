@@ -1,6 +1,5 @@
-package com.example.QuizBattle.views
+package com.example.QuizBattle.fragment_ui_controls
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler

@@ -5,12 +5,11 @@ import com.example.QuizBattle.model.PlayerModel.Player
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
-import com.google.firebase.firestore.Query
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
-class FireStoreRepoUser {
+class FirestoreRepoUser {
     private val db = Firebase.firestore
     private val userCollection = db.collection("Users")
     suspend fun getUser(uid:String)=userCollection.document(uid).get().await()
