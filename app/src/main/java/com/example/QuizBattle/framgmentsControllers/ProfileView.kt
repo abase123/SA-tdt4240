@@ -11,7 +11,7 @@ import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.PlayerViewModel
 
 
-class SocialView : Fragment() {
+class ProfileView : Fragment() {
     private lateinit var playerViewModel: PlayerViewModel
     private lateinit var userNameText:TextView
     private lateinit var userScoreText:TextView
