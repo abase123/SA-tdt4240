@@ -1,11 +1,12 @@
 package com.example.QuizBattle.controller.LaunchActivities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.QuizBattle.model.FirestoreRepoes.FireStoreRepoUser
+import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.GameState
@@ -16,7 +17,7 @@ import kotlinx.coroutines.launch
 class LaunchApp:AppCompatActivity() {
     private lateinit var currentState: GameState
     private lateinit var mAuth:FirebaseAuth
-    private val firebaseRepoUser: FireStoreRepoUser = FireStoreRepoUser()
+    private val firebaseRepoUser: FirestoreRepoUser = FirestoreRepoUser()
     override fun onCreate(savedInstanceState: Bundle?) {
        super.onCreate(savedInstanceState)
         setContentView(R.layout.loadingcreen)
@@ -64,8 +65,10 @@ class LaunchApp:AppCompatActivity() {
                 }
             )
             firebaseRepoUser.addUser(newPlayer, uid)
+            }
         }
-    }
 }
+
+
 
 

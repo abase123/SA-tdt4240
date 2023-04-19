@@ -83,7 +83,7 @@ class SearchFriendsView : Fragment() {
                     val player = document.toObject(Player::class.java)
                     player?.let { player ->
                         // Exclude current user from search results
-                        if (player.email != auth.currentUser?.email) {
+                        if (player.userEmail != auth.currentUser?.email) {
                             val friends= currentUser?.friends
                             if(friends==null) {
                                 players.add(player)

@@ -42,6 +42,7 @@
     <string name="quizzesPlayed">4</string>
     <string name="tabLayoutDescription">A tab layout for navigating between different views</string>
     <string name="viewPagerDescription">ViewPager</string>
+    <string name="default_web_client_id"/>
 
 
 </resources>

@@ -1,4 +1,4 @@
-package com.example.QuizBattle.views
+package com.example.QuizBattle.framgmentsControllers
 
 import android.content.Context
 import android.os.Bundle
@@ -12,30 +12,13 @@ import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.ViewChangeListener
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeView.newInstance] factory method to
- * create an instance of this fragment.
- */
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+
 
 class HomeView : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var viewChangeListener: ViewChangeListener? = null
     private lateinit var gameController: GameController
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-
-    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -61,8 +44,6 @@ class HomeView : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        gameController = activity as GameController
-        gameController.fragmentLoadingState.setLoading(false)
         val playFriendBtn=view.findViewById<Button>(R.id.playFriendButton)
         val playDailyBtn=view.findViewById<Button>(R.id.playdailyButton)
 
@@ -73,26 +54,9 @@ class HomeView : Fragment() {
         playDailyBtn.setOnClickListener {
             viewChangeListener?.onUserInput(UserInputEvent.LOAD_DAILY_QUIZ)
         }
+        gameController = activity as GameController
+        gameController.gameEngine.fragmentLoadingState.setLoading(false)
     }
 
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment home.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeView().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

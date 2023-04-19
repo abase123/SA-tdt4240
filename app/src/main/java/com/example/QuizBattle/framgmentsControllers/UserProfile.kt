@@ -1,4 +1,4 @@
-package com.example.QuizBattle.views
+package com.example.QuizBattle.framgmentsControllers
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

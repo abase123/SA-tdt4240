@@ -2,9 +2,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+<<<<<<< HEAD
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".framgmentsControllers.SocialView">
+=======
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".views.FriendsViews.FriendsView">
+>>>>>>> main
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">

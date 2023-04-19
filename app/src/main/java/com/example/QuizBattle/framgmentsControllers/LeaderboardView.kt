@@ -1,4 +1,4 @@
-package com.example.QuizBattle.views
+package com.example.QuizBattle.framgmentsControllers
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,12 +9,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
-import com.example.QuizBattle.views.adapters.LeaderboardAdapter
-import com.example.QuizBattle.model.FirestoreRepoes.FireStoreRepoUser
+import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoLeaderboard
+import com.example.QuizBattle.framgmentsControllers.adapters.LeaderboardAdapter
 import kotlinx.coroutines.launch
 
 class LeaderboardView : Fragment() {
-    private val fireStoreRepoUser = FireStoreRepoUser()
+    private val fireStoreRepoLeaderBoard = FirestoreRepoLeaderboard()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,13 +40,9 @@ class LeaderboardView : Fragment() {
 
         // Retrieve the leaderboard data from Firestore and update the adapter
         lifecycleScope.launch {
-            val topPlayers = fireStoreRepoUser.getTopPlayers()
+            val topPlayers = fireStoreRepoLeaderBoard.getTopPlayers()
             leaderboardAdapter.updateData(topPlayers)
         }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = LeaderboardView()
-    }
 }

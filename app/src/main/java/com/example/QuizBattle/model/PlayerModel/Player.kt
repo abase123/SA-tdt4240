@@ -28,6 +28,7 @@ class Player(
         friends = mutableListOf()
     )
 
+
     constructor() : this("","", "", 0, false, 0, mutableListOf()) {
         // Empty constructor required for Firestore deserialization
     }
@@ -45,5 +46,6 @@ class Player(
     fun toJson(): String {
         return Gson().toJson(this.friends)
     }
+
 
 }

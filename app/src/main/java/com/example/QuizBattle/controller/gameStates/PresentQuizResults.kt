@@ -1,47 +1,40 @@
 package com.example.QuizBattle.controller.gameStates
 
-import android.util.Log
+import android.content.Context
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.GameState
+import com.example.QuizBattle.controller.PlayerViewModel
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.QuizHolder
-import com.example.QuizBattle.views.ResultsView
-import kotlinx.coroutines.launch
-import kotlin.math.log
+import com.example.QuizBattle.framgmentsControllers.ResultsView
 
-class PresentQuizResults(override var quizHolder: QuizHolder) : GameState {
+class PresentQuizResults(override var quizHolder: QuizHolder, private var playerViewModel: PlayerViewModel) : GameState {
 
-    override fun handle(context: GameController) {
-        if (context.player != null) {
-            val player = context.player!!
+    override fun handleState(context: GameController) {
+        val player= playerViewModel.player.value
+        if (player != null) {
             if (!player.dailyQuizTaken) {
-                val newScore = player.score + quizHolder.gainedPoints.getScore()
-                player.dailyQuizTaken = true
-                player.score = newScore
-                player.numQuizzesTaken=player.numQuizzesTaken+1
-                updateFireStore(context,player,newScore,true)
-                showResults(newScore, quizHolder.gainedPoints, context)
+                player.dailyQuizTaken=true
+                player.allTimeScore=player.allTimeScore+quizHolder.gainedPoints.getScore()
+                player.numQuizzesTaken+=1
+                updateFireStore(player)
+                showResults(player.allTimeScore, quizHolder.gainedPoints, context)
             } else {
-                showResults(player.score, quizHolder.gainedPoints, context)
+                showResults(player.allTimeScore, quizHolder.gainedPoints, context)
             }
         }
     }
 
-    private fun updateFireStore(context: GameController, player: Player, newScore:Int, newDailyQuizState:Boolean){
-        context.lifecycleScope.launch {
-            context.fireStoreRepoUser.updateScore(player.email, newScore)
-            context.fireStoreRepoUser.upDateDailyQuizState(player.email, true)
-        }
+    private fun updateFireStore(player: Player){
+       playerViewModel.updatePlayerDataInFirestore(player)
     }
     private fun showResults(score:Int ,pointsGained:GainedPoints,context: GameController){
         val currentFragment=getCurrentFragment(context)
         (currentFragment as? ResultsView)?.presentQuizResults(score,pointsGained,quizHolder.timer.getTotalTimeUsed())
-        Log.d("plis","fkefkeofkef")
     }
 
     private fun getCurrentFragment(context: GameController): Fragment {
