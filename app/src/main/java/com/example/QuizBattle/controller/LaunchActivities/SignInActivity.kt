@@ -98,8 +98,7 @@ class SignInActivity: AppCompatActivity(){
                 userEmail = user?.email ?: "",
                 allTimeScore = 0,
                 dailyQuizTaken = false,
-                numQuizzesTaken=0,
-                friends = mutableListOf()
+                numQuizzesTaken=0
             )
             firebaseRepoUser.addUser(newPlayer, uid)
         }

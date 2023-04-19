@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.QuizBattle.model.FirestoreRepoes.FireStoreRepoUser
+import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.FriendModel.FriendRequest
 import kotlinx.coroutines.CoroutineScope
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class FriendRequestsAdapter(private val friendRequests: List<FriendRequest>, private val listener: FriendRequestClickListener) :
     RecyclerView.Adapter<FriendRequestsAdapter.FriendRequestViewHolder>() {
 
-    private val fireStoreRepoUser = FireStoreRepoUser()
+    private val fireStoreRepoUser = FirestoreRepoUser()
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     interface FriendRequestClickListener {

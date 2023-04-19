@@ -12,12 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
-import com.example.QuizBattle.model.FirestoreRepoes.FireStoreRepoUser
+import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
+import com.example.QuizBattle.model.FriendModel.FriendList
 import com.example.QuizBattle.model.FriendModel.FriendRequest
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.example.QuizBattle.views.adapters.FriendRequestsAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,8 +30,10 @@ class FriendsRequestsView : Fragment() {
     private val auth = FirebaseAuth.getInstance()
     private lateinit var rvFriendRequests: RecyclerView
     private val friendRequestsList = mutableListOf<FriendRequest>()
-    private val fireStoreRepoUser = FireStoreRepoUser()
+    private val fireStoreRepoUser = FirestoreRepoUser()
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private val db = Firebase.firestore
+
 
 
     override fun onCreateView(
@@ -46,23 +51,47 @@ class FriendsRequestsView : Fragment() {
                     val receiver= fireStoreRepoUser.getAsPlayer(friendRequest.receiverId)
                     val sender=fireStoreRepoUser.getAsPlayer(friendRequest.senderId)
                     if(receiver!=null && sender!=null){
-                        val rFriends = receiver.friends ?: mutableListOf()
-                        val sFriends = sender.friends ?: mutableListOf()
+                        val receiverId = friendRequest.receiverId
+                        val senderId = friendRequest.senderId
+                        val friendListSender= db.collection("FriendList").document(receiverId)
+                        val friendListReceiver = db.collection("FriendList").document(senderId)
 
-                        if (!rFriends.contains(sender)) {
-                            rFriends.add(sender)
+                        friendListSender.get()
+                            .addOnSuccessListener { documentSnapshot ->
+                                if (documentSnapshot.exists()) {
+                                    val friendList = documentSnapshot.toObject(FriendList::class.java)?: FriendList()
+                                    if(!friendList.friendsList.contains(sender)) {
+                                        friendList?.friendsList?.add(sender)
+                                        friendListSender.set(friendList)
+                                    }
+                                }
+                                else {
+                                    val friendList = FriendList(receiverId, mutableListOf(sender))
+                                    db.collection("FriendList")
+                                        .document(receiverId)
+                                        .set(friendList)
+                                }
                         }
 
-                        if (!sFriends.contains(receiver)) {
-                            sFriends.add(receiver)
-                        }
-
-
-                        updateFireStore(friendRequest.senderId, friendRequest.receiverId, sender.friends, receiver.friends)
-                        removeFriendRequest(friendRequest)
-
+                        friendListReceiver.get()
+                            .addOnSuccessListener { documentSnapshot ->
+                                if (documentSnapshot.exists()) {
+                                    val friendList = documentSnapshot.toObject(FriendList::class.java) ?: FriendList()
+                                    if (!friendList.friendsList.contains(receiver)) {
+                                        friendList.friendsList.add(receiver)
+                                        friendListReceiver.set(friendList)
+                                    }
+                                } else {
+                                    val friendList = FriendList(senderId, mutableListOf(receiver))
+                                    db.collection("FriendList")
+                                        .document(senderId)
+                                        .set(friendList)
+                                }
+                            }
                     }
                 }
+                removeFriendRequest(friendRequest)
+
             }
 
             override fun onRejectClick(friendRequest: FriendRequest) {
@@ -76,12 +105,6 @@ class FriendsRequestsView : Fragment() {
         getFriendRequests()
 
         return view
-    }
-    private fun updateFireStore(senderId: String, receiverId:String, senderFriendList:MutableList<Player>, receiverFriendList:MutableList<Player>){
-        lifecycleScope.launch {
-            fireStoreRepoUser.updateFriendsList(senderId, senderFriendList)
-            fireStoreRepoUser.updateFriendsList(receiverId, receiverFriendList)
-        }
     }
 
     private fun getFriendRequests(): List<FriendRequest> {

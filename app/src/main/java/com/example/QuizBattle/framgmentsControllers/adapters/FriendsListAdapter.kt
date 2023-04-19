@@ -7,60 +7,103 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.PlayerModel.Player
+import android.util.Log
+import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
+import com.example.QuizBattle.model.FriendModel.FriendList
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class FriendsListAdapter(private val friendsList: MutableList<Player>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FriendsListAdapter() : RecyclerView.Adapter<FriendsListAdapter.FriendViewHolder>() {
 
-    companion object {
-        const val VIEW_TYPE_EMPTY = 0
-        const val VIEW_TYPE_FRIEND = 1
-    }
 
+    private var friendsList: MutableList<Player> = mutableListOf()
+    private val auth = FirebaseAuth.getInstance()
+    private val playerId: String = auth.currentUser?.uid ?: String()
+    private val db = FirebaseFirestore.getInstance()
+    private val fireStoreRepoUser = FirestoreRepoUser()
+    private val coroutineScope = CoroutineScope(Dispatchers.Main)
     inner class FriendViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvFriendName = itemView.findViewById<TextView>(R.id.usernameUsercard)
         val removeButton = itemView.findViewById<TextView>(R.id.removeFriendButton)
 
-        init {
+        fun bind(friend: Player?) {
             removeButton.setOnClickListener {
-                friendsList?.removeAt(adapterPosition)
-                notifyItemRemoved(adapterPosition)
+                //remove locally
+                val position = friendsList.indexOf(friend)
+                if (position != -1) {
+                    friendsList.removeAt(position)
+                }
+                //remove from firestore
+                val friendListRef = db.collection("FriendList").document(playerId)
+                friendListRef.update("friendsList", friendsList)
+
+                // Remove current player from friend's list
+                val db = FirebaseFirestore.getInstance()
+                val usersRef = db.collection("Users")
+                val query = usersRef.whereEqualTo("email", friend?.userEmail)
+                query.get().addOnSuccessListener { querySnapshot ->
+                    if (!querySnapshot.isEmpty) {
+                        val friendDoc = querySnapshot.documents[0]
+                        val friendId = friendDoc.id
+                        if (friendId != null) {
+                            val friendRef = db.collection("FriendList").document(friendId)
+                            friendRef.get().addOnSuccessListener { documentSnapshot ->
+                                val friendList = documentSnapshot.toObject<FriendList>()
+                                if (friendList != null) {
+                                    coroutineScope.launch {
+                                        friendList.friendsList.remove(
+                                            fireStoreRepoUser.getAsPlayer(
+                                                playerId
+                                            )
+                                        )
+                                        friendRef.set(friendList)
+                                    }
+                                }
+                            }
+                            notifyDataSetChanged()
+
+                        }
+                    }
+                }
             }
+
+            }
+
         }
 
-    }
-    inner class EmptyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvEmptyFriendsListMessage = itemView.findViewById<TextView>(R.id.tvEmptyFriendsListMessage)
-    }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return when (viewType) {
-            VIEW_TYPE_EMPTY -> {
-                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_empty_friends_list, parent, false)
-                EmptyViewHolder(itemView)
-            }
-            else -> {
-                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.user_card, parent, false)
-                FriendViewHolder(itemView)
-            }
-        }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.user_card, parent, false)
+        return FriendViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is FriendViewHolder) {
-            if (friendsList?.size  != 0){
-                val friend = friendsList?.get(position)
-                holder.tvFriendName.text = friend?.displayName
-            }
-        } else if (holder is EmptyViewHolder) {
-            holder.tvEmptyFriendsListMessage.text = "No friends added yet."
-        }
+
+    override fun onBindViewHolder(holder: FriendViewHolder, position: Int) {
+        val friend = friendsList.getOrNull(position)
+        holder.bind(friend)
+
+        //notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-        return if (friendsList.isNullOrEmpty()) {
-            1
-        } else {
-            friendsList.size
-        }
+        return friendsList.size
     }
+
+    fun setFriendsList(friendsList: MutableList<Player>) {
+        this.friendsList = friendsList
+        notifyDataSetChanged()
+    }
+
+    fun clearFriendsList() {
+        this.friendsList = mutableListOf()
+        notifyDataSetChanged()
+    }
+
+
 }
