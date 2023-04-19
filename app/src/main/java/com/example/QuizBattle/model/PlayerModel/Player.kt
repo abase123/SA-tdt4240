@@ -3,7 +3,7 @@ package com.example.QuizBattle.model.PlayerModel
 import com.google.firebase.firestore.DocumentSnapshot
 
 
-data class Player(
+ class Player(
      var userUid:String,
      var displayName: String,
      var userEmail: String,
