@@ -12,8 +12,7 @@ class Player(
     var email: String,
     var score: Int = 0,
     var dailyQuizTaken: Boolean = false,
-    var numQuizzesTaken: Int =0,
-    var friends: MutableList<Player>
+    var numQuizzesTaken: Int =0
 )
 
 {
@@ -22,26 +21,24 @@ class Player(
         email = documentSnapshot.getString("email") ?: "",
         score = documentSnapshot.getLong("score")?.toInt() ?: 0,
         dailyQuizTaken = documentSnapshot.getBoolean("dailyQuizTaken") ?: false,
-        numQuizzesTaken = documentSnapshot.getLong("numQuizzesTaken")?.toInt() ?: 0,
-        friends = mutableListOf()
+        numQuizzesTaken = documentSnapshot.getLong("numQuizzesTaken")?.toInt() ?: 0
     )
 
-    constructor() : this("", "", 0, false, 0, mutableListOf()) {
+    constructor() : this("", "", 0, false, 0) {
         // Empty constructor required for Firestore deserialization
     }
     constructor(json: String) : this(
         displayName = "",
         email = "",
-        friends = Gson().fromJson(json, object : TypeToken<MutableList<Player>>() {}.type),
         score = 0,
         dailyQuizTaken = false,
         numQuizzesTaken = 0
     )
 
     // Serialize the MutableList<Player> object to a JSON string
-    fun toJson(): String {
+ /*   fun toJson(): String {
         return Gson().toJson(this.friends)
-    }
+    }*/
     fun getName():String{
         return displayName
     }

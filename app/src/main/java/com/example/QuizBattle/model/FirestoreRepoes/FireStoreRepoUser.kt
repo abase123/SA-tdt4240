@@ -36,12 +36,6 @@ class FireStoreRepoUser {
     suspend fun updateScore(uid: String, newScore: Int){
         userCollection.document(uid).update("score",newScore).await()
     }
-
-    suspend fun updateFriendsList(uid: String, newFriendList: MutableList<Player>){
-        val gson = Gson()
-        val json = gson.toJson(newFriendList)
-        userCollection.document(uid).update("friends",json).await()
-    }
     suspend fun getRank(uid: String):String{
         val userSnapshot = userCollection.document(uid).get().await()
         return userSnapshot.getString("rank").toString()

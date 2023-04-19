@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.QuizBattle.R
 import com.example.QuizBattle.databinding.FragmentSearchFriendsBinding
 import com.example.QuizBattle.model.FirestoreRepoes.FireStoreRepoUser
+import com.example.QuizBattle.model.FriendModel.FriendList
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.example.QuizBattle.views.DividerItemDecorator
 import com.example.QuizBattle.views.adapters.PlayerAdapter
@@ -57,8 +58,8 @@ class SearchFriendsView : Fragment() {
             }
         }
 
-        val player =auth.currentUser
-        if(player!=null) {
+        val player = auth.currentUser
+        if (player != null) {
             coroutineScope.launch {
                 currentUser = fireStoreRepoUser.getAsPlayer(player.uid)
 
@@ -68,37 +69,96 @@ class SearchFriendsView : Fragment() {
 
         return binding.root
     }
-
     private fun searchPlayers(query: String) {
-        // Query Firestore to search for players with matching display names
-        firestore.collection("Users")
-            .orderBy("displayName")
-            .startAt(query)
-            .endAt(query + "\uf8ff")
-            .limit(50)
-            .get()
-            .addOnSuccessListener { querySnapshot ->
-                val players = mutableListOf<Player>()
-                for (document in querySnapshot.documents) {
-                    val player = document.toObject(Player::class.java)
-                    player?.let { player ->
-                        // Exclude current user from search results
-                        if (player.email != auth.currentUser?.email) {
-                            val friends= currentUser?.friends
-                            if(friends==null) {
-                                players.add(player)
-                            }else {
-                                if(!friends.contains(player)) {
-                                    players.add(player)
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // Query Firestore to search for players with matching display names
+            firestore.collection("Users")
+                .orderBy("displayName")
+                .startAt(query)
+                .endAt(query + "\uf8ff")
+                .limit(50)
+                .get()
+                .addOnSuccessListener { querySnapshot ->
+                    val players = mutableListOf<Player>()
+                    val userId = currentUser.uid
+
+                    // Get friend list for current user
+                    firestore.collection("FriendList")
+                        .whereEqualTo("playerId", userId)
+                        .get()
+                        .addOnSuccessListener { friendListSnapshot ->
+
+                            // Convert friend list to list of friend IDs
+                            val friendEmails = friendListSnapshot.documents.firstOrNull()?.toObject(FriendList::class.java)?.friendsList?.map { it.email} ?: emptyList()
+
+                            // Add players who are not already friends
+                            for (document in querySnapshot.documents) {
+                                val player = document.toObject(Player::class.java)
+                                player?.let { player ->
+                                    if (player.email != currentUser.email && player.email !in friendEmails) {
+                                        players.add(player)
+                                    }
                                 }
+                            }
+
+                            playerAdapter.setPlayers(players)
+                        }
+                        .addOnFailureListener { exception ->
+                            exception.printStackTrace()
+                        }
+                }
+                .addOnFailureListener { exception ->
+                    exception.printStackTrace()
+                }
+        }
+    }
+
+ /*   private fun searchPlayers(query: String) {
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // Query Firestore to search for players with matching display names
+            firestore.collection("Users")
+                .orderBy("displayName")
+                .startAt(query)
+                .endAt(query + "\uf8ff")
+                .limit(50)
+                .get()
+                .addOnSuccessListener { querySnapshot ->
+                    val players = mutableListOf<Player>()
+                    val userId = currentUser.uid
+                    for (document in querySnapshot.documents) {
+                        val player = document.toObject(Player::class.java)
+                        player?.let { player ->
+                            // Exclude current user from search results
+                            if (player.email != currentUser.email) {
+                                firestore.collection("FriendList")
+                                    .whereEqualTo("playerId", userId)
+                                    .get()
+                                    .addOnSuccessListener { querySnapshot  ->
+                                        if(querySnapshot.documents.isNotEmpty()) {
+                                            val friendList =
+                                                querySnapshot.documents[0].toObject(FriendList::class.java)
+                                            val friendsList = friendList?.friendsList
+                                            if (friendsList.isNullOrEmpty() || !friendsList.contains(
+                                                    player
+                                                )
+                                            ) {
+                                                players.add(player)
+                                            }
+                                        } else {
+                                            players.add(player)
+                                        }
+
+                                    }
                             }
                         }
                     }
+                    playerAdapter.setPlayers(players)
                 }
-                playerAdapter.setPlayers(players)
-            }
-            .addOnFailureListener { exception ->
-                exception.printStackTrace()
-            }
-    }
+                .addOnFailureListener { exception ->
+                    exception.printStackTrace()
+                }
+        }
+    }*/
 }

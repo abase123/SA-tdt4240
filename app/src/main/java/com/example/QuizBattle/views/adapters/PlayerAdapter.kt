@@ -94,6 +94,7 @@ class PlayerAdapter : RecyclerView.Adapter<PlayerAdapter.PlayerViewHolder>() {
 
         fun bind(player: Player) {
             tvDisplayName.text = player.displayName
+
         }
     }
 }

@@ -55,11 +55,11 @@ class LaunchApp:AppCompatActivity() {
                 score = 0,
                 dailyQuizTaken = false,
                 numQuizzesTaken = 0,
-                friends = if (friendListJson != null) {
+               /* friends = if (friendListJson != null) {
                     Player(friendListJson).friends
                 } else {
                     mutableListOf()
-                }
+                }*/
             )
             firebaseRepoUser.addUser(newPlayer, uid)
         }
