@@ -19,6 +19,6 @@
     <color name="medium">#FFC107</color>
     <color name="hard">#E91E1E</color>
 
-
+    <color name="btn_disabled">#C04081</color>
 
 </resources>
