@@ -16,7 +16,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/friends"
-        android:name="com.example.QuizBattle.views.FriendsView"
+        android:name="com.example.QuizBattle.views.FriendsViews.FriendsView"
         android:label="fragment_friends"
         tools:layout="@layout/fragment_friends" />
     <fragment

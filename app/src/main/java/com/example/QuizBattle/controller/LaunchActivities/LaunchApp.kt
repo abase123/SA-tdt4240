@@ -48,12 +48,18 @@ class LaunchApp:AppCompatActivity() {
         val userSnapshot = firebaseRepoUser.getUser(uid)
         if (!userSnapshot.exists()) {
             val user = mAuth.currentUser
+            val friendListJson = userSnapshot.getString("friends")
             val newPlayer = Player(
                 displayName = user?.displayName ?: "",
                 email = user?.email ?: "",
                 score = 0,
                 dailyQuizTaken = false,
-                numQuizzesTaken = 0
+                numQuizzesTaken = 0,
+                friends = if (friendListJson != null) {
+                    Player(friendListJson).friends
+                } else {
+                    mutableListOf()
+                }
             )
             firebaseRepoUser.addUser(newPlayer, uid)
         }

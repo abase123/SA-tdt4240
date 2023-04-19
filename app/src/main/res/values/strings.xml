@@ -40,6 +40,8 @@
     <string name="quizzesPlayedTitle">Quizzes Played</string>
     <string name="allTimeScoreTitle">All Time Score</string>
     <string name="quizzesPlayed">4</string>
+    <string name="tabLayoutDescription">A tab layout for navigating between different views</string>
+    <string name="viewPagerDescription">ViewPager</string>
 
 
 </resources>

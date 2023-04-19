@@ -5,6 +5,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
 import com.google.firebase.firestore.Query
+import com.google.gson.Gson
 
 class FireStoreRepoUser {
     private val db = Firebase.firestore
@@ -36,11 +37,16 @@ class FireStoreRepoUser {
         userCollection.document(uid).update("score",newScore).await()
     }
 
+    suspend fun updateFriendsList(uid: String, newFriendList: MutableList<Player>){
+        val gson = Gson()
+        val json = gson.toJson(newFriendList)
+        userCollection.document(uid).update("friends",json).await()
+    }
     suspend fun getRank(uid: String):String{
         val userSnapshot = userCollection.document(uid).get().await()
         return userSnapshot.getString("rank").toString()
     }
-    suspend fun getscore(uid: String): Int?{
+    suspend fun getScore(uid: String): Int?{
         val userSnapshot = userCollection.document(uid).get().await()
         return userSnapshot.getLong("score")?.toInt()
     }
@@ -60,6 +66,4 @@ class FireStoreRepoUser {
             }
         }
     }
-
-
 }
