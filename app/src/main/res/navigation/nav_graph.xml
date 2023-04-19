@@ -16,11 +16,7 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/friends"
-<<<<<<< HEAD
-        android:name="com.example.QuizBattle.framgmentsControllers.SocialView"
-=======
         android:name="com.example.QuizBattle.views.FriendsViews.FriendsView"
->>>>>>> main
         android:label="fragment_friends"
         tools:layout="@layout/fragment_friends" />
     <fragment

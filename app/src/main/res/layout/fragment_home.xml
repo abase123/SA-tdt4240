@@ -14,36 +14,37 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintVertical_bias="0.0">
 
                 <view
-                    android:id="@+id/view"
-                    class="com.google.android.material.card.MaterialCardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:elevation="@dimen/cardview_default_elevation"
-                    android:outlineSpotShadowColor="@color/cardview_dark_background"
-                    >
-
-                    <LinearLayout
+                        android:id="@+id/view"
+                        class="com.google.android.material.card.MaterialCardView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:elevation="@dimen/cardview_default_elevation"
+                        android:outlineSpotShadowColor="@color/cardview_dark_background"
+                >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                         <!-- Media -->
 
@@ -54,36 +55,36 @@
                                 android:scaleType="centerCrop"
                                 app:srcCompat="@drawable/quiz_banner"/>
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingTop="10dp"
-                            android:gravity="center">
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingTop="10dp"
+                                android:gravity="center">
 
                             <!-- Title, secondary and supporting text -->
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/dailyQuizTitle"
-                                android:textAppearance="?attr/textAppearanceHeadline6" />
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dailyQuizTitle"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"/>
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="@string/dailyQuizCategory"
-                                android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary" />
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="@string/dailyQuizCategory"
+                                    android:textAppearance="?attr/textAppearanceBody2"
+                                    android:textColor="?android:attr/textColorSecondary"/>
 
                         </LinearLayout>
 
                         <!-- Buttons -->
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:orientation="horizontal"
-                            android:layout_gravity="center">
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
 
                             <com.google.android.material.button.MaterialButton
                                     style="?attr/buttonStyle"
@@ -96,23 +97,23 @@
                 </view>
 
                 <view
-                    android:id="@+id/view2"
-                    class="com.google.android.material.card.MaterialCardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:elevation="@dimen/cardview_default_elevation"
-                    android:outlineSpotShadowColor="@color/cardview_dark_background"
-                    >
-
-                    <LinearLayout
+                        android:id="@+id/view2"
+                        class="com.google.android.material.card.MaterialCardView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:elevation="@dimen/cardview_default_elevation"
+                        android:outlineSpotShadowColor="@color/cardview_dark_background"
+                >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
                         <!-- Media -->
 
@@ -123,36 +124,36 @@
                                 android:scaleType="centerCrop"
                                 app:srcCompat="@drawable/versus_banner"/>
                         <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingTop="10dp"
-                            android:gravity="center">
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingTop="10dp"
+                                android:gravity="center">
 
                             <!-- Title, secondary and supporting text -->
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/versusTitle"
-                                android:textAppearance="?attr/textAppearanceHeadline6" />
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/versusTitle"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"/>
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="@string/versusDesc"
-                                android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary" />
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="@string/versusDesc"
+                                    android:textAppearance="?attr/textAppearanceBody2"
+                                    android:textColor="?android:attr/textColorSecondary"/>
 
                         </LinearLayout>
 
                         <!-- Buttons -->
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:orientation="horizontal"
-                            android:layout_gravity="center">
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center">
 
                             <com.google.android.material.button.MaterialButton
                                     style="?attr/buttonStyle"
