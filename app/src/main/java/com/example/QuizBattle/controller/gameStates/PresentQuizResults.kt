@@ -1,5 +1,6 @@
 package com.example.QuizBattle.controller.gameStates
 
+import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.R
@@ -9,7 +10,7 @@ import com.example.QuizBattle.controller.PlayerViewModel
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.QuizHolder
-import com.example.QuizBattle.fragment_ui_controls.ResultsView
+import com.example.QuizBattle.framgmentsControllers.ResultsView
 
 class PresentQuizResults(override var quizHolder: QuizHolder, private var playerViewModel: PlayerViewModel) : GameState {
 

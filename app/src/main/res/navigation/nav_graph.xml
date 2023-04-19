@@ -6,34 +6,34 @@
             app:startDestination="@id/home">
     <fragment
             android:id="@+id/leaderboard"
-            android:name="com.example.QuizBattle.fragment_ui_controls.LeaderboardView"
+            android:name="com.example.QuizBattle.framgmentsControllers.LeaderboardView"
             android:label="fragment_leaderboard"
             tools:layout="@layout/fragment_leaderboard"/>
     <fragment
         android:id="@+id/home"
-        android:name="com.example.QuizBattle.fragment_ui_controls.HomeView"
+        android:name="com.example.QuizBattle.framgmentsControllers.HomeView"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/friends"
-        android:name="com.example.QuizBattle.fragment_ui_controls.FriendsView"
+        android:name="com.example.QuizBattle.framgmentsControllers.SocialView"
         android:label="fragment_friends"
         tools:layout="@layout/fragment_friends" />
     <fragment
             android:id="@+id/loadingQuiz"
-            android:name="com.example.QuizBattle.fragment_ui_controls.LoadingQuizView"
+            android:name="com.example.QuizBattle.framgmentsControllers.LoadingQuizView"
             android:label="fragment_loading_quiz"
             tools:layout="@layout/fragment_loading_quiz" />
 
     <fragment
             android:id="@+id/quiz"
-            android:name="com.example.QuizBattle.fragment_ui_controls.QuizView"
+            android:name="com.example.QuizBattle.framgmentsControllers.QuizView"
             android:label="fragment_quiz"
             tools:layout="@layout/fragment_quiz"/>
 
     <fragment
             android:id="@+id/results"
-            android:name="com.example.QuizBattle.fragment_ui_controls.ResultsView"
+            android:name="com.example.QuizBattle.framgmentsControllers.ResultsView"
             android:label="fragment_results"
             tools:layout="@layout/fragment_results"/>
 

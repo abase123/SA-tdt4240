@@ -1,4 +1,4 @@
-package com.example.QuizBattle.fragment_ui_controls
+package com.example.QuizBattle.framgmentsControllers
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.PlayerViewModel
 
 
-class FriendsView : Fragment() {
+class SocialView : Fragment() {
     private lateinit var playerViewModel: PlayerViewModel
     private lateinit var userNameText:TextView
     private lateinit var userScoreText:TextView

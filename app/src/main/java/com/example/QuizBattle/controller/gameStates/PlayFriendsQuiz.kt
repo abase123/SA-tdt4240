@@ -1,5 +1,6 @@
 package com.example.QuizBattle.controller.gameStates
 
+import android.content.Context
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.model.QuizModel.QuizHolder

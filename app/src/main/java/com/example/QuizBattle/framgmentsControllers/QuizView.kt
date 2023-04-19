@@ -1,4 +1,4 @@
-package com.example.QuizBattle.fragment_ui_controls
+package com.example.QuizBattle.framgmentsControllers
 
 import android.content.Context
 import android.os.Bundle
@@ -73,18 +73,18 @@ class QuizView : Fragment() {
     }
 
     private fun setupView(view: View) {
-        gameController = activity as GameController
-        gameController.fragmentLoadingState.setLoading(false)
 
         val optionIds = listOf(R.id.answer_A, R.id.answer_B, R.id.answer_C, R.id.answer_D)
         options.addAll(optionIds.map { view.findViewById(it) })
         playDailyQuizViewModel = ViewModelProvider(requireActivity())[PlayDailyQuizViewModel::class.java]
-
         with(view) {
             findViewById<RadioGroup>(R.id.answer_group).clearCheck()
             questionText = findViewById(R.id.question_text)
             setupOptionClickListeners(view)
         }
+
+        gameController = activity as GameController
+        gameController.gameEngine.fragmentLoadingState.setLoading(false)
     }
 
     private fun setupOptionClickListeners(view: View) {

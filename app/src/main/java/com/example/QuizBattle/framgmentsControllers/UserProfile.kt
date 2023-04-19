@@ -1,4 +1,4 @@
-package com.example.QuizBattle.fragment_ui_controls
+package com.example.QuizBattle.framgmentsControllers
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

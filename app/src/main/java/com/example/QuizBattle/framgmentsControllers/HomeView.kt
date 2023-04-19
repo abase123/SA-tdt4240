@@ -1,4 +1,4 @@
-package com.example.QuizBattle.fragment_ui_controls
+package com.example.QuizBattle.framgmentsControllers
 
 import android.content.Context
 import android.os.Bundle
@@ -44,8 +44,6 @@ class HomeView : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        gameController = activity as GameController
-        gameController.fragmentLoadingState.setLoading(false)
         val playFriendBtn=view.findViewById<Button>(R.id.playFriendButton)
         val playDailyBtn=view.findViewById<Button>(R.id.playdailyButton)
 
@@ -56,6 +54,8 @@ class HomeView : Fragment() {
         playDailyBtn.setOnClickListener {
             viewChangeListener?.onUserInput(UserInputEvent.LOAD_DAILY_QUIZ)
         }
+        gameController = activity as GameController
+        gameController.gameEngine.fragmentLoadingState.setLoading(false)
     }
 
 

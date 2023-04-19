@@ -1,4 +1,4 @@
-package com.example.QuizBattle.fragment_ui_controls
+package com.example.QuizBattle.framgmentsControllers
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoLeaderboard
-import com.example.QuizBattle.fragment_ui_controls.adapters.LeaderboardAdapter
+import com.example.QuizBattle.framgmentsControllers.adapters.LeaderboardAdapter
 import kotlinx.coroutines.launch
 
 class LeaderboardView : Fragment() {
@@ -45,8 +45,4 @@ class LeaderboardView : Fragment() {
         }
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = LeaderboardView()
-    }
 }

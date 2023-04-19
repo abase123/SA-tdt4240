@@ -1,4 +1,4 @@
-package com.example.QuizBattle.fragment_ui_controls
+package com.example.QuizBattle.framgmentsControllers
 
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
@@ -52,24 +52,25 @@ class ResultsView:Fragment()
         viewChangeListener = null
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
+    private fun setup(view: View){
         backHomeBtn=view.findViewById(R.id.BackHome)
         ratingBar=view.findViewById(R.id.ratingBar)
         pointsGainedText=view.findViewById(R.id.pointsGainedText)
         totalScore=view.findViewById(R.id.tv_total_score)
         timeUsedText=view.findViewById(R.id.timeUsedText)
         backHomeBtn.visibility= View.VISIBLE
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setup(view)
         gameController = activity as GameController
-        gameController.fragmentLoadingState.setLoading(false)
+        gameController.gameEngine.fragmentLoadingState.setLoading(false)
 
         backHomeBtn.setOnClickListener{
             viewChangeListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
-
-
 
     }
 

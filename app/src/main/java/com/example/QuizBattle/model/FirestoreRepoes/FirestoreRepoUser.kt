@@ -26,11 +26,9 @@ class FirestoreRepoUser {
         userCollection.document(userUid)
             .update(updates)
             .addOnSuccessListener {
-                Log.d("Firestore", "Player data updated successfully")
                 continuation.resume(Unit)
             }
             .addOnFailureListener { exception ->
-                Log.e("Firestore", "Error updating player data", exception)
                 continuation.resumeWithException(exception)
             }
     }
@@ -38,19 +36,7 @@ class FirestoreRepoUser {
     suspend fun addUser(user: Player, uid: String){
         userCollection.document(uid).set(user).await()
     }
-    suspend fun getDailyQuizState(uid: String):Boolean{
-        val userSnapshot = userCollection.document(uid).get().await()
-        return userSnapshot.getBoolean("dailyQuizTaken") as Boolean
-    }
 
-    suspend fun getRank(uid: String):String{
-        val userSnapshot = userCollection.document(uid).get().await()
-        return userSnapshot.getString("rank").toString()
-    }
-    suspend fun getscore(uid: String): Int?{
-        val userSnapshot = userCollection.document(uid).get().await()
-        return userSnapshot.getLong("score")?.toInt()
-    }
 
 
 }

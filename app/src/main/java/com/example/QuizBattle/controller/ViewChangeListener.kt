@@ -2,7 +2,7 @@ package com.example.QuizBattle.controller
 
 
 enum class UserInputEvent{
-    PLAY_DAILYQUIZ,
+    PLAY_DAILY_QUIZ,
     PLAY_FRIEND,
     LOAD_DAILY_QUIZ,
     RESULTS,
@@ -10,5 +10,5 @@ enum class UserInputEvent{
 }
 
 interface ViewChangeListener {
-    abstract fun onUserInput(event:UserInputEvent)
+     fun onUserInput(event:UserInputEvent)
 }

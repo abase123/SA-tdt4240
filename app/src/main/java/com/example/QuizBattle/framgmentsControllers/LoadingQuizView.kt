@@ -1,4 +1,4 @@
-package com.example.QuizBattle.fragment_ui_controls
+package com.example.QuizBattle.framgmentsControllers
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -73,7 +73,9 @@ class LoadingQuizView: Fragment(){
         }
 
         gameController = activity as GameController
-        gameController.fragmentLoadingState.setLoading(false)
+        gameController.gameEngine.fragmentLoadingState.setLoading(false)
+
+
     }
 
     @SuppressLint("SetTextI18n", "ResourceAsColor")
@@ -83,7 +85,7 @@ class LoadingQuizView: Fragment(){
         setTheme(theme)
         setDiff(quizDiff)
         startQuizButton.setOnClickListener {
-            viewChangeListener?.onUserInput(UserInputEvent.PLAY_DAILYQUIZ)
+            viewChangeListener?.onUserInput(UserInputEvent.PLAY_DAILY_QUIZ)
         }
 
     }

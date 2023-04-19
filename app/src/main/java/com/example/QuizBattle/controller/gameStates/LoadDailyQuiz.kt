@@ -1,5 +1,6 @@
-package com.example.QuizBattle.controller.gameStates.LoadDailyQuizState
+package com.example.QuizBattle.controller.gameStates
 
+import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -10,7 +11,7 @@ import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoDailyQuiz
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.model.QuizModel.QuizHolder
-import com.example.QuizBattle.fragment_ui_controls.LoadingQuizView
+import com.example.QuizBattle.framgmentsControllers.LoadingQuizView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -19,7 +20,6 @@ import java.util.*
 
 class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
     private val firebaseRepo: FirestoreRepoDailyQuiz = FirestoreRepoDailyQuiz()
-
     override fun handleState(context: GameController) {
         val quizId = "20230411"//getTodaysQuizID()
         loadQuizFromFirebase(context, firebaseRepo, quizId)
@@ -43,6 +43,7 @@ class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
         val currentFragment=getCurrentFragment(context)
         (currentFragment as? LoadingQuizView)?.onQuizLoaded(theme,difficulty)
     }
+
     private fun getCurrentFragment(context: GameController): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.childFragmentManager.fragments[0]
