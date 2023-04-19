@@ -44,15 +44,17 @@ class LaunchApp:AppCompatActivity() {
 
     }
 
+
     private suspend fun addUserToFireStore(uid: String) {
         val userSnapshot = firebaseRepoUser.getUser(uid)
         if (!userSnapshot.exists()) {
             val user = mAuth.currentUser
             val friendListJson = userSnapshot.getString("friends")
             val newPlayer = Player(
+                userUid = uid,
                 displayName = user?.displayName ?: "",
-                email = user?.email ?: "",
-                score = 0,
+                userEmail = user?.email ?: "",
+                allTimeScore = 0,
                 dailyQuizTaken = false,
                 numQuizzesTaken = 0,
                 friends = if (friendListJson != null) {

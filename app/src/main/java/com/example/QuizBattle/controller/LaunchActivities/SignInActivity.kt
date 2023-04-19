@@ -93,9 +93,10 @@ class SignInActivity: AppCompatActivity(){
         if (!userSnapshot.exists()) {
             val user = mAuth.currentUser
             val newPlayer = Player(
+                userUid = uid,
                 displayName = user?.displayName ?: "",
-                email = user?.email ?: "",
-                score = 0,
+                userEmail = user?.email ?: "",
+                allTimeScore = 0,
                 dailyQuizTaken = false,
                 numQuizzesTaken=0,
                 friends = mutableListOf()
