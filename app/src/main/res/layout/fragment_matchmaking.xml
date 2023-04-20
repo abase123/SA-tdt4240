@@ -1,0 +1,77 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".framgmentsControllers.MatchmakingView">
+
+    <ProgressBar
+            android:id="@+id/matchmakingProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <Button
+                android:text="Back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cancelBtn"
+                tools:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@+id/startQuizButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.032"/>
+
+        <Button
+                android:text="Start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/startBattleButton"
+                tools:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498" tools:layout_editor_absoluteY="386dp"/>
+        <TextView
+                android:id="@+id/matchmakingTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:text="Matchmaking in Progress ...."
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                tools:visibility="visible"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textStyle="bold"/>
+
+        <androidx.cardview.widget.CardView
+                android:layout_width="364dp"
+                android:layout_height="135dp"
+                app:layout_constraintTop_toBottomOf="@+id/cancelBtn" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:cardBackgroundColor="@color/material_dynamic_neutral99"
+                app:layout_constraintVertical_bias="0.495" app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                    android:id="@+id/waitingTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="135dp"
+                    android:text="Waiting for opponent, please be patient :)"
+                    android:textAlignment="center"
+                    android:textColor="#B42222"
+                    android:textSize="20sp"
+                    android:lineSpacingExtra="8dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textStyle="bold"/>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

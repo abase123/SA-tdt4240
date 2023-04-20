@@ -32,6 +32,12 @@
             tools:layout="@layout/fragment_quiz"/>
 
     <fragment
+            android:id="@+id/matchmaking"
+            android:name="com.example.QuizBattle.framgmentsControllers.QuizView"
+            android:label="fragment_Lobby"
+            tools:layout="@layout/fragment_matchmaking"/>
+
+    <fragment
             android:id="@+id/results"
             android:name="com.example.QuizBattle.framgmentsControllers.ResultsView"
             android:label="fragment_results"
