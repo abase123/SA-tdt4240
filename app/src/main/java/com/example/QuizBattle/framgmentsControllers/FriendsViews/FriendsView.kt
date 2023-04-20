@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.QuizBattle.R
+import com.example.QuizBattle.controller.PlayerViewModel
 import com.google.android.material.tabs.TabLayout
 
 
@@ -17,7 +20,10 @@ private lateinit var viewPager: ViewPager
 
 
 class FriendsView : Fragment(){
-
+    private lateinit var playerViewModel: PlayerViewModel
+    private lateinit var userNameText: TextView
+    private lateinit var userScoreText: TextView
+    private lateinit var numQuizTakenText: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +42,24 @@ class FriendsView : Fragment(){
         viewPager.currentItem = 1 // Index of the "See Friends List" tab
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        userNameText=view.findViewById(R.id.username_user_card)
+        userScoreText=view.findViewById(R.id.allTimeScore)
+        numQuizTakenText=view.findViewById(R.id.quizzesPlayed)
+
+        playerViewModel = ViewModelProvider(requireActivity())[PlayerViewModel::class.java]
+        playerViewModel.player.observe(viewLifecycleOwner) { player ->
+            player?.let {
+                userNameText.text = it.displayName
+                userScoreText.text= it.allTimeScore.toString()
+                numQuizTakenText.text=it.numQuizzesTaken.toString()
+            }
+        }
+
     }
 
     // PagerAdapter for the ViewPager

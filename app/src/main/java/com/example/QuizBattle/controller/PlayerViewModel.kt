@@ -1,5 +1,6 @@
 package com.example.QuizBattle.controller
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,8 +22,9 @@ class PlayerViewModel: ViewModel() {
         }
     }
     fun updatePlayerDataInFirestore(player: Player){
+        Log.d("PlayerViewModel", "updatePlayerDataInFirestore called")
         val updatesMap = mapOf(
-            "score" to player.allTimeScore,
+            "allTimeScore" to player.allTimeScore,
             "dailyQuizTaken" to player.dailyQuizTaken,
             "numQuizzesTaken" to player.numQuizzesTaken
         )
