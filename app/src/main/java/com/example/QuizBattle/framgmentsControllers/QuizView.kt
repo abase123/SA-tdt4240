@@ -17,13 +17,13 @@ import com.example.QuizBattle.R
 
 import androidx.core.content.ContextCompat
 import com.example.QuizBattle.controller.GameController
-import com.example.QuizBattle.controller.gameStates.PlayDailyQuizState.PlayDailyQuizViewModel
+import com.example.QuizBattle.controller.gameStates.PlayQuizState.PlayQuizViewModel
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.ViewChangeListener
 
 
 class QuizView : Fragment() {
-    private lateinit var playDailyQuizViewModel: PlayDailyQuizViewModel
+    private lateinit var playDailyQuizViewModel: PlayQuizViewModel
     private lateinit var questionText: TextView
     private val options = mutableListOf<RadioButton>()
     private lateinit var correctOption: RadioButton
@@ -76,7 +76,7 @@ class QuizView : Fragment() {
 
         val optionIds = listOf(R.id.answer_A, R.id.answer_B, R.id.answer_C, R.id.answer_D)
         options.addAll(optionIds.map { view.findViewById(it) })
-        playDailyQuizViewModel = ViewModelProvider(requireActivity())[PlayDailyQuizViewModel::class.java]
+        playDailyQuizViewModel = ViewModelProvider(requireActivity())[PlayQuizViewModel::class.java]
         with(view) {
             findViewById<RadioGroup>(R.id.answer_group).clearCheck()
             questionText = findViewById(R.id.question_text)

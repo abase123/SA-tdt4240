@@ -2,12 +2,11 @@ package com.example.QuizBattle.controller.gameStates
 
 import android.app.AlertDialog
 import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.R
-import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoDailyQuiz
+import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoQuiz
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.model.QuizModel.QuizHolder
@@ -19,13 +18,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
-    private val repoDailyQuiz: FirestoreRepoDailyQuiz = FirestoreRepoDailyQuiz()
+    private val repoDailyQuiz: FirestoreRepoQuiz = FirestoreRepoQuiz("daily_quizzes")
     override fun handleState(context: GameController) {
         val quizId = "20230412" //getTodaysQuizID()
         loadQuizFromFirebase(context, repoDailyQuiz, quizId)
     }
 
-    private fun loadQuizFromFirebase(context: GameController, firebaseRepo: FirestoreRepoDailyQuiz, quizId: String) {
+    private fun loadQuizFromFirebase(context: GameController, firebaseRepo: FirestoreRepoQuiz, quizId: String) {
         context.lifecycleScope.launch{
             try {
                 withContext(Dispatchers.IO){ Log.d("LoadQuiz", "Quiz accessed: ${quizHolder.quiz}")
