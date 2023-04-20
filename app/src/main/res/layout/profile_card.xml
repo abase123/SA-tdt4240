@@ -42,7 +42,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-                android:id="@+id/usernameUsercard"
+                android:id="@+id/username_user_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -96,7 +96,7 @@
                         android:layout_marginEnd="10dp"
 
 
-                        android:text="@string/allTimeScore"
+                        android:text="0"
                         android:layout_gravity="center"
                         android:textSize="20sp"
                         android:background="@drawable/label_shape"
@@ -137,7 +137,7 @@
                         android:layout_marginEnd="10dp"
 
 
-                        android:text="@string/quizzesPlayed"
+                        android:text=""
                         android:layout_gravity="center"
                         android:textSize="20sp"
                         android:background="@drawable/label_shape"
