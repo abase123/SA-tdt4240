@@ -16,6 +16,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.example.QuizBattle.controller.gameStates.SelectTheme.SelectTheme
 
+
+/**
+
+The GameEngine class is responsible for managing the game flow, state transitions, and user interactions
+within a quiz-based game. It utilizes a ScreenNavigator to handle fragment navigation and interacts with
+the PlayerViewModel to manage player data. This class also coordinates the game states, which are represented
+by GameState objects, and handles UserInputEvents to drive game progression.
+ */
+
 class GameEngine(
     private val context: GameController,
     private val lifecycleScope: LifecycleCoroutineScope,

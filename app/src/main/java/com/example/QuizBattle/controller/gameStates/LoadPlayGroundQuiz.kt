@@ -39,6 +39,7 @@ class LoadPlayGroundQuiz(override var quizHolder: QuizHolder) : GameState {
     private fun onQuizAvailable(context: GameController,theme:String,difficulty:String) {
         val currentFragment=getCurrentFragment(context)
         (currentFragment as? LoadingQuizView)?.onQuizLoaded(theme,difficulty)
+
     }
 
     private fun onQuizNotAvailable(context: GameController){

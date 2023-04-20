@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
@@ -106,9 +107,9 @@ class LoadingQuizView: Fragment(){
     private fun setDiff(quizDiff:String){
         diffTextView.text= "Difficulty: $quizDiff "
         when (quizDiff) {
-            "Easy"   -> diffTextView.setTextColor(R.color.easy)
-            "Medium" -> diffTextView.setTextColor(R.color.medium)
-            "Hard"   -> diffTextView.setTextColor(R.color.hard)
+            "Easy" -> diffTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.easy))
+            "Medium" -> diffTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.medium))
+            "Hard" -> diffTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.hard))
         }
         diffTextView.visibility=View.VISIBLE
     }

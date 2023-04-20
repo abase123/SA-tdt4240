@@ -46,11 +46,9 @@ class ChooseThemeView : Fragment(){
             throw RuntimeException("$context must implement UserInputListener")
         }
     }
-
     override fun onDetach() {
         super.onDetach()
         viewChangeListener = null
-
     }
 
     private fun setup(view: View){
@@ -65,7 +63,11 @@ class ChooseThemeView : Fragment(){
         setup(view)
         gameController = activity as GameController
         gameController.gameEngine.fragmentLoadingState.setLoading(false)
+        listenForThemes()
 
+    }
+
+    private fun listenForThemes(){
         sportsButton.setOnClickListener {
             themeChangeListener?.onThemeChanged("Sports")
             viewChangeListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
@@ -86,10 +88,7 @@ class ChooseThemeView : Fragment(){
         generalKnowlegdeButton.setOnClickListener {
             themeChangeListener?.onThemeChanged("General Knowledge")
             viewChangeListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
-
         }
-
-
     }
 }
 
