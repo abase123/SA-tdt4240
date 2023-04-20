@@ -41,7 +41,7 @@ class GameEngine(
             when (event) {
                 UserInputEvent.LOAD_DAILY_QUIZ -> newState(LoadDailyQuiz(quizHolder))
                 UserInputEvent.PLAY_DAILY_QUIZ -> newState(PlayDailyQuiz(quizHolder))
-                UserInputEvent.FIND_MATCH -> newState(MatchMaking( quizHolder))
+                UserInputEvent.FIND_MATCH -> newState(MatchMaking( quizHolder,playerViewModel))
                 UserInputEvent.RESULTS -> newState(PresentDailyQuizResults(quizHolder, playerViewModel))
                 UserInputEvent.RETURN_HOME -> return@launch
             }
