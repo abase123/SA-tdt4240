@@ -4,7 +4,7 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import com.example.QuizBattle.controller.ScreenAndMediaControllers.ScreenNavigator
 import com.example.QuizBattle.controller.gameStates.LoadDailyQuiz
 import com.example.QuizBattle.controller.gameStates.PlayQuizState.PlayQuiz
-import com.example.QuizBattle.controller.gameStates.LoadRandomQuiz
+import com.example.QuizBattle.controller.gameStates.LoadPlayGroundQuiz
 import com.example.QuizBattle.controller.gameStates.PresentQuizResults
 import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.Quiz
@@ -41,7 +41,7 @@ class GameEngine(
             when (event) {
                 UserInputEvent.LOAD_DAILY_QUIZ -> newState(LoadDailyQuiz(quizHolder))
                 UserInputEvent.PLAY_DAILY_QUIZ -> newState(PlayQuiz(quizHolder))
-                UserInputEvent.CHOOSE_CATEGORY -> newState(LoadRandomQuiz(quizHolder))
+                UserInputEvent.CHOOSE_CATEGORY -> newState(LoadPlayGroundQuiz(quizHolder))
                 UserInputEvent.PLAY_PLAYGROUND -> newState(PlayQuiz(quizHolder))
                 UserInputEvent.RESULTS -> newState(PresentQuizResults(quizHolder, playerViewModel))
                 UserInputEvent.RETURN_HOME -> return@launch
