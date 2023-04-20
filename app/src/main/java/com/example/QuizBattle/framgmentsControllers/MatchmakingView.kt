@@ -49,7 +49,6 @@ class MatchmakingView: Fragment() {
     }
 
     fun onCancelClicked() {
-        gameController.gameEngine.
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
