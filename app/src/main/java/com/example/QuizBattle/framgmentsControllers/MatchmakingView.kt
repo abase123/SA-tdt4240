@@ -18,7 +18,7 @@ import com.example.QuizBattle.controller.ViewChangeListener
 
 class MatchmakingView: Fragment() {
     private lateinit var matchmakingTextView: TextView
-    private lateinit var startBattleButton: Button
+    private lateinit var readyBattleButton: Button
     private lateinit var cancelBtn: Button
     private lateinit var matchmakingProgressBar: ProgressBar
     private var viewChangeListener: ViewChangeListener? = null
@@ -51,13 +51,13 @@ class MatchmakingView: Fragment() {
     @SuppressLint("SetTextI18n")
     private fun setup(view: View) {
         matchmakingTextView = view.findViewById(R.id.matchmakingTextView)
-        startBattleButton = view.findViewById(R.id.startBattleButton)
+        readyBattleButton = view.findViewById(R.id.startBattleButton)
         matchmakingProgressBar = view.findViewById(R.id.matchmakingProgressBar)
         cancelBtn = view.findViewById(R.id.cancelBtn)
         waitingTextView = view.findViewById(R.id.waitingTextView)
 
         matchmakingTextView.text = "Matchmaking in progress ..."
-        startBattleButton.visibility = View.INVISIBLE
+        readyBattleButton.visibility = View.INVISIBLE
         matchmakingProgressBar.visibility = View.VISIBLE
 
     }
@@ -70,6 +70,11 @@ class MatchmakingView: Fragment() {
         gameController = activity as GameController
         gameController.gameEngine.fragmentLoadingState.setLoading(false)
 
+    }
+
+
+    fun onOpponentFound(){
+        readyBattleButton.visibility=View.VISIBLE
 
     }
 }
