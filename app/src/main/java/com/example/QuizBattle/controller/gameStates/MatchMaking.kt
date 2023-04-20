@@ -20,7 +20,6 @@ class MatchMaking(override var quizHolder: QuizHolder,private val playerViewMode
             println("Joined existing game: $match")
         }
 
-
     }
 
 
