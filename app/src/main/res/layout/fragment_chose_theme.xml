@@ -1,0 +1,109 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".framgmentsControllers.ChooseThemeView">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#F5F5F5"
+            tools:context=".MainActivity">
+
+        <TextView
+                android:id="@+id/choose_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/question_background"
+                android:gravity="center"
+                android:padding="16dp"
+                android:text="Choose a preferred theme to test your knowledge!"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" android:backgroundTint="#662E2E"/>
+
+        <RadioGroup
+                android:id="@+id/theme_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+            <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:columnCount="2"
+                    android:rowCount="2" android:background="#E2BABA">
+
+                <!-- RadioButton A -->
+                <RadioButton
+                        android:id="@+id/sport_theme"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="SPORT"
+                        android:textSize="18sp"
+                        android:textColor="@drawable/text_color_selector"
+                        android:background=" @drawable/card_background_selector_checked" android:textStyle="bold"/>
+
+                <!-- RadioButton B -->
+                <RadioButton
+                        android:id="@+id/generalKnowledge_theme"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="GENERAL KNOWLEDGE"
+                        android:textSize="18sp"
+                        android:textColor="@drawable/text_color_selector"
+                        android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
+
+                <!-- RadioButton C -->
+                <RadioButton
+                        android:id="@+id/history_theme"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="HISTORY"
+                        android:textSize="18sp"
+                        android:textColor="@drawable/text_color_selector"
+                        android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
+
+                <!-- RadioButton D -->
+                <RadioButton
+                        android:id="@+id/geo_theme"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_rowWeight="1"
+                        android:layout_margin="4dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="GEOGRAPHY"
+                        android:textSize="18sp"
+                        android:textColor="@drawable/text_color_selector"
+                        android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
+
+            </GridLayout>
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+</FrameLayout>

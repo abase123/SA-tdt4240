@@ -1,6 +1,5 @@
-package com.example.QuizBattle.controller.gameStates.PlayDailyQuizState
+package com.example.QuizBattle.controller.gameStates.PlayQuizState
 
-import android.content.Context
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -11,11 +10,11 @@ import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.model.QuizModel.Question
 
-class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
+class PlayQuiz(override var quizHolder:QuizHolder) : GameState {
     private var questionIndex: Int = 0
     private val questions = quizHolder.quiz.getQuestions()
     private lateinit var activeQuestion: Question
-    private lateinit var playDailyQuizViewModel: PlayDailyQuizViewModel
+    private lateinit var playDailyQuizViewModel: PlayQuizViewModel
     private var quizEnded=false
 
     override fun handleState(context: GameController) {
@@ -29,7 +28,7 @@ class PlayDailyQuiz(override var quizHolder:QuizHolder) : GameState {
 
     private fun setViewModel(context: GameController) {
         val currentFragment = getCurrentFragment(context)
-        playDailyQuizViewModel = ViewModelProvider(currentFragment.requireActivity())[PlayDailyQuizViewModel::class.java]
+        playDailyQuizViewModel = ViewModelProvider(currentFragment.requireActivity())[PlayQuizViewModel::class.java]
         playDailyQuizViewModel.dailyQuiz = this
         playDailyQuizViewModel.endQuiz(quizEnded)
     }

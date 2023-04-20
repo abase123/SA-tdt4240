@@ -20,15 +20,13 @@ class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponen
     fun setQuestions(newQuestions:MutableList<Question>){
         questions=newQuestions
     }
-    fun addQuestion(question: Question){
-        questions.add(question)
-    }
-    fun removeQuestion(question: Question){
-        questions.remove(question)
-    }
     fun getTheme():String{
         return quizTheme
     }
+    fun getType():String{
+        return quizType
+    }
+
     fun getDiff():String{
         return quizDifficulty
     }

@@ -31,7 +31,9 @@ class ScreenNavigator(private val gameController: GameController,private  val fr
         when (event) {
             UserInputEvent.LOAD_DAILY_QUIZ -> navController.navigate(R.id.loadingQuiz)
             UserInputEvent.PLAY_DAILY_QUIZ -> navController.navigate(R.id.quiz)
-            UserInputEvent.PLAY_FRIEND -> navController.navigate(R.id.quiz)
+            UserInputEvent.SELECT_THEME -> navController.navigate(R.id.themes)
+            UserInputEvent.LOAD_PLAYGROUND_QUIZ->navController.navigate(R.id.loadingQuiz)
+            UserInputEvent.PLAY_PLAYGROUND -> navController.navigate(R.id.quiz)
             UserInputEvent.RETURN_HOME -> navController.navigate(R.id.home)
             UserInputEvent.RESULTS -> navController.navigate(R.id.results)
         }
