@@ -1,6 +1,5 @@
 package com.example.QuizBattle.controller.gameStates
 
-import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.R

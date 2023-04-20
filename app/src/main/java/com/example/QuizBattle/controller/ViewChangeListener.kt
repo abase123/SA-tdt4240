@@ -3,7 +3,8 @@ package com.example.QuizBattle.controller
 
 enum class UserInputEvent{
     PLAY_DAILY_QUIZ,
-    PLAY_FRIEND,
+    SELECT_THEME,
+    PLAY_PLAYGROUND,
     LOAD_DAILY_QUIZ,
     RESULTS,
     RETURN_HOME
