@@ -1,5 +1,6 @@
 package com.example.QuizBattle.controller.gameStates.SelectTheme
 
+import OnThemeChangeListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -8,25 +9,22 @@ import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.controller.gameStates.PlayQuizState.PlayQuizViewModel
+import com.example.QuizBattle.framgmentsControllers.ChooseThemeView
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 
-class SelectTheme(override var quizHolder: QuizHolder) :GameState {
-    private lateinit var themeViewModel: SelectThemeViewModel
-
+class SelectTheme(override var quizHolder: QuizHolder) :GameState, OnThemeChangeListener{
     override fun handleState(context: GameController) {
-        setViewModel(context)
-
+        val currentFragment = getCurrentFragment(context) as ChooseThemeView
+        currentFragment.themeChangeListener = this
     }
-
-    private fun setViewModel(context: GameController) {
-        val currentFragment = getCurrentFragment(context)
-        themeViewModel = ViewModelProvider(currentFragment.requireActivity())[SelectThemeViewModel::class.java]
-    }
-
 
     private fun getCurrentFragment(context: GameController): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.childFragmentManager.fragments[0]
     }
 
+    // Implement the OnThemeChangeListener interface
+    override fun onThemeChanged(theme: String) {
+        quizHolder.chosenTheme = theme
+    }
 }

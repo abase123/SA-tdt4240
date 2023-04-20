@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import com.example.QuizBattle.controller.gameStates.SelectTheme.SelectTheme
 
 class GameEngine(
     private val context: GameController,
@@ -41,7 +42,8 @@ class GameEngine(
             when (event) {
                 UserInputEvent.LOAD_DAILY_QUIZ -> newState(LoadDailyQuiz(quizHolder))
                 UserInputEvent.PLAY_DAILY_QUIZ -> newState(PlayQuiz(quizHolder))
-                UserInputEvent.SELECT_THEME -> newState(LoadPlayGroundQuiz(quizHolder))
+                UserInputEvent.SELECT_THEME -> newState(SelectTheme(quizHolder))
+                UserInputEvent.LOAD_PLAYGROUND_QUIZ -> newState(LoadPlayGroundQuiz(quizHolder))
                 UserInputEvent.PLAY_PLAYGROUND -> newState(PlayQuiz(quizHolder))
                 UserInputEvent.RESULTS -> newState(PresentQuizResults(quizHolder, playerViewModel))
                 UserInputEvent.RETURN_HOME -> return@launch
