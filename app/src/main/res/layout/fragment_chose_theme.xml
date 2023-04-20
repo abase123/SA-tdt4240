@@ -25,7 +25,7 @@
                 android:textSize="24sp" android:backgroundTint="#662E2E"/>
 
         <RadioGroup
-                android:id="@+id/category_group"
+                android:id="@+id/theme_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -38,7 +38,7 @@
 
                 <!-- RadioButton A -->
                 <RadioButton
-                        android:id="@+id/cat_A"
+                        android:id="@+id/sport_theme"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_columnWeight="1"
@@ -54,7 +54,7 @@
 
                 <!-- RadioButton B -->
                 <RadioButton
-                        android:id="@+id/cat_B"
+                        android:id="@+id/generalKnowledge_theme"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_columnWeight="1"
@@ -70,7 +70,7 @@
 
                 <!-- RadioButton C -->
                 <RadioButton
-                        android:id="@+id/answer_C"
+                        android:id="@+id/history_theme"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_columnWeight="1"
@@ -86,7 +86,7 @@
 
                 <!-- RadioButton D -->
                 <RadioButton
-                        android:id="@+id/answer_D"
+                        android:id="@+id/geo_theme"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_columnWeight="1"

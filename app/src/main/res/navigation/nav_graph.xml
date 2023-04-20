@@ -37,4 +37,10 @@
             android:label="fragment_results"
             tools:layout="@layout/fragment_results"/>
 
+    <fragment
+            android:id="@+id/themes"
+            android:name="com.example.QuizBattle.framgmentsControllers.ChooseThemeView"
+            android:label="fragment_chose_theme"
+            tools:layout="@layout/fragment_chose_theme"/>
+
 </navigation>
