@@ -27,6 +27,7 @@ class FriendsListAdapter() : RecyclerView.Adapter<FriendsListAdapter.FriendViewH
     private val db = FirebaseFirestore.getInstance()
     private val fireStoreRepoUser = FirestoreRepoUser()
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
+    private var currentPlayer:Player?=null
     inner class FriendViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val removeButton = itemView.findViewById<TextView>(R.id.removeFriendButton)
 
@@ -42,33 +43,26 @@ class FriendsListAdapter() : RecyclerView.Adapter<FriendsListAdapter.FriendViewH
                 friendListRef.update("friendsList", friendsList)
 
                 // Remove current player from friend's list
-                val db = FirebaseFirestore.getInstance()
-                val usersRef = db.collection("Users")
-                val query = usersRef.whereEqualTo("email", friend?.userEmail)
-                query.get().addOnSuccessListener { querySnapshot ->
-                    if (!querySnapshot.isEmpty) {
-                        val friendDoc = querySnapshot.documents[0]
-                        val friendId = friendDoc.id
-                        if (friendId != null) {
-                            val friendRef = db.collection("FriendList").document(friendId)
-                            friendRef.get().addOnSuccessListener { documentSnapshot ->
-                                val friendList = documentSnapshot.toObject<FriendList>()
-                                if (friendList != null) {
-                                    coroutineScope.launch {
-                                        friendList.friendsList.remove(
-                                            fireStoreRepoUser.getAsPlayer(
-                                                playerId
-                                            )
-                                        )
-                                        friendRef.set(friendList)
-                                    }
-                                }
+                val friendId = friend?.userUid
+                if (friendId != null) {
+                    val friendRef = db.collection("FriendList").document(friendId)
+                    friendRef.get().addOnSuccessListener { documentSnapshot ->
+                        val friendList = documentSnapshot.toObject<FriendList>()
+                        if (friendList != null) {
+                            coroutineScope.launch {
+                                friendList.friendsList.remove(
+                                    fireStoreRepoUser.getAsPlayer(
+                                        playerId
+                                    )
+                                )
+                                friendRef.set(friendList)
                             }
-                            notifyDataSetChanged()
-
                         }
                     }
+                    notifyDataSetChanged()
                 }
+
+
             }
 
             }
@@ -104,6 +98,5 @@ class FriendsListAdapter() : RecyclerView.Adapter<FriendsListAdapter.FriendViewH
         this.friendsList = mutableListOf()
         notifyDataSetChanged()
     }
-
 
 }

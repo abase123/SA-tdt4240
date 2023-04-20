@@ -90,7 +90,8 @@ class SearchFriendsView : Fragment() {
                         .addOnSuccessListener { friendListSnapshot ->
 
                             // Convert friend list to list of friend IDs
-                            val friendEmails = friendListSnapshot.documents.firstOrNull()?.toObject(FriendList::class.java)?.friendsList?.map { it.userEmail} ?: emptyList()
+                            val friendEmails = friendListSnapshot.documents.firstOrNull()?.toObject(
+                                FriendList::class.java)?.friendsList?.map { it.userEmail} ?: emptyList()
 
                             // Add players who are not already friends
                             for (document in querySnapshot.documents) {

@@ -18,10 +18,10 @@ class Player(
 
 {
     constructor(documentSnapshot: DocumentSnapshot):this(
-        userUid=documentSnapshot.id,
+        userUid=documentSnapshot.getString("userUid") ?: "",
         displayName = documentSnapshot.getString("displayName") ?: "",
-        userEmail = documentSnapshot.getString("email") ?: "",
-        allTimeScore = documentSnapshot.getLong("score")?.toInt() ?: 0,
+        userEmail = documentSnapshot.getString("userEmail") ?: "",
+        allTimeScore = documentSnapshot.getLong("allTimeScore")?.toInt() ?: 0,
         dailyQuizTaken = documentSnapshot.getBoolean("dailyQuizTaken") ?: false,
         numQuizzesTaken = documentSnapshot.getLong("numQuizzesTaken")?.toInt() ?: 0
     )
