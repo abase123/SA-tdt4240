@@ -29,7 +29,7 @@ class MatchmakingView: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_loading_quiz, container, false)
+        return inflater.inflate(R.layout.fragment_matchmaking, container, false)
     }
 
     override fun onAttach(context: Context) {
@@ -44,6 +44,18 @@ class MatchmakingView: Fragment() {
     override fun onDetach() {
         super.onDetach()
         viewChangeListener = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setup(view)
+
+        cancelBtn.setOnClickListener {
+            viewChangeListener?.onUserInput(UserInputEvent.RETURN_HOME)
+        }
+
+        gameController = activity as GameController
+        gameController.gameEngine.fragmentLoadingState.setLoading(false)
     }
 
     @SuppressLint("SetTextI18n")
