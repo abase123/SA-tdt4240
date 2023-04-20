@@ -74,6 +74,7 @@ class FriendsListAdapter() : RecyclerView.Adapter<FriendsListAdapter.FriendViewH
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.user_card, parent, false)
+
         return FriendViewHolder(itemView)
     }
 
@@ -82,6 +83,7 @@ class FriendsListAdapter() : RecyclerView.Adapter<FriendsListAdapter.FriendViewH
         val friend = friendsList.getOrNull(position)
         holder.bind(friend)
 
+        holder.itemView.findViewById<TextView>(R.id.usernameUsercard).text = friend?.displayName
         //notifyDataSetChanged()
     }
 

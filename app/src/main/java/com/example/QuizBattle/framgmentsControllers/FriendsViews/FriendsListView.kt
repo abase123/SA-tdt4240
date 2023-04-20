@@ -33,6 +33,7 @@ class FriendsListView : Fragment(){
     ): View? {
         val view = inflater.inflate(R.layout.fragment_friends_list, container, false)
 
+
         val rvFriendsList = view.findViewById<RecyclerView>(R.id.rvFriendsList)
         rvFriendsList.layoutManager = LinearLayoutManager(context)
 
