@@ -26,9 +26,9 @@
     <string name="dailyQuizTitle">DAILY QUIZ</string>
     <string name="dailyQuizCategory">Category</string>
     <string name="quizBannerDesc">Quiz Banner</string>
-    <string name="versusBannerDesc">PLAY WITH A FIREND</string>
-    <string name="versusTitle">PLAY WITH A FIREND</string>
-    <string name="versusDesc">Choose from different categories</string>
+    <string name="versusBannerDesc">PLAYGROUND</string>
+    <string name="versusTitle">PLAYGROUND</string>
+    <string name="versusDesc">Test yourself in different categories</string>
     <string name="friendsTitle">FRIENDS</string>
     <string name="addFriendsButton">ADD FRIENDS</string>
     <string name="friendsScrollDescription">Friends List</string>
