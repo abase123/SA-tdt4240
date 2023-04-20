@@ -20,7 +20,6 @@ import kotlinx.coroutines.launch
 
 class FriendsListAdapter() : RecyclerView.Adapter<FriendsListAdapter.FriendViewHolder>() {
 
-
     private var friendsList: MutableList<Player> = mutableListOf()
     private val auth = FirebaseAuth.getInstance()
     private val playerId: String = auth.currentUser?.uid ?: String()
@@ -49,25 +48,17 @@ class FriendsListAdapter() : RecyclerView.Adapter<FriendsListAdapter.FriendViewH
                     friendRef.get().addOnSuccessListener { documentSnapshot ->
                         val friendList = documentSnapshot.toObject<FriendList>()
                         if (friendList != null) {
-                            coroutineScope.launch {
-                                friendList.friendsList.remove(
-                                    fireStoreRepoUser.getAsPlayer(
-                                        playerId
-                                    )
-                                )
-                                friendRef.set(friendList)
-                            }
+                            val flist = friendList.friendsList
+                            flist.remove(currentPlayer)
+                            //friendRef.set(friendList)
+                            friendRef.update("friendsList", flist)
                         }
                     }
                     notifyDataSetChanged()
                 }
-
-
             }
-
-            }
-
         }
+    }
 
 
 
@@ -80,6 +71,9 @@ class FriendsListAdapter() : RecyclerView.Adapter<FriendsListAdapter.FriendViewH
 
 
     override fun onBindViewHolder(holder: FriendViewHolder, position: Int) {
+        coroutineScope.launch {
+            currentPlayer=fireStoreRepoUser.getAsPlayer(playerId)
+        }
         val friend = friendsList.getOrNull(position)
         holder.bind(friend)
 

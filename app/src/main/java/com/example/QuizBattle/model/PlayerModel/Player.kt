@@ -30,4 +30,14 @@ class Player(
     constructor() : this("","", "", 0, false, 0) {
         // Empty constructor required for Firestore deserialization
     }
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || javaClass != other.javaClass) return false
+        other as Player
+        return userUid == other.userUid
+    }
+
+    override fun hashCode(): Int {
+        return userUid.hashCode()
+    }
 }
