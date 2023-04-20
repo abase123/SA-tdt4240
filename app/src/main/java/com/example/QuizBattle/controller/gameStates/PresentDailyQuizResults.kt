@@ -1,6 +1,5 @@
 package com.example.QuizBattle.controller.gameStates
 
-import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.R
@@ -12,7 +11,7 @@ import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.framgmentsControllers.ResultsView
 
-class PresentQuizResults(override var quizHolder: QuizHolder, private var playerViewModel: PlayerViewModel) : GameState {
+class PresentDailyQuizResults(override var quizHolder: QuizHolder, private var playerViewModel: PlayerViewModel) : GameState {
 
     override fun handleState(context: GameController) {
         val player= playerViewModel.player.value
