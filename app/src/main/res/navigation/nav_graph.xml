@@ -33,7 +33,7 @@
 
     <fragment
             android:id="@+id/matchmaking"
-            android:name="com.example.QuizBattle.framgmentsControllers.QuizView"
+            android:name="com.example.QuizBattle.framgmentsControllers.MatchmakingView"
             android:label="fragment_Lobby"
             tools:layout="@layout/fragment_matchmaking"/>
 

@@ -4,14 +4,15 @@ import com.example.QuizBattle.model.QuizModel.Question
 import com.example.QuizBattle.model.QuizModel.Quiz
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.model.BasePath
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class FirestoreRepoDailyQuiz() {
+class FirestoreRepoQuiz(private val dataBasePath: String) {
 
     private val database = FirebaseFirestore.getInstance()
-    private val quizRef = database.collection("daily_quizzes")
+    private val quizRef = database.collection(dataBasePath)
     suspend fun loadQuiz(quizId: String): Quiz {
         return suspendCoroutine { continuation ->
             quizRef.document(quizId).get().addOnSuccessListener { documentSnapshot ->
