@@ -41,7 +41,7 @@ class GameEngine(
             when (event) {
                 UserInputEvent.LOAD_DAILY_QUIZ -> newState(LoadDailyQuiz(quizHolder))
                 UserInputEvent.PLAY_DAILY_QUIZ -> newState(PlayQuiz(quizHolder))
-                UserInputEvent.CHOOSE_CATEGORY -> newState(LoadPlayGroundQuiz(quizHolder))
+                UserInputEvent.SELECT_THEME -> newState(LoadPlayGroundQuiz(quizHolder))
                 UserInputEvent.PLAY_PLAYGROUND -> newState(PlayQuiz(quizHolder))
                 UserInputEvent.RESULTS -> newState(PresentQuizResults(quizHolder, playerViewModel))
                 UserInputEvent.RETURN_HOME -> return@launch

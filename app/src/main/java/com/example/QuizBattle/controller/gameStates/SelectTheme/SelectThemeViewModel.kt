@@ -1,8 +1,8 @@
-package com.example.QuizBattle.controller.gameStates.SelectCategory
+package com.example.QuizBattle.controller.gameStates.SelectTheme
 
 import androidx.lifecycle.MutableLiveData
 
-class SelectCategoryViewModel {
+class SelectThemeViewModel {
     val categoryViewModel: MutableLiveData<String> = MutableLiveData()
 
 }

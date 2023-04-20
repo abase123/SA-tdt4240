@@ -13,7 +13,6 @@ class LoadPlayGroundQuiz(override var quizHolder: QuizHolder) : GameState {
 
     }
 
-
     private fun getCurrentFragment(context: GameController): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.childFragmentManager.fragments[0]

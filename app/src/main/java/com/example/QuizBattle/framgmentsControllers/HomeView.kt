@@ -48,7 +48,7 @@ class HomeView : Fragment() {
         val playDailyBtn=view.findViewById<Button>(R.id.playdailyButton)
 
         playFriendBtn.setOnClickListener {
-            viewChangeListener?.onUserInput(UserInputEvent.CHOOSE_CATEGORY)
+            viewChangeListener?.onUserInput(UserInputEvent.SELECT_THEME)
         }
 
         playDailyBtn.setOnClickListener {
