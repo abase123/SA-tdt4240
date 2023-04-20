@@ -57,7 +57,7 @@ class FirestoreRepoMatch{
 
     private suspend fun updatePlayerTwo(documentId: String, player: Player) {
         onlineQuizzesCollection.document(documentId)
-            .update("playerTwo", player.userUid)
+            .update("playerTwo", player.userUid, "gameStatus", "Ready")
             .await()
     }
 }

@@ -10,30 +10,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:visibility="visible"
             android:indeterminate="true"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:visibility="visible"
             android:layout_height="match_parent">
 
         <Button
-                android:text="Back"
+                android:text="CANCEL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/cancelBtn"
+                android:visibility="visible"
                 app:layout_constraintTop_toBottomOf="@+id/startQuizButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.032"
                 tools:ignore="UnknownIdInLayout" android:layout_marginBottom="248dp"/>
-        <Button
-                android:text="Start"
+        <TextView
+                android:text="3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/startBattleButton"
-                tools:visibility="visible"
+                android:id="@+id/matchCountdown"
+                tools:visibility="invisible"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="200sp"
                 app:layout_constraintHorizontal_bias="0.498"
                 tools:ignore="MissingConstraints" app:layout_constraintTop_toBottomOf="@+id/matchmakingTextView"
                 android:layout_marginTop="120dp"/>
@@ -65,6 +69,7 @@
                     android:layout_height="135dp"
                     android:text="Waiting for opponent, please be patient :)"
                     android:textAlignment="center"
+                    android:visibility="visible"
                     android:textColor="#B42222"
                     android:textSize="20sp"
                     android:lineSpacingExtra="8dp"

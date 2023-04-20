@@ -3,6 +3,7 @@ package com.example.QuizBattle.framgmentsControllers
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,12 +19,13 @@ import com.example.QuizBattle.controller.ViewChangeListener
 
 class MatchmakingView: Fragment() {
     private lateinit var matchmakingTextView: TextView
-    private lateinit var startBattleButton: Button
+    private lateinit var readyBattleButton: Button
     private lateinit var cancelBtn: Button
     private lateinit var matchmakingProgressBar: ProgressBar
     private var viewChangeListener: ViewChangeListener? = null
     private lateinit var waitingTextView: TextView
     private lateinit var gameController: GameController
+    private lateinit var matchCountdown: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,11 +48,16 @@ class MatchmakingView: Fragment() {
         viewChangeListener = null
     }
 
+    fun onCancelClicked() {
+        gameController.gameEngine.
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setup(view)
 
         cancelBtn.setOnClickListener {
+            onCancelClicked()
             viewChangeListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
 
@@ -61,14 +68,36 @@ class MatchmakingView: Fragment() {
     @SuppressLint("SetTextI18n")
     private fun setup(view: View) {
         matchmakingTextView = view.findViewById(R.id.matchmakingTextView)
-        startBattleButton = view.findViewById(R.id.startBattleButton)
+        readyBattleButton = view.findViewById(R.id.startBattleButton)
         matchmakingProgressBar = view.findViewById(R.id.matchmakingProgressBar)
         cancelBtn = view.findViewById(R.id.cancelBtn)
         waitingTextView = view.findViewById(R.id.waitingTextView)
 
         matchmakingTextView.text = "Matchmaking in progress ..."
-        startBattleButton.visibility = View.INVISIBLE
+        readyBattleButton.visibility = View.INVISIBLE
         matchmakingProgressBar.visibility = View.VISIBLE
+
+
+    }
+
+    fun onOpponentFound(){
+        matchmakingTextView.text = "Match will start in ..."
+        cancelBtn.visibility = View.INVISIBLE
+        matchmakingProgressBar.visibility = View.INVISIBLE
+
+        var count = 5
+        val timer = object : CountDownTimer(5000, 1000) {
+            override fun onTick(millisUntilStart: Long) {
+                matchCountdown.text = count.toString()
+                count --
+            }
+
+            override fun onFinish() {
+                matchCountdown.text = "GO"
+                //CHANGE SCENE
+            }
+        }
+
 
     }
 }

@@ -5,7 +5,6 @@ import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.Quiz
 
  class OnlineMatch {
-
      var id:String?=null
     var playerOne: String? = null
     var playerTwo: String? = null
