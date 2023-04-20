@@ -23,7 +23,6 @@ class SelectTheme(override var quizHolder: QuizHolder) :GameState, OnThemeChange
         return navHostFragment.childFragmentManager.fragments[0]
     }
 
-    // Implement the OnThemeChangeListener interface
     override fun onThemeChanged(theme: String) {
         quizHolder.chosenTheme = theme
     }

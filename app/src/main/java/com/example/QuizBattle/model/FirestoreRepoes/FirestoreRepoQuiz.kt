@@ -12,7 +12,7 @@ class FirestoreRepoQuiz(dataBasePath:String) {
 
     private val database = FirebaseFirestore.getInstance()
     private val quizRef = database.collection(dataBasePath)
-    suspend fun loadQuiz(quizId: String): Quiz {
+    suspend fun loadQuizById(quizId: String): Quiz {
         return suspendCoroutine { continuation ->
             quizRef.document(quizId).get().addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot.exists()) {
@@ -26,6 +26,25 @@ class FirestoreRepoQuiz(dataBasePath:String) {
             }
         }
     }
+
+    suspend fun loadQuizByTheme(theme: String): Quiz {
+        return suspendCoroutine { continuation ->
+            quizRef.whereEqualTo("Theme", theme).limit(1).get()
+                .addOnSuccessListener { querySnapshot ->
+                    if (querySnapshot.documents.isNotEmpty()) {
+                        val documentSnapshot = querySnapshot.documents.first()
+                        val quiz = documentSnapshotToQuiz(documentSnapshot)
+                        continuation.resume(quiz)
+                    } else {
+                        continuation.resumeWithException(Exception("Quiz not found"))
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    continuation.resumeWithException(exception)
+                }
+        }
+    }
+
     private fun documentSnapshotToQuiz(snapshot: DocumentSnapshot): Quiz {
         val id = snapshot.id
         val type = snapshot.get("Type") as String
@@ -58,10 +77,13 @@ class FirestoreRepoQuiz(dataBasePath:String) {
             Option(document.getString("option3") as String),
             Option(document.getString("option4") as String)
         )
+
         options.forEach { option -> question.addOption(option) }
         return question
 
     }
+
+
 
 
 

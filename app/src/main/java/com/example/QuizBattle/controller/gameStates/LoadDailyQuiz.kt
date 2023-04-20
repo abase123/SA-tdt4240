@@ -28,14 +28,13 @@ class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
         context.lifecycleScope.launch{
             try {
                 withContext(Dispatchers.IO){ Log.d("LoadQuiz", "Quiz accessed: ${quizHolder.quiz}")
-                    quizHolder.quiz = firebaseRepo.loadQuiz(quizId)
+                    quizHolder.quiz = firebaseRepo.loadQuizById(quizId)
                     val questions = firebaseRepo.loadQuestions(quizHolder.quiz)
                     quizHolder.quiz.setQuestions(questions)
                 }
                 onQuizAvailable(context,quizHolder.quiz.getTheme(),quizHolder.quiz.getDiff())
             } catch (e: Exception) {
                 onQuizNotAvailable(context)
-
             }
         }
     }

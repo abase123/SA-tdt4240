@@ -15,16 +15,24 @@ class PresentQuizResults(override var quizHolder: QuizHolder, private var player
 
     override fun handleState(context: GameController) {
         val player= playerViewModel.player.value
-        if (player != null) {
-            if (!player.dailyQuizTaken) {
-                player.dailyQuizTaken=true
-                player.allTimeScore=player.allTimeScore+quizHolder.gainedPoints.getScore()
-                player.numQuizzesTaken+=1
-                updateFireStore(player)
-                showResults(player.allTimeScore, quizHolder.gainedPoints, context)
-            } else {
-                showResults(player.allTimeScore, quizHolder.gainedPoints, context)
+
+        if (player!=null){
+            if (quizHolder.quiz.getType()=="Daily"){
+                handleDailyResults(context,player)
             }
+            showResults(player.allTimeScore, quizHolder.gainedPoints, context)
+        }
+    }
+
+    private fun handleDailyResults(context: GameController,player: Player){
+        if (!player.dailyQuizTaken) {
+            player.dailyQuizTaken=true
+            player.allTimeScore=player.allTimeScore+quizHolder.gainedPoints.getScore()
+            player.numQuizzesTaken+=1
+            updateFireStore(player)
+            showResults(player.allTimeScore, quizHolder.gainedPoints, context)
+        } else {
+            showResults(player.allTimeScore, quizHolder.gainedPoints, context)
         }
     }
 
