@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 class FirestoreRepoMatch{
     private val db = FirebaseFirestore.getInstance()
-    private val onlineQuizzesCollection = db.collection("onlineQuizzes")
+    private val onlineQuizzesCollection = db.collection("active_games")
 
     suspend fun joinOrCreateGame(player: Player): OnlineMatch? {
         val existingGame = findAvailableGame()
@@ -57,7 +57,7 @@ class FirestoreRepoMatch{
 
     private suspend fun updatePlayerTwo(documentId: String, player: Player) {
         onlineQuizzesCollection.document(documentId)
-            .update("playerTwo", player)
+            .update("playerTwo", player.userUid)
             .await()
     }
 }
