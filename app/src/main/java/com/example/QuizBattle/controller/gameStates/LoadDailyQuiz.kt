@@ -1,6 +1,6 @@
 package com.example.QuizBattle.controller.gameStates
 
-import android.content.Context
+import android.app.AlertDialog
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -19,11 +19,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
-    private val firebaseRepo: FirestoreRepoDailyQuiz = FirestoreRepoDailyQuiz()
+    private val repoDailyQuiz: FirestoreRepoDailyQuiz = FirestoreRepoDailyQuiz()
     override fun handleState(context: GameController) {
-        val quizId = "20230411"//getTodaysQuizID()
-        loadQuizFromFirebase(context, firebaseRepo, quizId)
+        val quizId = "20230412" //getTodaysQuizID()
+        loadQuizFromFirebase(context, repoDailyQuiz, quizId)
     }
+
     private fun loadQuizFromFirebase(context: GameController, firebaseRepo: FirestoreRepoDailyQuiz, quizId: String) {
         context.lifecycleScope.launch{
             try {
@@ -31,26 +32,38 @@ class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
                     quizHolder.quiz = firebaseRepo.loadQuiz(quizId)
                     val questions = firebaseRepo.loadQuestions(quizHolder.quiz)
                     quizHolder.quiz.setQuestions(questions)
-
                 }
-                updateFragment(context,quizHolder.quiz.getTheme(),quizHolder.quiz.getDiff())
+                onQuizAvailable(context,quizHolder.quiz.getTheme(),quizHolder.quiz.getDiff())
             } catch (e: Exception) {
-                Toast.makeText(context, "Error loading quiz: ${e.message}", Toast.LENGTH_LONG).show()
+                onQuizNotAvailable(context)
+
             }
         }
     }
-    private fun updateFragment(context: GameController,theme:String,difficulty:String) {
+
+    private fun getTodaysQuizID(): String {
+        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+        val date = Date()
+        return dateFormat.format(date)
+    }
+
+
+    private fun onQuizAvailable(context: GameController,theme:String,difficulty:String) {
         val currentFragment=getCurrentFragment(context)
         (currentFragment as? LoadingQuizView)?.onQuizLoaded(theme,difficulty)
+    }
+
+    private fun onQuizNotAvailable(context: GameController){
+        AlertDialog.Builder(context)
+            .setTitle("Quiz Not Available")
+            .setMessage("The quiz is not available at the moment. ")
+            .setPositiveButton("OK", null)
+            .show()
     }
 
     private fun getCurrentFragment(context: GameController): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.childFragmentManager.fragments[0]
     }
-    private fun getTodaysQuizID(): String {
-        val dateFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
-        val date = Date()
-        return dateFormat.format(date)
-    }
+
 }

@@ -33,7 +33,7 @@
                 android:elevation="10dp">
 
             <ImageView
-                    android:id="@+id/roundedImageView"
+                    android:id="@+id/profile_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/sports"
@@ -47,7 +47,7 @@
                 android:text="Display Name"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/roundedImageView"
+                app:layout_constraintStart_toEndOf="@+id/profile_image"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"

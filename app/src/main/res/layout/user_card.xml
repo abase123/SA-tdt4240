@@ -31,7 +31,7 @@
                 android:elevation="10dp">
 
             <ImageView
-                    android:id="@+id/roundedImageView"
+                    android:id="@+id/profile_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/sports"
