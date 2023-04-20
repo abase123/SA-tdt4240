@@ -29,7 +29,7 @@ class MatchmakingView: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_loading_quiz, container, false)
+        return inflater.inflate(R.layout.fragment_matchmaking, container, false)
     }
 
     override fun onAttach(context: Context) {
@@ -46,6 +46,8 @@ class MatchmakingView: Fragment() {
         viewChangeListener = null
     }
 
+
+
     @SuppressLint("SetTextI18n")
     private fun setup(view: View) {
         matchmakingTextView = view.findViewById(R.id.matchmakingTextView)
@@ -57,6 +59,17 @@ class MatchmakingView: Fragment() {
         matchmakingTextView.text = "Matchmaking in progress ..."
         startBattleButton.visibility = View.INVISIBLE
         matchmakingProgressBar.visibility = View.VISIBLE
+
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setup(view)
+
+        gameController = activity as GameController
+        gameController.gameEngine.fragmentLoadingState.setLoading(false)
+
 
     }
 }
