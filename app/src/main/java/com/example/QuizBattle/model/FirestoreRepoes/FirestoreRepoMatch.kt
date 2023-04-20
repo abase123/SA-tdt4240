@@ -40,7 +40,7 @@ class FirestoreRepoMatch{
 
         if (document != null) {
             return document.toObject(OnlineMatch::class.java)?.apply {
-                this.playerTwo = player
+                this.playerTwo = player.userUid
             }
         }
         return null
@@ -48,7 +48,7 @@ class FirestoreRepoMatch{
 
     private suspend fun createNewGame(player: Player): OnlineMatch {
         val newGame = OnlineMatch().apply {
-            this.playerOne = player
+            this.playerOne = player.userUid
             this.gameStatus = "Waiting for opponent"
         }
         val document = onlineQuizzesCollection.add(newGame).await()
