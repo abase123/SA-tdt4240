@@ -6,7 +6,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
-class FirebaseRepository {
+class FirestoreRepoMatch {
     private val db = FirebaseFirestore.getInstance()
     private val onlineQuizzesCollection = db.collection("onlineQuizzes")
 
