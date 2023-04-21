@@ -20,6 +20,7 @@ class PlayQuiz(override var quizHolder:QuizHolder) : GameState {
     override fun handleState(context: GameController) {
         quizEnded=false
         quizHolder.gainedPoints.resetPoint()
+        quizHolder.gainedPoints.resetNumCorrectAnswer()
         questionIndex=0
         quizHolder.timer.initTimer()
         setViewModel(context)
@@ -50,6 +51,7 @@ class PlayQuiz(override var quizHolder:QuizHolder) : GameState {
         quizHolder.timer.resetTimer()
         if(isCorrectOption){
             quizHolder.gainedPoints.addPoints(pointsToAdd.toInt())
+            quizHolder.gainedPoints.incrementNumCorrectAnswer()
         }
         return isCorrectOption
     }
