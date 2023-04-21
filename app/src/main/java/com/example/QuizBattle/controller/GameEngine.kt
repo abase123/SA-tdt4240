@@ -36,6 +36,7 @@ class GameEngine(
     private val playerViewModel: PlayerViewModel = ViewModelProvider(viewModelStoreOwner)[PlayerViewModel::class.java]
     val fragmentLoadingState = FragmentLoadingState()
     private val screenNavigator = ScreenNavigator(context, fragmentLoadingState)
+
     init {
         playerViewModel.loadPlayerData()
         screenNavigator.init()

@@ -17,6 +17,7 @@ the event handling to the GameEngine.
 
 class GameController : AppCompatActivity(), ViewChangeListener {
      lateinit var gameEngine: GameEngine
+     private val notificationService=NotificationService()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
