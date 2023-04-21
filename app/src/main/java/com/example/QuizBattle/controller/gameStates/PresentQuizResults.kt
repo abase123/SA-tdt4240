@@ -9,7 +9,7 @@ import com.example.QuizBattle.controller.PlayerViewModel
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.QuizHolder
-import com.example.QuizBattle.framgmentsControllers.ResultsView
+import com.example.QuizBattle.view.ResultsView
 
 class PresentQuizResults(override var quizHolder: QuizHolder, private var playerViewModel: PlayerViewModel) : GameState {
 

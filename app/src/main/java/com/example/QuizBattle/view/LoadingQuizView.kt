@@ -1,4 +1,4 @@
-package com.example.QuizBattle.framgmentsControllers
+package com.example.QuizBattle.view
 
 import android.annotation.SuppressLint
 import android.content.Context
