@@ -11,7 +11,7 @@ class FirestoreRepoLeaderboard {
     private val userCollection = db.collection("Users")
     suspend fun getTopPlayers(limit: Int = 10): List<Player> {
         val querySnapshot = userCollection
-            .orderBy("score", Query.Direction.DESCENDING)
+            .orderBy("allTimeScore", Query.Direction.DESCENDING)
             .limit(limit.toLong())
             .get()
             .await()
