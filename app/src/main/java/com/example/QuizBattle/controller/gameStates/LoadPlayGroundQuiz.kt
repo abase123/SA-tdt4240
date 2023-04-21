@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.GameState
+import com.example.QuizBattle.framgmentsControllers.LoadingPlaygroundQuizView
 import com.example.QuizBattle.framgmentsControllers.LoadingQuizView
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoQuiz
 import com.example.QuizBattle.model.QuizModel.QuizHolder
@@ -38,7 +39,7 @@ class LoadPlayGroundQuiz(override var quizHolder: QuizHolder) : GameState {
 
     private fun onQuizAvailable(context: GameController,theme:String,difficulty:String) {
         val currentFragment=getCurrentFragment(context)
-        (currentFragment as? LoadingQuizView)?.onQuizLoaded(theme,difficulty)
+        (currentFragment as? LoadingPlaygroundQuizView)?.onQuizLoaded(theme,difficulty)
 
     }
 

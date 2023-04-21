@@ -30,9 +30,10 @@ class ScreenNavigator(private val gameController: GameController,private  val fr
         fragmentLoadingState.setLoading(true)
         when (event) {
             UserInputEvent.LOAD_DAILY_QUIZ -> navController.navigate(R.id.loadingQuiz)
+            UserInputEvent.LOAD_PLAYGROUND_QUIZ -> navController.navigate(R.id.loadingPlaygroundQuiz)
             UserInputEvent.PLAY_DAILY_QUIZ -> navController.navigate(R.id.quiz)
             UserInputEvent.SELECT_THEME -> navController.navigate(R.id.themes)
-            UserInputEvent.LOAD_PLAYGROUND_QUIZ->navController.navigate(R.id.loadingQuiz)
+            UserInputEvent.LOAD_PLAYGROUND_QUIZ->navController.navigate(R.id.loadingPlaygroundQuiz)
             UserInputEvent.PLAY_PLAYGROUND -> navController.navigate(R.id.quiz)
             UserInputEvent.RETURN_HOME -> navController.navigate(R.id.home)
             UserInputEvent.RESULTS -> navController.navigate(R.id.results)

@@ -26,6 +26,12 @@
             tools:layout="@layout/fragment_loading_dailyquiz" />
 
     <fragment
+            android:id="@+id/loadingPlaygroundQuiz"
+            android:name="com.example.QuizBattle.framgmentsControllers.LoadingPlaygroundQuizView"
+            android:label="fragment_quiz"
+            tools:layout="@layout/fragment_loading_playgroundquiz"/>
+
+    <fragment
             android:id="@+id/quiz"
             android:name="com.example.QuizBattle.framgmentsControllers.QuizView"
             android:label="fragment_quiz"
