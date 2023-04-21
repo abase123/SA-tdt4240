@@ -31,7 +31,8 @@ class GameEngine(
     viewModelStoreOwner: ViewModelStoreOwner
 ){
     private lateinit var state: GameState
-    private var quizHolder = QuizHolder("", Quiz("xx", "xx", "xx", "xx"), GainedPoints(0), QuizTimer())
+    private var quizHolder = QuizHolder("", Quiz("xx", "xx", "xx", "xx"),
+        GainedPoints(0,0), QuizTimer())
     private val playerViewModel: PlayerViewModel = ViewModelProvider(viewModelStoreOwner)[PlayerViewModel::class.java]
     val fragmentLoadingState = FragmentLoadingState()
     private val screenNavigator = ScreenNavigator(context, fragmentLoadingState)

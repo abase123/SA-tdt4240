@@ -22,7 +22,7 @@
                 android:padding="16dp"
                 android:text="Choose a preferred theme to test your knowledge!"
                 android:textColor="@android:color/white"
-                android:textSize="24sp" android:backgroundTint="#662E2E"/>
+                android:textSize="24sp" android:backgroundTint="#1A237E"/>
 
         <RadioGroup
                 android:id="@+id/theme_group"
@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:columnCount="2"
-                    android:rowCount="2" android:background="#E2BABA">
+                    android:rowCount="2" android:background="#0DA19A">
 
                 <!-- RadioButton A -->
                 <RadioButton
@@ -48,7 +48,7 @@
                         android:gravity="center"
                         android:padding="16dp"
                         android:text="SPORT"
-                        android:textSize="18sp"
+                        android:textSize="24sp"
                         android:textColor="@drawable/text_color_selector"
                         android:background=" @drawable/card_background_selector_checked" android:textStyle="bold"/>
 
@@ -64,7 +64,7 @@
                         android:gravity="center"
                         android:padding="16dp"
                         android:text="GENERAL KNOWLEDGE"
-                        android:textSize="18sp"
+                        android:textSize="24sp"
                         android:textColor="@drawable/text_color_selector"
                         android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
 
@@ -80,8 +80,8 @@
                         android:gravity="center"
                         android:padding="16dp"
                         android:text="HISTORY"
-                        android:textSize="18sp"
-                        android:textColor="@drawable/text_color_selector"
+                        android:textSize="24sp"
+                        android:textColor="@color/text_color"
                         android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
 
                 <!-- RadioButton D -->
@@ -96,7 +96,7 @@
                         android:gravity="center"
                         android:padding="16dp"
                         android:text="GEOGRAPHY"
-                        android:textSize="18sp"
+                        android:textSize="24sp"
                         android:textColor="@drawable/text_color_selector"
                         android:background="@drawable/card_background_selector_checked" android:textStyle="bold"/>
 

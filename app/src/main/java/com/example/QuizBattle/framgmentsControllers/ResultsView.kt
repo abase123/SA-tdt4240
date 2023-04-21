@@ -30,6 +30,7 @@ class ResultsView:Fragment()
     private lateinit var pointsGainedText:TextView
     private lateinit var ratingBar:RatingBar
     private lateinit var timeUsedText:TextView
+    private  lateinit var numCorrectTextView: TextView
     private var viewChangeListener: ViewChangeListener? = null
     private lateinit var gameController: GameController
     override fun onCreateView(
@@ -57,8 +58,8 @@ class ResultsView:Fragment()
         backHomeBtn=view.findViewById(R.id.BackHome)
         ratingBar=view.findViewById(R.id.ratingBar)
         pointsGainedText=view.findViewById(R.id.pointsGainedText)
-        totalScore=view.findViewById(R.id.tv_total_score)
         timeUsedText=view.findViewById(R.id.timeUsedText)
+        numCorrectTextView=view.findViewById(R.id.num_correct)
         backHomeBtn.visibility= View.VISIBLE
     }
 
@@ -67,7 +68,6 @@ class ResultsView:Fragment()
         setup(view)
         gameController = activity as GameController
         gameController.gameEngine.fragmentLoadingState.setLoading(false)
-
         backHomeBtn.setOnClickListener{
             viewChangeListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
@@ -75,7 +75,7 @@ class ResultsView:Fragment()
     }
 
 
-    fun presentQuizResults(score:Int,pointsGained:GainedPoints, timeUsed:Float){
+    fun presentQuizResults(pointsGained:GainedPoints, timeUsed:Float){
         showGainedPoints(pointsGained)
         showTimeUsed(timeUsed)
         Handler(Looper.getMainLooper()).postDelayed({
@@ -83,7 +83,6 @@ class ResultsView:Fragment()
         }, 1000)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            setScore(score)
             startConfettiAnimation()
         }, 1000)
 
@@ -94,7 +93,7 @@ class ResultsView:Fragment()
 
     @SuppressLint("SetTextI18n")
     private fun showTimeUsed(timeUsed: Float){
-        timeUsedText.text="Quiz time: $timeUsed"
+        timeUsedText.text="Total Time used: $timeUsed"
     }
 
     @SuppressLint("SetTextI18n")
@@ -107,6 +106,7 @@ class ResultsView:Fragment()
             addUpdateListener { animation ->
                 val currentValue = animation.animatedValue as Int
                 pointsGainedText.text = "Points achieved: $targetNumber"
+                numCorrectTextView.text= pointsGained.getNumCorrectAnswer().toString()
             }
         }
         // Start the animation

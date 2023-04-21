@@ -31,7 +31,7 @@ class LoadingQuizView: Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_loading_quiz, container, false)
+        return inflater.inflate(R.layout.fragment_loading_dailyquiz, container, false)
     }
 
     override fun onAttach(context: Context) {

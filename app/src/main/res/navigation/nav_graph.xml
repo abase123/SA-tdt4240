@@ -23,7 +23,7 @@
             android:id="@+id/loadingQuiz"
             android:name="com.example.QuizBattle.framgmentsControllers.LoadingQuizView"
             android:label="fragment_loading_quiz"
-            tools:layout="@layout/fragment_loading_quiz" />
+            tools:layout="@layout/fragment_loading_dailyquiz" />
 
     <fragment
             android:id="@+id/quiz"
