@@ -12,6 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.PlayerViewModel
+import com.example.QuizBattle.view.FriendsViews.FriendsListView
+import com.example.QuizBattle.view.FriendsViews.FriendsRequestsView
+import com.example.QuizBattle.view.FriendsViews.SearchFriendsView
 import com.google.android.material.tabs.TabLayout
 
 

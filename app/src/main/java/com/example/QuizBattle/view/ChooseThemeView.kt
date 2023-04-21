@@ -1,4 +1,4 @@
-package com.example.QuizBattle.framgmentsControllers
+package com.example.QuizBattle.view
 
 import OnThemeChangeListener
 import android.content.Context
@@ -16,7 +16,7 @@ import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.ViewChangeListener
-import com.example.QuizBattle.framgmentsControllers.adapters.LeaderboardAdapter
+import com.example.QuizBattle.view.adapters.LeaderboardAdapter
 import com.google.api.ResourceDescriptor.History
 import kotlinx.coroutines.launch
 
