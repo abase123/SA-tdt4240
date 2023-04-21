@@ -41,7 +41,7 @@ class PresentQuizResults(override var quizHolder: QuizHolder, private var player
     }
     private fun showResults(score:Int ,pointsGained:GainedPoints,context: GameController){
         val currentFragment=getCurrentFragment(context)
-        (currentFragment as? ResultsView)?.presentQuizResults(pointsGained,quizHolder.timer.getTotalTimeUsed())
+        (currentFragment as? ResultsView)?.presentQuizResults(pointsGained,quizHolder.timer.getTotalTimeUsed(), quizHolder.quiz.getQuestionsLength())
     }
 
     private fun getCurrentFragment(context: GameController): Fragment {

@@ -37,6 +37,10 @@ class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponen
         return questions
     }
 
+    fun getQuestionsLength():Int {
+        return questions.size
+    }
+
     override fun toString(): String {
         return "Quiz(type='$quizType', id='$quizId', difficulty='$quizDifficulty', theme='$quizTheme')"
     }

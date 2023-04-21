@@ -75,8 +75,9 @@ class ResultsView:Fragment()
     }
 
 
-    fun presentQuizResults(pointsGained:GainedPoints, timeUsed:Float){
-        showGainedPoints(pointsGained)
+    fun presentQuizResults(pointsGained:GainedPoints, timeUsed:Float, quizLength:Int ){
+
+        showGainedPoints(pointsGained, quizLength)
         showTimeUsed(timeUsed)
         Handler(Looper.getMainLooper()).postDelayed({
             animateScoreBar(pointsGained.getScore())
@@ -97,7 +98,7 @@ class ResultsView:Fragment()
     }
 
     @SuppressLint("SetTextI18n")
-    private fun showGainedPoints(pointsGained: GainedPoints){
+    private fun showGainedPoints(pointsGained: GainedPoints, quizLength: Int){
         val targetNumber = pointsGained.getScore()
         val animationDuration=2000L
 
@@ -106,7 +107,7 @@ class ResultsView:Fragment()
             addUpdateListener { animation ->
                 val currentValue = animation.animatedValue as Int
                 pointsGainedText.text = "Points achieved: $targetNumber"
-                numCorrectTextView.text= pointsGained.getNumCorrectAnswer().toString()
+                numCorrectTextView.text= pointsGained.getNumCorrectAnswer().toString() + "/" + quizLength.toString() + "Correct Answers!"
             }
         }
         // Start the animation

@@ -37,6 +37,8 @@ class FirestoreRepoUser {
             }
     }
 
+
+
     suspend fun addUser(user: Player, uid: String){
         userCollection.document(uid).set(user).await()
     }
