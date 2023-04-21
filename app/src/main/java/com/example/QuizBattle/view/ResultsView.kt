@@ -1,4 +1,4 @@
-package com.example.QuizBattle.framgmentsControllers
+package com.example.QuizBattle.view
 
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint

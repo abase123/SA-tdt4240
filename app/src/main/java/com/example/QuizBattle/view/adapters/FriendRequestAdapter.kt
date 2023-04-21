@@ -1,4 +1,4 @@
-package com.example.QuizBattle.views.adapters
+package com.example.QuizBattle.view.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -38,10 +38,12 @@ class FriendRequestsAdapter(private val friendRequests: List<FriendRequest>, pri
             }
             btnAccept.setOnClickListener {
                 listener.onAcceptClick(friendRequest)
+                notifyDataSetChanged()
             }
 
             btnReject.setOnClickListener {
                 listener.onRejectClick(friendRequest)
+                notifyDataSetChanged()
             }
         }
     }
