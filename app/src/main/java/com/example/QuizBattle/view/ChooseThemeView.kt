@@ -7,18 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameController
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.ViewChangeListener
-import com.example.QuizBattle.view.adapters.LeaderboardAdapter
-import com.google.api.ResourceDescriptor.History
-import kotlinx.coroutines.launch
 
 
 class ChooseThemeView : Fragment(){
@@ -27,7 +21,7 @@ class ChooseThemeView : Fragment(){
     private lateinit var gameController: GameController
     private lateinit var sportsButton: RadioButton
     private lateinit var historyButton: RadioButton
-    private lateinit var generalKnowlegdeButton: RadioButton
+    private lateinit var generalKnowledgeButton: RadioButton
     private lateinit var geographyButton: RadioButton
 
     override fun onCreateView(
@@ -55,7 +49,7 @@ class ChooseThemeView : Fragment(){
         sportsButton= view.findViewById(R.id.sport_theme)
         historyButton= view.findViewById(R.id.history_theme)
         geographyButton=view.findViewById((R.id.geo_theme))
-        generalKnowlegdeButton=view.findViewById((R.id.generalKnowledge_theme))
+        generalKnowledgeButton=view.findViewById((R.id.generalKnowledge_theme))
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -85,7 +79,7 @@ class ChooseThemeView : Fragment(){
             viewChangeListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
         }
 
-        generalKnowlegdeButton.setOnClickListener {
+        generalKnowledgeButton.setOnClickListener {
             themeChangeListener?.onThemeChanged("General Knowledge")
             viewChangeListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
         }
