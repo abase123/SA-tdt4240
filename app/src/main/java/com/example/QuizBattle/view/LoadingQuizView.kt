@@ -13,7 +13,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.GameController
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.ViewChangeListener
 
@@ -25,7 +25,7 @@ class LoadingQuizView: Fragment(){
     private var viewChangeListener: ViewChangeListener? = null
     private lateinit var themeImage: ImageView
     private lateinit var diffTextView: TextView
-    private lateinit var gameController: GameController
+    private lateinit var gameActivity: GameActivity
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -73,8 +73,8 @@ class LoadingQuizView: Fragment(){
             viewChangeListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
 
-        gameController = activity as GameController
-        gameController.gameEngine.fragmentLoadingState.setLoading(false)
+        gameActivity = activity as GameActivity
+        gameActivity.gameEngine.fragmentLoadingState.setLoading(false)
 
 
     }

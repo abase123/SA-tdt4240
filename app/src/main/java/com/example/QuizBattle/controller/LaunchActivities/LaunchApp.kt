@@ -1,6 +1,5 @@
 package com.example.QuizBattle.controller.LaunchActivities
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -8,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.GameController
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.google.firebase.auth.FirebaseAuth
@@ -26,7 +25,7 @@ class LaunchApp:AppCompatActivity() {
         val user= mAuth.currentUser
         Handler().postDelayed({
             if (user!=null) {
-                Intent(this, GameController::class.java).also {
+                Intent(this, GameActivity::class.java).also {
                     lifecycleScope.launch{
                         addUserToFireStore(user.uid)
                     }

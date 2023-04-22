@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.GameController
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.ViewChangeListener
 
@@ -17,7 +17,7 @@ import com.example.QuizBattle.controller.ViewChangeListener
 class HomeView : Fragment() {
     // TODO: Rename and change types of parameters
     private var viewChangeListener: ViewChangeListener? = null
-    private lateinit var gameController: GameController
+    private lateinit var gameActivity: GameActivity
 
 
     override fun onAttach(context: Context) {
@@ -54,8 +54,8 @@ class HomeView : Fragment() {
         playDailyBtn.setOnClickListener {
             viewChangeListener?.onUserInput(UserInputEvent.LOAD_DAILY_QUIZ)
         }
-        gameController = activity as GameController
-        gameController.gameEngine.fragmentLoadingState.setLoading(false)
+        gameActivity = activity as GameActivity
+        gameActivity.gameEngine.fragmentLoadingState.setLoading(false)
     }
 
 

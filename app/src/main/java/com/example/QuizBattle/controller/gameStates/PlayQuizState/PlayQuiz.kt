@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.GameController
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.model.QuizModel.Question
@@ -17,7 +17,7 @@ class PlayQuiz(override var quizHolder:QuizHolder) : GameState {
     private lateinit var playDailyQuizViewModel: PlayQuizViewModel
     private var quizEnded=false
 
-    override fun handleState(context: GameController) {
+    override fun handleState(context: GameActivity) {
         quizEnded=false
         quizHolder.gainedPoints.resetPoint()
         quizHolder.gainedPoints.resetNumCorrectAnswer()
@@ -27,7 +27,7 @@ class PlayQuiz(override var quizHolder:QuizHolder) : GameState {
         presentQuestion()
     }
 
-    private fun setViewModel(context: GameController) {
+    private fun setViewModel(context: GameActivity) {
         val currentFragment = getCurrentFragment(context)
         playDailyQuizViewModel = ViewModelProvider(currentFragment.requireActivity())[PlayQuizViewModel::class.java]
         playDailyQuizViewModel.dailyQuiz = this
@@ -76,7 +76,7 @@ class PlayQuiz(override var quizHolder:QuizHolder) : GameState {
         playDailyQuizViewModel.endQuiz(quizEnded)
     }
 
-    private fun getCurrentFragment(context: GameController): Fragment {
+    private fun getCurrentFragment(context: GameActivity): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.childFragmentManager.fragments[0]
     }

@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.QuizBattle.R
 
 import androidx.core.content.ContextCompat
-import com.example.QuizBattle.controller.GameController
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.gameStates.PlayQuizState.PlayQuizViewModel
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.ViewChangeListener
@@ -28,7 +28,7 @@ class QuizView : Fragment() {
     private val options = mutableListOf<RadioButton>()
     private lateinit var correctOption: RadioButton
     private var viewChangeListener: ViewChangeListener? = null
-    private lateinit var gameController: GameController
+    private lateinit var gameActivity: GameActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,8 +83,8 @@ class QuizView : Fragment() {
             setupOptionClickListeners(view)
         }
 
-        gameController = activity as GameController
-        gameController.gameEngine.fragmentLoadingState.setLoading(false)
+        gameActivity = activity as GameActivity
+        gameActivity.gameEngine.fragmentLoadingState.setLoading(false)
     }
 
     private fun setupOptionClickListeners(view: View) {

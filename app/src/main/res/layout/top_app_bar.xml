@@ -6,7 +6,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize" android:id="@+id/appBarLayout">
+            android:layout_height="?attr/actionBarSize"
+            android:id="@+id/appBarLayout">
         <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
@@ -17,8 +18,16 @@
                 app:menu="@menu/top_app_bar"
                 style="@style/Widget.MaterialComponents.Toolbar.Primary"
                 android:outlineSpotShadowColor="@color/cardview_dark_background"
-                android:elevation="6dp"
-        />
+                android:elevation="6dp"/>
+        <ImageButton
+                android:id="@+id/button_question_mark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_information_24"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="info" />
+
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Note: A RecyclerView can also be used -->

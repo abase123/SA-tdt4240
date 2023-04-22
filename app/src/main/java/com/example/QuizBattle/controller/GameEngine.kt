@@ -26,7 +26,7 @@ by GameState objects, and handles UserInputEvents to drive game progression.
  */
 
 class GameEngine(
-    private val context: GameController,
+    private val context: GameActivity,
     private val lifecycleScope: LifecycleCoroutineScope,
     viewModelStoreOwner: ViewModelStoreOwner
 ){

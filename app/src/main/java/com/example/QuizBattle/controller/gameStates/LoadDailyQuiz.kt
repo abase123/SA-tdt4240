@@ -7,7 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoQuiz
-import com.example.QuizBattle.controller.GameController
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.view.LoadingQuizView
@@ -19,12 +19,12 @@ import java.util.*
 
 class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
     private val repoDailyQuiz: FirestoreRepoQuiz = FirestoreRepoQuiz("daily_quizzes")
-    override fun handleState(context: GameController) {
+    override fun handleState(context: GameActivity) {
         val quizId = "20230412" //getTodaysQuizID()
         loadQuizFromFirebase(context, repoDailyQuiz, quizId)
     }
 
-    private fun loadQuizFromFirebase(context: GameController, firebaseRepo: FirestoreRepoQuiz, quizId: String) {
+    private fun loadQuizFromFirebase(context: GameActivity, firebaseRepo: FirestoreRepoQuiz, quizId: String) {
         context.lifecycleScope.launch{
             try {
                 withContext(Dispatchers.IO){ Log.d("LoadQuiz", "Quiz accessed: ${quizHolder.quiz}")
@@ -46,12 +46,12 @@ class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
     }
 
 
-    private fun onQuizAvailable(context: GameController,theme:String,difficulty:String) {
+    private fun onQuizAvailable(context: GameActivity, theme:String, difficulty:String) {
         val currentFragment=getCurrentFragment(context)
         (currentFragment as? LoadingQuizView)?.onQuizLoaded(theme,difficulty)
     }
 
-    private fun onQuizNotAvailable(context: GameController){
+    private fun onQuizNotAvailable(context: GameActivity){
         AlertDialog.Builder(context)
             .setTitle("Quiz Not Available")
             .setMessage("The quiz is not available at the moment. ")
@@ -59,7 +59,7 @@ class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
             .show()
     }
 
-    private fun getCurrentFragment(context: GameController): Fragment {
+    private fun getCurrentFragment(context: GameActivity): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.childFragmentManager.fragments[0]
     }

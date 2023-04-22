@@ -5,9 +5,10 @@
     <item
         android:id="@+id/more"
         android:title="@string/app_name"
-        android:icon="@drawable/baseline_settings_24"
+        android:icon="@drawable/baseline_information_24"
         android:contentDescription="@string/settingsIcon"
         app:showAsAction="ifRoom"
         />
+
 
 </menu>

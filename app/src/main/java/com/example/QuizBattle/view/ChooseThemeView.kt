@@ -10,7 +10,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.GameController
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.ViewChangeListener
 
@@ -18,7 +18,7 @@ import com.example.QuizBattle.controller.ViewChangeListener
 class ChooseThemeView : Fragment(){
     private var viewChangeListener: ViewChangeListener? = null
     var themeChangeListener: OnThemeChangeListener? = null
-    private lateinit var gameController: GameController
+    private lateinit var gameActivity: GameActivity
     private lateinit var sportsButton: RadioButton
     private lateinit var historyButton: RadioButton
     private lateinit var generalKnowledgeButton: RadioButton
@@ -55,8 +55,8 @@ class ChooseThemeView : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         setup(view)
-        gameController = activity as GameController
-        gameController.gameEngine.fragmentLoadingState.setLoading(false)
+        gameActivity = activity as GameActivity
+        gameActivity.gameEngine.fragmentLoadingState.setLoading(false)
         listenForThemes()
 
     }

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.GameController
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -77,7 +77,7 @@ class SignInActivity: AppCompatActivity(){
                            addUserToFireStore(user.uid)
                        }
                     }
-                    Intent(this, GameController::class.java).also { startActivity(it) }
+                    Intent(this, GameActivity::class.java).also { startActivity(it) }
                     finish()
                 }
 

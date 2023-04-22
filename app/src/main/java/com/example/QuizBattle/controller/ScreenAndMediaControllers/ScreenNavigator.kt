@@ -5,13 +5,13 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.GameController
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.FragmentLoadingState
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ScreenNavigator(private val gameController: GameController,private  val fragmentLoadingState: FragmentLoadingState) {
-    private val mediaController: MediaController = MediaController(gameController)
+class ScreenNavigator(private val gameActivity: GameActivity, private  val fragmentLoadingState: FragmentLoadingState) {
+    private val mediaController: MediaController = MediaController(gameActivity)
    private lateinit var bottomNavigationMenu:BottomNavigationView
 
     fun init(){
@@ -20,7 +20,7 @@ class ScreenNavigator(private val gameController: GameController,private  val fr
 
     }
     private fun getNavController(): NavController {
-        val navHostFragment = gameController.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
+        val navHostFragment = gameActivity.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.navController
     }
 
@@ -61,7 +61,7 @@ class ScreenNavigator(private val gameController: GameController,private  val fr
     }
 
     private fun setupBottomNavigation() {
-        val bottomNavigationView: BottomNavigationView = gameController.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val bottomNavigationView: BottomNavigationView = gameActivity.findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.setupWithNavController(getNavController())
         bottomNavigationMenu=bottomNavigationView
     }

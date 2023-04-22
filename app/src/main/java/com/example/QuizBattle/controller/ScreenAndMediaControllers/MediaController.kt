@@ -2,11 +2,11 @@ package com.example.QuizBattle.controller.ScreenAndMediaControllers
 
 import android.media.MediaPlayer
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.GameController
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.model.AudioTrack
 import kotlin.random.Random
 
-class MediaController(private val context: GameController)
+class MediaController(private val context: GameActivity)
 {
     private var mediaPlayer: MediaPlayer?=null
     private val backGroundTrack: AudioTrack= AudioTrack("CASIOPERA",R.raw.music)

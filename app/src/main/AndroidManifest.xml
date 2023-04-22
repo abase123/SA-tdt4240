@@ -38,7 +38,7 @@
 
 
         <activity
-            android:name=".controller.GameController"
+            android:name=".controller.GameActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar"/>
 
         <activity android:name=".controller.LaunchActivities.SignInActivity"/>
