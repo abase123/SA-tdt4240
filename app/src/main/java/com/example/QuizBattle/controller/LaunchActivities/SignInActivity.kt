@@ -18,6 +18,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.launch
 
+/**
+
+SignInActivity is an activity class responsible for handling user authentication using Google Sign-In.
+It works with the FirebaseAuth and GoogleSignInClient to manage the sign-in process and add new users to Firestore.
+The signIn function initiates the Google Sign-In process.
+The firebaseAuthWithGoogle function authenticates the user with Firebase using the Google Sign-In token.
+The addUserToFireStore function adds a new user to Firestore if they do not already exist.
+
+ */
 class SignInActivity: AppCompatActivity(){
     private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient

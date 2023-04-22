@@ -51,13 +51,11 @@ class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
         (currentFragment as? LoadingQuizView)?.onQuizLoaded(theme,difficulty)
     }
 
-    private fun onQuizNotAvailable(context: GameActivity){
-        AlertDialog.Builder(context)
-            .setTitle("Quiz Not Available")
-            .setMessage("The quiz is not available at the moment. ")
-            .setPositiveButton("OK", null)
-            .show()
+    private fun onQuizNotAvailable(context: GameActivity) {
+        val currentFragment=getCurrentFragment(context)
+        (currentFragment as? LoadingQuizView)?.onQuizNotAvailable()
     }
+
 
     private fun getCurrentFragment(context: GameActivity): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment

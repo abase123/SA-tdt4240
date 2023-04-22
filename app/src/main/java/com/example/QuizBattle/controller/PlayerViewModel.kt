@@ -10,6 +10,12 @@ import com.example.QuizBattle.model.PlayerModel.Player
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
+/**
+
+PlayerViewModel is a class that serves as a ViewModel for managing Player data.
+It utilizes the FirestoreRepoUser repository to fetch and update player data in the Firestore database.
+The class provides LiveData to observe the current player and includes functions to load and update player data.
+*/
 class PlayerViewModel: ViewModel() {
     private val fireStoreRepoUser=FirestoreRepoUser()
     private val _player= MutableLiveData<Player?>()

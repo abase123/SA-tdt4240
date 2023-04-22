@@ -1,6 +1,7 @@
 package com.example.QuizBattle.view
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -112,6 +113,16 @@ class LoadingQuizView: Fragment(){
             "Hard" -> diffTextView.setTextColor(ContextCompat.getColor(requireContext(), R.color.hard))
         }
         diffTextView.visibility=View.VISIBLE
+    }
+
+
+
+    fun onQuizNotAvailable(){
+        AlertDialog.Builder(gameActivity)
+            .setTitle("Quiz Not Available")
+            .setMessage("The quiz is not available at the moment. ")
+            .setPositiveButton("OK", null)
+            .show()
     }
 
 

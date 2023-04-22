@@ -8,6 +8,13 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
+
+/**
+FirestoreRepoQuiz is a class responsible for fetching quiz and question data from the Firestore database.
+It provides functions to load a quiz by its ID, to load a quiz by its theme, and to load questions for a given quiz.
+This class also contains helper functions to convert document snapshots to Quiz and Question objects.
+@param dataBasePath The path to the Firestore collection containing quiz data.
+ */
 class FirestoreRepoQuiz(dataBasePath:String) {
 
     private val database = FirebaseFirestore.getInstance()
@@ -82,9 +89,6 @@ class FirestoreRepoQuiz(dataBasePath:String) {
         return question
 
     }
-
-
-
 
 
 }

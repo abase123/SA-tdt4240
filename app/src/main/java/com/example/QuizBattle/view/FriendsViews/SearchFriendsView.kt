@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.QuizBattle.R
 import com.example.QuizBattle.databinding.FragmentSearchFriendsBinding
-import com.example.QuizBattle.controller.framgmentsControllers.SearchFController
+import com.example.QuizBattle.controller.FriendframgmentsControllers.SearchFController
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.example.QuizBattle.view.adapters.SearchFriendsAdapter

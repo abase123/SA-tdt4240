@@ -35,19 +35,14 @@ class LoadPlayGroundQuiz(override var quizHolder: QuizHolder) : GameState {
             }
         }
     }
-
     private fun onQuizAvailable(context: GameActivity, theme:String, difficulty:String) {
         val currentFragment=getCurrentFragment(context)
         (currentFragment as? LoadingPlaygroundQuizView)?.onQuizLoaded(theme,difficulty)
-
     }
 
     private fun onQuizNotAvailable(context: GameActivity){
-        AlertDialog.Builder(context)
-            .setTitle("Quiz Not Available")
-            .setMessage("The quiz is not available at the moment. ")
-            .setPositiveButton("OK", null)
-            .show()
+        val currentFragment=getCurrentFragment(context)
+        (currentFragment as? LoadingPlaygroundQuizView)?.onQuizNotAvailable()
     }
     private fun getCurrentFragment(context: GameActivity): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment

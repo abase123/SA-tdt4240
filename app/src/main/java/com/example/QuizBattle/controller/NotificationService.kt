@@ -9,6 +9,16 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import android.content.Context
+
+/**
+
+NotificationService is a class that extends FirebaseMessagingService to handle notifications in the Quiz Battle app.
+The class is responsible for receiving push notifications from Firebase Cloud Messaging, displaying notifications,
+and subscribing to topics.
+The onMessageReceived function is used to handle received notifications and display them using the showNotification function.
+The onNewToken function is called when a new token is generated, and can be used to subscribe to specific topics.
+
+ */
 class NotificationService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
@@ -20,11 +30,11 @@ class NotificationService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         super.onNewToken(token)
         // Send the token to your server if needed
-        FirebaseMessaging.getInstance().subscribeToTopic("your_topic")
+        FirebaseMessaging.getInstance().subscribeToTopic("new_quiz")
     }
 
     private fun showNotification(remoteMessage: RemoteMessage) {
-        val channelId = "dailyQuiz"
+        val channelId = "DailyQuiz"
         val channelName = "Quiz Update"
 
         val notificationBuilder = NotificationCompat.Builder(this, channelId)

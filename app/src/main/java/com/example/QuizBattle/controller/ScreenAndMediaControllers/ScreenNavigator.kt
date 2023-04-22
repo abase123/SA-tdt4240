@@ -9,6 +9,15 @@ import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.FragmentLoadingState
 import com.google.android.material.bottomnavigation.BottomNavigationView
+/**
+
+ScreenNavigator is a class responsible for managing navigation between screens in the Quiz Battle app.
+It works closely with the GameActivity and FragmentLoadingState to navigate between different screens
+based on user input events, manage bottom navigation visibility, and control background music during navigation.
+@param gameActivity The main activity of the app.
+@param fragmentLoadingState A helper class to handle loading states of fragments.
+ */
+
 
 class ScreenNavigator(private val gameActivity: GameActivity, private  val fragmentLoadingState: FragmentLoadingState) {
     private val mediaController: MediaController = MediaController(gameActivity)
@@ -33,7 +42,6 @@ class ScreenNavigator(private val gameActivity: GameActivity, private  val fragm
             UserInputEvent.LOAD_PLAYGROUND_QUIZ -> navController.navigate(R.id.loadingPlaygroundQuiz)
             UserInputEvent.PLAY_DAILY_QUIZ -> navController.navigate(R.id.quiz)
             UserInputEvent.SELECT_THEME -> navController.navigate(R.id.themes)
-            UserInputEvent.LOAD_PLAYGROUND_QUIZ->navController.navigate(R.id.loadingPlaygroundQuiz)
             UserInputEvent.PLAY_PLAYGROUND -> navController.navigate(R.id.quiz)
             UserInputEvent.RETURN_HOME -> navController.navigate(R.id.home)
             UserInputEvent.RESULTS -> navController.navigate(R.id.results)

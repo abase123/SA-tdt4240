@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.QuizBattle.R
+import com.google.firebase.messaging.FirebaseMessaging
 
 
 /**
@@ -21,6 +22,7 @@ class GameActivity : AppCompatActivity(), ViewChangeListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         gameEngine = GameEngine(this, lifecycleScope, this)
+        FirebaseMessaging.getInstance().subscribeToTopic("new_quiz");
     }
 
     override fun onUserInput(event: UserInputEvent) {
