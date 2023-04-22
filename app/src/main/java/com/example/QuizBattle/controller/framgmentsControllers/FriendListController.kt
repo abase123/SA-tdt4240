@@ -1,14 +1,11 @@
 package com.example.QuizBattle.controller.framgmentsControllers
 
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
-import com.example.QuizBattle.model.FriendModel.FriendList
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.tasks.await
 
-class FListController(private val auth: FirebaseAuth, private val db: FirebaseFirestore) {
+class FriendListController(private val auth: FirebaseAuth, private val db: FirebaseFirestore) {
     private val fireStoreRepoUser = FirestoreRepoUser()
 
     suspend fun getCurrentPlayer(): Player? {

@@ -7,12 +7,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.PlayerModel.Player
-import com.example.QuizBattle.controller.framgmentsControllers.FListController
+import com.example.QuizBattle.controller.framgmentsControllers.FriendListController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FriendsListAdapter(private val fListController: FListController) : RecyclerView.Adapter<FriendsListAdapter.FriendViewHolder>() {
+class FriendsListAdapter(private val friendListController: FriendListController) : RecyclerView.Adapter<FriendsListAdapter.FriendViewHolder>() {
     private var friendsList: MutableList<Player> = mutableListOf()
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
@@ -27,7 +27,7 @@ class FriendsListAdapter(private val fListController: FListController) : Recycle
                     friendsList.removeAt(position)
                 }
                 coroutineScope.launch {
-                fListController.removeFriend(friend)
+                friendListController.removeFriend(friend)
                 }
                 notifyDataSetChanged()
             }

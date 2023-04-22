@@ -42,6 +42,19 @@
     <string name="quizzesPlayed">4</string>
     <string name="tabLayoutDescription">A tab layout for navigating between different views</string>
     <string name="viewPagerDescription">ViewPager</string>
+    <string name="ok">OK</string>
+    <string name="game_rules_title">Info</string>
+    <string name="_222">222</string>
+    <string name="descDaily">Welcome to our exciting quiz game mode, where you can test your knowledge and have a blast
+        with four different themes - General Knowledge, Sports, History, and Geography. Every day, we\'ll present you
+        with a new set of questions from one of these themes, giving you a unique and engaging challenge each time you
+        play.\n\nThe Daily Trivia Challenge is designed to keep your mind sharp and your skills fresh. You only get one
+        chance per day to prove your mastery, so make sure to give it your best shot, as your first attempt is the only
+        one that counts!
+    </string>
+
+    <string name="descPlay">In PlaygroundQuiz, you\'ll explore a world of knowledge at your fingertips. Delve into quizzes from a wide array of subjects, designed for players of all levels, from curious beginners to seasoned trivia buffs. Our ever-expanding quiz library ensures that you\'ll never run out of challenges to test your mettle.\n\nAs you progress through the quizzes in PlaygroundQuiz, you\'ll not only gain valuable knowledge but also build the confidence and expertise needed to tackle the Daily Quiz mode. Each quiz victory in PlaygroundQuiz brings you one step closer to the daily triumphs that await you.</string>
+
 
 
 </resources>

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.framgmentsControllers.FListController
+import com.example.QuizBattle.controller.framgmentsControllers.FriendListController
 import com.example.QuizBattle.view.adapters.FriendsListAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 class FriendsListView : Fragment() {
 private val auth = FirebaseAuth.getInstance()
 private val db = FirebaseFirestore.getInstance()
-private val fListController = FListController(auth, db)
+private val friendListController = FriendListController(auth, db)
 private val coroutineScope = CoroutineScope(Dispatchers.Main)
 private lateinit var friendsListAdapter: FriendsListAdapter
     private lateinit var friendRequestsView: FriendsRequestsView
@@ -39,12 +39,12 @@ override fun onCreateView(
     rvFriendsList.isNestedScrollingEnabled = false
 
     if (auth.currentUser != null) {
-        friendsListAdapter = FriendsListAdapter(fListController)
+        friendsListAdapter = FriendsListAdapter(friendListController)
         friendRequestsView = FriendsRequestsView()
         rvFriendsList.adapter = friendsListAdapter
         coroutineScope.launch {
-            val player = fListController.getCurrentPlayer()
-            val friendsList = fListController.getFriendsList(player!!.userUid)
+            val player = friendListController.getCurrentPlayer()
+            val friendsList = friendListController.getFriendsList(player!!.userUid)
             friendsListAdapter.setFriendsList(friendsList)
             friendsListAdapter.notifyDataSetChanged()
         }

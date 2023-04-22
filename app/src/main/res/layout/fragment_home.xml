@@ -48,6 +48,12 @@
 
                         <!-- Media -->
 
+
+                        <ImageButton
+                                android:src="@drawable/baseline_information_24"
+                                android:layout_width="64dp"
+                                android:layout_height="wrap_content" android:id="@+id/info_daily"
+                                android:minHeight="48dp" android:contentDescription="@string/ok"/>
                         <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="194dp"
@@ -117,6 +123,12 @@
 
                         <!-- Media -->
 
+                        <ImageButton
+                                android:src="@drawable/baseline_information_24"
+                                android:layout_width="64dp"
+                                android:layout_height="wrap_content" android:id="@+id/info_Playground"
+                                android:minHeight="48dp" android:contentDescription="@string/app_name"
+                                android:backgroundTint="@color/unanswered_color"/>
                         <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="194dp"
