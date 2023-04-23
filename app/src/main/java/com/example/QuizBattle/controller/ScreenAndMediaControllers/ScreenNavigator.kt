@@ -7,19 +7,19 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.GameCoreController.UserInputEvent
-import com.example.QuizBattle.controller.GameCoreController.FragmentLoadingState
+import com.example.QuizBattle.controller.GameCoreController.FragmentLoading
 import com.google.android.material.bottomnavigation.BottomNavigationView
 /**
 
 ScreenNavigator is a class responsible for managing navigation between screens in the Quiz Battle app.
-It works closely with the GameActivity and FragmentLoadingState to navigate between different screens
+It works closely with the GameActivity and FragmentLoading to navigate between different screens
 based on user input events, manage bottom navigation visibility, and control background music during navigation.
 @param gameActivity The main activity of the app.
-@param fragmentLoadingState A helper class to handle loading states of fragments.
+@param fragmentLoading A helper class to handle loading states of fragments.
  */
 
 
-class ScreenNavigator(private val gameActivity: GameActivity, private  val fragmentLoadingState: FragmentLoadingState) {
+class ScreenNavigator(private val gameActivity: GameActivity, private  val fragmentLoading: FragmentLoading) {
     private val mediaController: MediaController = MediaController(gameActivity)
    private lateinit var bottomNavigationMenu:BottomNavigationView
 
@@ -36,7 +36,7 @@ class ScreenNavigator(private val gameActivity: GameActivity, private  val fragm
     fun navigateTo(event: UserInputEvent) {
         val navController = getNavController()
         setScreenMusic(event)
-        fragmentLoadingState.setLoading(true)
+        fragmentLoading.setLoading(true)
         when (event) {
             UserInputEvent.LOAD_DAILY_QUIZ -> navController.navigate(R.id.loadingQuiz)
             UserInputEvent.LOAD_PLAYGROUND_QUIZ -> navController.navigate(R.id.loadingPlaygroundQuiz)

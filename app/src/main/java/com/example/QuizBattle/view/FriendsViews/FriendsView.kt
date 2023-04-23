@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.GameCoreController.PlayerViewModel
+import com.example.QuizBattle.controller.PlayerViewModel
 import com.example.QuizBattle.view.FriendsViews.FriendsListView
 import com.example.QuizBattle.view.FriendsViews.FriendsRequestsView
 import com.example.QuizBattle.view.FriendsViews.SearchFriendsView

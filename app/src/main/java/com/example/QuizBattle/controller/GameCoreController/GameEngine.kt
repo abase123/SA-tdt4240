@@ -16,10 +16,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.example.QuizBattle.controller.*
 import com.example.QuizBattle.controller.gameStates.SelectTheme.SelectTheme
-import dagger.hilt.android.scopes.ActivityScoped
-import javax.inject.Inject
-
-
 
 
 class GameEngine(
@@ -31,8 +27,8 @@ class GameEngine(
     private var quizHolder = QuizHolder("", Quiz("xx", "xx", "xx", "xx"),
         GainedPoints(0,0), QuizTimer())
     private val playerViewModel: PlayerViewModel = ViewModelProvider(viewModelStoreOwner)[PlayerViewModel::class.java]
-    val fragmentLoadingState = FragmentLoadingState()
-    private val screenNavigator = ScreenNavigator(context, fragmentLoadingState)
+    val fragmentLoading = FragmentLoading()
+    private val screenNavigator = ScreenNavigator(context, fragmentLoading)
 
     init {
         playerViewModel.loadPlayerData()
@@ -46,7 +42,7 @@ class GameEngine(
     fun onUserInput(event: UserInputEvent) {
         screenNavigator.navigateTo(event)
         lifecycleScope.launch {
-            fragmentLoadingState.isLoading.first { !it }
+            fragmentLoading.isLoading.first { !it }
             when (event) {
                 UserInputEvent.LOAD_DAILY_QUIZ -> newState(LoadDailyQuiz(quizHolder))
                 UserInputEvent.PLAY_DAILY_QUIZ -> newState(PlayQuiz(quizHolder))

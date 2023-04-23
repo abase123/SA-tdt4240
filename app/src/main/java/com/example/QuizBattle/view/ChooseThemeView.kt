@@ -57,7 +57,7 @@ class ChooseThemeView : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         setup(view)
         gameActivity = activity as GameActivity
-        gameActivity.gameEngine.fragmentLoadingState.setLoading(false)
+        gameActivity.gameEngine.fragmentLoading.setLoading(false)
         listenForThemes()
 
     }

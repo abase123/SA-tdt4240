@@ -84,7 +84,7 @@ class LoadingPlaygroundQuizView: Fragment(){
         }
 
         gameActivity = activity as GameActivity
-        gameActivity.gameEngine.fragmentLoadingState.setLoading(false)
+        gameActivity.gameEngine.fragmentLoading.setLoading(false)
 
 
     }

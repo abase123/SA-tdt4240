@@ -90,7 +90,7 @@ class ResultsView:Fragment()
         super.onViewCreated(view, savedInstanceState)
         setup(view)
         gameActivity = activity as GameActivity
-        gameActivity.gameEngine.fragmentLoadingState.setLoading(false)
+        gameActivity.gameEngine.fragmentLoading.setLoading(false)
         backHomeBtn.setOnClickListener{
             eventListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }

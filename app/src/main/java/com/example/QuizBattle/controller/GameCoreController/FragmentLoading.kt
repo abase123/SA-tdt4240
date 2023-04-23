@@ -7,13 +7,13 @@ import kotlinx.coroutines.flow.asStateFlow
 
 /**
 
-The FragmentLoadingState class is responsible for managing the loading state of fragments within the quiz-based game.
+The FragmentLoading class is responsible for managing the loading state of fragments within the quiz-based game.
 It exposes an immutable StateFlow to allow other classes to observe the loading state while providing a method
 to update the internal mutable state. This class is useful for coordinating UI transitions and ensuring smooth
 navigation between game screens.
  */
 
-class FragmentLoadingState {
+class FragmentLoading {
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
     fun setLoading(loading: Boolean) {

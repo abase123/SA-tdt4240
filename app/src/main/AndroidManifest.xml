@@ -21,7 +21,7 @@
         </service>
 
         <activity
-                android:name=".controller.LaunchActivities.LaunchApp"
+                android:name=".controller.LaunchActivities.LaunchActivity"
                 android:exported="true"
                 android:theme="@style/Theme.MyApplication.NoActionBar">
 

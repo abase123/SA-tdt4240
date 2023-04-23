@@ -1,5 +1,6 @@
 package com.example.QuizBattle.controller.LaunchActivities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -17,10 +18,11 @@ import kotlinx.coroutines.launch
  *
  * This activity handles launching the game application and redirecting the user to either the `GameActivity` or `SignInActivity`, depending on whether the user is currently signed in. It uses a `Handler` to delay the transition for two seconds, and it also includes a method for adding a new user to Firestore if they don't already exist. This class extends the Android `AppCompatActivity` class and is designed to be used with the Android framework.
  *
- * @constructor Creates a new instance of the `LaunchApp` class.
+ * @constructor Creates a new instance of the `LaunchActivity` class.
  */
 
-class LaunchApp:AppCompatActivity() {
+@SuppressLint("CustomSplashScreen")
+class LaunchActivity:AppCompatActivity() {
     private lateinit var currentState: GameState
     private lateinit var mAuth:FirebaseAuth
     private val firebaseRepoUser: FirestoreRepoUser = FirestoreRepoUser()
