@@ -20,24 +20,19 @@ import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
 
-/**
 
-The GameEngine class is responsible for managing the game flow, state transitions, and user interactions
-within a quiz-based game. It utilizes a ScreenNavigator to handle fragment navigation and interacts with
-the PlayerViewModel to manage player data. This class also coordinates the game states, which are represented
-by GameState objects, and handles UserInputEvents to drive game progression.
- */
-@ActivityScoped
-class GameEngine @Inject constructor(
+
+class GameEngine(
     private val context: GameActivity,
     private val lifecycleScope: LifecycleCoroutineScope,
-    private val playerViewModel: PlayerViewModel,
-    private val screenNavigator: ScreenNavigator,
-    val fragmentLoadingState: FragmentLoadingState
+    viewModelStoreOwner: ViewModelStoreOwner
 ){
     private lateinit var state: GameState
     private var quizHolder = QuizHolder("", Quiz("xx", "xx", "xx", "xx"),
         GainedPoints(0,0), QuizTimer())
+    private val playerViewModel: PlayerViewModel = ViewModelProvider(viewModelStoreOwner)[PlayerViewModel::class.java]
+    val fragmentLoadingState = FragmentLoadingState()
+    private val screenNavigator = ScreenNavigator(context, fragmentLoadingState)
 
     init {
         playerViewModel.loadPlayerData()

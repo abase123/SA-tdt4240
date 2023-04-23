@@ -1,4 +1,5 @@
 package com.example.QuizBattle.view.FriendsViews
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -71,6 +72,7 @@ class SearchFriendsView : Fragment(), SearchFController.SearchCallback {
 
         return binding.root
     }
+    @SuppressLint("NotifyDataSetChanged")
     override fun onSearchComplete() {
         searchFAdapter.notifyDataSetChanged()
     }

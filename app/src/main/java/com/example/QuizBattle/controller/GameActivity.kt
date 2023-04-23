@@ -8,6 +8,7 @@ import com.example.QuizBattle.controller.GameCoreController.EventListener
 import com.example.QuizBattle.controller.GameCoreController.GameEngine
 import com.example.QuizBattle.controller.GameCoreController.UserInputEvent
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 
 
@@ -20,14 +21,13 @@ the event handling to the GameEngine.
  */
 
 
-@AndroidEntryPoint
 class GameActivity : AppCompatActivity(), EventListener {
-    @Inject
     lateinit var gameEngine: GameEngine
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+        gameEngine = GameEngine(this, lifecycleScope, this)
     }
 
     override fun onUserInput(event: UserInputEvent) {
