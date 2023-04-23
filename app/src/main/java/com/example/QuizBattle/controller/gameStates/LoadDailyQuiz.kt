@@ -16,6 +16,14 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.*
+/**
+
+LoadDailyQuiz is a class responsible for loading the daily quiz from Firestore
+based on the current date. This class handles the state of loading the daily
+quiz, updates the quiz holder with the fetched quiz data, and interacts with
+the LoadingQuizView class to show the status of the quiz loading process.
+@property quizHolder Holds the current quiz data, including the quiz ID.
+ */
 
 class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
     private val repoDailyQuiz: FirestoreRepoQuiz = FirestoreRepoQuiz("daily_quizzes")

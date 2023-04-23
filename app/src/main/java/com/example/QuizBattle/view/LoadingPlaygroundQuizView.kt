@@ -16,14 +16,23 @@ import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.UserInputEvent
-import com.example.QuizBattle.controller.ViewChangeListener
+import com.example.QuizBattle.controller.EventListener
+
+/**
+ * Fragment for loading the playground quiz in the game application.
+ *
+ * This fragment handles loading the playground quiz in the game application, including displaying a loading screen and information about the quiz theme and difficulty level. It also provides buttons for starting the quiz or returning to the home screen. This class extends the Android `Fragment` class and is designed to be used with the Android framework.
+ *
+ * @constructor Creates a new instance of the `LoadingPlaygroundQuizView` fragment.
+ */
+
 
 class LoadingPlaygroundQuizView: Fragment(){
     private lateinit var descriptionTextView: TextView
     private lateinit var startQuizButton: Button
     private lateinit var goBackButton: Button
     private lateinit var loadingProgressBar: ProgressBar
-    private var viewChangeListener: ViewChangeListener? = null
+    private var eventListener: EventListener? = null
     private lateinit var themeImage: ImageView
     private lateinit var diffTextView: TextView
     private lateinit var gameActivity: GameActivity
@@ -37,8 +46,8 @@ class LoadingPlaygroundQuizView: Fragment(){
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is ViewChangeListener) {
-            viewChangeListener = context
+        if (context is EventListener) {
+            eventListener = context
         } else {
             throw RuntimeException("$context must implement UserInputListener")
         }
@@ -46,7 +55,7 @@ class LoadingPlaygroundQuizView: Fragment(){
 
     override fun onDetach() {
         super.onDetach()
-        viewChangeListener = null
+        eventListener = null
     }
 
     @SuppressLint("SetTextI18n")
@@ -71,7 +80,7 @@ class LoadingPlaygroundQuizView: Fragment(){
         setup(view)
 
         goBackButton.setOnClickListener {
-            viewChangeListener?.onUserInput(UserInputEvent.RETURN_HOME)
+            eventListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
 
         gameActivity = activity as GameActivity
@@ -87,7 +96,7 @@ class LoadingPlaygroundQuizView: Fragment(){
         setTheme(theme)
         setDiff(quizDiff)
         startQuizButton.setOnClickListener {
-            viewChangeListener?.onUserInput(UserInputEvent.PLAY_PLAYGROUND)
+            eventListener?.onUserInput(UserInputEvent.PLAY_PLAYGROUND)
         }
 
     }

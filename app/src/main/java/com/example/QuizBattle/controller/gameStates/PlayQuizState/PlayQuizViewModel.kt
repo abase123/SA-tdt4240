@@ -4,7 +4,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.QuizBattle.model.QuizModel.Question
+/**
 
+PlayQuizViewModel is a ViewModel class for managing the UI state during the PlayQuiz game state.
+
+It holds the current question, the quizEnded flag, and a LiveData object for checking if the answer is correct.
+
+@property _currentQuestion The MutableLiveData object representing the current question.
+
+@property dailyQuiz The PlayQuiz object that is being used to manage the quiz state.
+
+@property _isCorrectAnswer The MutableLiveData object representing if the chosen answer is correct.
+
+@property currentQuestion The LiveData object representing the current question.
+
+@property _quizEnded The MutableLiveData object representing if the quiz has ended.
+
+@property quizEnded The LiveData object representing if the quiz has ended.
+ */
 class PlayQuizViewModel : ViewModel() {
 
     private val _currentQuestion = MutableLiveData<Question>()

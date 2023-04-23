@@ -19,15 +19,34 @@ import androidx.core.content.ContextCompat
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.gameStates.PlayQuizState.PlayQuizViewModel
 import com.example.QuizBattle.controller.UserInputEvent
-import com.example.QuizBattle.controller.ViewChangeListener
+import com.example.QuizBattle.controller.EventListener
 
+/**
 
+QuizView is a Fragment class responsible for displaying the quiz questions and handling user interactions.
+
+It communicates with the PlayQuizViewModel to receive updates on the current question and the quiz status.
+
+It also handles user input events and updates the UI accordingly.
+
+@property playDailyQuizViewModel The ViewModel object used to manage the UI state during the quiz.
+
+@property questionText The TextView used to display the current question text.
+
+@property options A mutable list of RadioButtons used to display the answer options.
+
+@property correctOption The RadioButton representing the correct answer for the current question.
+
+@property eventListener An optional EventListener for handling user input events.
+
+@property gameActivity The GameActivity object to which this fragment is attached.
+ */
 class QuizView : Fragment() {
     private lateinit var playDailyQuizViewModel: PlayQuizViewModel
     private lateinit var questionText: TextView
     private val options = mutableListOf<RadioButton>()
     private lateinit var correctOption: RadioButton
-    private var viewChangeListener: ViewChangeListener? = null
+    private var eventListener: EventListener? = null
     private lateinit var gameActivity: GameActivity
 
     override fun onCreateView(
@@ -38,19 +57,19 @@ class QuizView : Fragment() {
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is ViewChangeListener) {
-            viewChangeListener = context
+        if (context is EventListener) {
+            eventListener = context
         } else {
             throw RuntimeException("$context must implement UserInputListener")
         }
     }
     override fun onDetach() {
         super.onDetach()
-        viewChangeListener = null
+        eventListener = null
     }
 
     private fun showResults() {
-        viewChangeListener?.onUserInput(UserInputEvent.RESULTS)
+        eventListener?.onUserInput(UserInputEvent.RESULTS)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -12,6 +12,13 @@ import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
+/**
+ * Main activity for launching the game application.
+ *
+ * This activity handles launching the game application and redirecting the user to either the `GameActivity` or `SignInActivity`, depending on whether the user is currently signed in. It uses a `Handler` to delay the transition for two seconds, and it also includes a method for adding a new user to Firestore if they don't already exist. This class extends the Android `AppCompatActivity` class and is designed to be used with the Android framework.
+ *
+ * @constructor Creates a new instance of the `LaunchApp` class.
+ */
 
 class LaunchApp:AppCompatActivity() {
     private lateinit var currentState: GameState

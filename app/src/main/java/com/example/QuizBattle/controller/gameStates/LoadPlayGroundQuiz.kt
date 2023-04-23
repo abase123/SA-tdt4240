@@ -19,7 +19,7 @@ import kotlinx.coroutines.withContext
 LoadPlayGroundQuiz is a class responsible for loading a playground quiz
 from Firestore based on the chosen theme by the user. This class handles
 the state of loading the playground quiz, updates the quiz holder with
-the fetched quiz data, and interacts with the UI to show the status of
+the fetched quiz data, and interacts with the LoadingPlaygroundQuizView to show the status of
 the quiz loading process.
 @property quizHolder Holds the current quiz data, including the chosen theme.
  */

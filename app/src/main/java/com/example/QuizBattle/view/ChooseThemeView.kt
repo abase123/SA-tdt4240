@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.UserInputEvent
-import com.example.QuizBattle.controller.ViewChangeListener
+import com.example.QuizBattle.controller.EventListener
 
 
 class ChooseThemeView : Fragment(){
-    private var viewChangeListener: ViewChangeListener? = null
+    private var eventListener: EventListener? = null
     var themeChangeListener: OnThemeChangeListener? = null
     private lateinit var gameActivity: GameActivity
     private lateinit var sportsButton: RadioButton
@@ -33,8 +33,8 @@ class ChooseThemeView : Fragment(){
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is ViewChangeListener) {
-            viewChangeListener = context
+        if (context is EventListener) {
+            eventListener = context
         }
         else {
             throw RuntimeException("$context must implement UserInputListener")
@@ -42,7 +42,7 @@ class ChooseThemeView : Fragment(){
     }
     override fun onDetach() {
         super.onDetach()
-        viewChangeListener = null
+        eventListener = null
     }
 
     private fun setup(view: View){
@@ -64,24 +64,24 @@ class ChooseThemeView : Fragment(){
     private fun listenForThemes(){
         sportsButton.setOnClickListener {
             themeChangeListener?.onThemeChanged("Sports")
-            viewChangeListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
+            eventListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
 
         }
 
         historyButton.setOnClickListener {
             themeChangeListener?.onThemeChanged("History")
-            viewChangeListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
+            eventListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
 
         }
 
         geographyButton.setOnClickListener {
             themeChangeListener?.onThemeChanged("Geography")
-            viewChangeListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
+            eventListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
         }
 
         generalKnowledgeButton.setOnClickListener {
             themeChangeListener?.onThemeChanged("General Knowledge")
-            viewChangeListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
+            eventListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
         }
     }
 }

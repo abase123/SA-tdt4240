@@ -17,12 +17,35 @@ import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.UserInputEvent
-import com.example.QuizBattle.controller.ViewChangeListener
+import com.example.QuizBattle.controller.EventListener
 import com.example.QuizBattle.model.QuizModel.GainedPoints
 
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
+/**
 
+ResultsView is a Fragment class responsible for displaying the quiz results, including points gained,
+
+the number of correct answers, the time taken, and a rating based on the score.
+
+It also provides an option to return to the home screen.
+
+@property backHomeBtn The Button used for navigating back to the home screen.
+
+@property totalScore The TextView used to display the total score.
+
+@property pointsGainedText The TextView used to display the points gained during the quiz.
+
+@property ratingBar The RatingBar used to display a rating based on the score.
+
+@property timeUsedText The TextView used to display the time taken to complete the quiz.
+
+@property numCorrectTextView The TextView used to display the number of correct answers.
+
+@property eventListener An optional EventListener for handling user input events.
+
+@property gameActivity The GameActivity object to which this fragment is attached.
+ */
 class ResultsView:Fragment()
 {
     private lateinit var backHomeBtn:Button
@@ -31,7 +54,7 @@ class ResultsView:Fragment()
     private lateinit var ratingBar:RatingBar
     private lateinit var timeUsedText:TextView
     private  lateinit var numCorrectTextView: TextView
-    private var viewChangeListener: ViewChangeListener? = null
+    private var eventListener: EventListener? = null
     private lateinit var gameActivity: GameActivity
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,15 +65,15 @@ class ResultsView:Fragment()
     }
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is ViewChangeListener) {
-            viewChangeListener = context
+        if (context is EventListener) {
+            eventListener = context
         } else {
             throw RuntimeException("$context must implement UserInputListener")
         }
     }
     override fun onDetach() {
         super.onDetach()
-        viewChangeListener = null
+        eventListener = null
     }
 
 
@@ -69,7 +92,7 @@ class ResultsView:Fragment()
         gameActivity = activity as GameActivity
         gameActivity.gameEngine.fragmentLoadingState.setLoading(false)
         backHomeBtn.setOnClickListener{
-            viewChangeListener?.onUserInput(UserInputEvent.RETURN_HOME)
+            eventListener?.onUserInput(UserInputEvent.RETURN_HOME)
         }
 
     }

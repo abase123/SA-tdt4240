@@ -11,11 +11,11 @@ import com.google.firebase.messaging.FirebaseMessaging
 
 The GameActivity class is an Android Activity that serves as the main entry point for the quiz-based game.
 It is responsible for initializing the GameEngine and acts as a bridge between the user interface and the
-game's core logic. It implements the ViewChangeListener interface to handle UserInputEvents, delegating
+game's core logic. It implements the EventListener interface to handle UserInputEvents, delegating
 the event handling to the GameEngine.
  */
 
-class GameActivity : AppCompatActivity(), ViewChangeListener {
+class GameActivity : AppCompatActivity(), EventListener {
      lateinit var gameEngine: GameEngine
 
     override fun onCreate(savedInstanceState: Bundle?) {

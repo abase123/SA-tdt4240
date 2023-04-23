@@ -9,6 +9,16 @@ import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.view.ChooseThemeView
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 
+/**
+
+SelectTheme is a class responsible for handling the state of selecting a quiz theme.
+It implements the GameState interface and listens for theme changes using the
+OnThemeChangeListener interface. This class updates the quiz holder with the
+chosen theme and interacts with the UI to allow the user to select a theme.
+@property quizHolder Holds the current quiz data, including the chosen theme.
+
+ */
+
 class SelectTheme(override var quizHolder: QuizHolder) :GameState, OnThemeChangeListener{
     override fun handleState(context: GameActivity) {
         val currentFragment = getCurrentFragment(context) as ChooseThemeView

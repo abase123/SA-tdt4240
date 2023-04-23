@@ -12,6 +12,13 @@ import com.example.QuizBattle.R
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoLeaderboard
 import com.example.QuizBattle.view.adapters.LeaderboardAdapter
 import kotlinx.coroutines.launch
+/**
+ * Fragment for displaying the leaderboard screen of the game application.
+ *
+ * This fragment displays the leaderboard screen of the game application, including a list of the top players in the game. It uses a custom `LeaderboardAdapter` to display the leaderboard data in a `RecyclerView`. This class extends the Android `Fragment` class and is designed to be used with the Android framework.
+ *
+ * @constructor Creates a new instance of the `LeaderboardView` fragment.
+ */
 
 class LeaderboardView : Fragment() {
     private val fireStoreRepoLeaderBoard = FirestoreRepoLeaderboard()

@@ -9,14 +9,28 @@ import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.model.QuizModel.Question
+/**
 
+The PlayQuiz class handles the logic for playing a quiz, including presenting questions,
+
+calculating points, and navigating through the questions.
+
+This class implements the GameState interface and represents the state of playing a quiz.
+
+@property quizHolder The QuizHolder object containing the quiz and other quiz-related data.
+ */
 class PlayQuiz(override var quizHolder:QuizHolder) : GameState {
     private var questionIndex: Int = 0
     private val questions = quizHolder.quiz.getQuestions()
     private lateinit var activeQuestion: Question
     private lateinit var playDailyQuizViewModel: PlayQuizViewModel
     private var quizEnded=false
+    /**
 
+    The handleState method initializes necessary variables and presents the first question
+    of the quiz.
+    @param context The GameActivity object which is used to access necessary resources and methods.
+     */
     override fun handleState(context: GameActivity) {
         quizEnded=false
         quizHolder.gainedPoints.resetPoint()

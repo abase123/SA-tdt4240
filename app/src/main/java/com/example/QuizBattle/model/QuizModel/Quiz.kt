@@ -8,7 +8,6 @@ class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponen
     private  var questions: MutableList<Question>
     private  var quizDifficulty:String
     private  var quizTheme:String
-
     init {
         quizId=id
         quizDifficulty=difficulty

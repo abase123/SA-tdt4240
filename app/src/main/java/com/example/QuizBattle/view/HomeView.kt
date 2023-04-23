@@ -11,23 +11,30 @@ import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.UserInputEvent
-import com.example.QuizBattle.controller.ViewChangeListener
+import com.example.QuizBattle.controller.EventListener
 
+/**
+ * Fragment for the home screen of the game application.
+ *
+ * This fragment displays the home screen of the game application, including buttons for playing the daily quiz or playing with a friend. It also includes info buttons that display dialog boxes with more information about the game rules. This class extends the Android `Fragment` class and is designed to be used with the Android framework.
+ *
+ * @constructor Creates a new instance of the `HomeView` fragment.
+ */
 
 class HomeView : Fragment() {
-    private var viewChangeListener: ViewChangeListener? = null
+    private var eventListener: EventListener? = null
     private lateinit var gameActivity: GameActivity
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is ViewChangeListener) {
-            viewChangeListener = context
+        if (context is EventListener) {
+            eventListener = context
         } else {
             throw RuntimeException("$context must implement UserInputListener")
         }
     }
     override fun onDetach() {
         super.onDetach()
-        viewChangeListener = null
+        eventListener = null
     }
 
 
@@ -48,11 +55,11 @@ class HomeView : Fragment() {
         val infoBtnDaily:ImageButton=view.findViewById<ImageButton>(R.id.info_daily)
 
         playFriendBtn.setOnClickListener {
-            viewChangeListener?.onUserInput(UserInputEvent.SELECT_THEME)
+            eventListener?.onUserInput(UserInputEvent.SELECT_THEME)
         }
 
         playDailyBtn.setOnClickListener {
-            viewChangeListener?.onUserInput(UserInputEvent.LOAD_DAILY_QUIZ)
+            eventListener?.onUserInput(UserInputEvent.LOAD_DAILY_QUIZ)
         }
 
         infoBtnPlay.setOnClickListener {
