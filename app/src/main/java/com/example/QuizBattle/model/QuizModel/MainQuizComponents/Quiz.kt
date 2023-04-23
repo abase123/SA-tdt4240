@@ -1,8 +1,8 @@
-package com.example.QuizBattle.model.QuizModel
+package com.example.QuizBattle.model.QuizModel.MainQuizComponents
 
 
 // Composite Class: Quiz
-class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponent {
+class Quiz(type:String, id:String, difficulty:String,theme:String) {
     private  var quizType:String
     private  var quizId:String
     private  var questions: MutableList<Question>
@@ -29,7 +29,7 @@ class Quiz(type:String, id:String, difficulty:String,theme:String): QuizComponen
     fun getDiff():String{
         return quizDifficulty
     }
-    override fun getId(): String {
+    fun getId(): String {
         return quizId
     }
     fun getQuestions():MutableList<Question>{

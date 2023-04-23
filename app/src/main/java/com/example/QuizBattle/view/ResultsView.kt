@@ -128,7 +128,6 @@ class ResultsView:Fragment()
         val valueAnimator = ValueAnimator.ofInt(0, targetNumber).apply {
             duration = animationDuration
             addUpdateListener { animation ->
-                val currentValue = animation.animatedValue as Int
                 pointsGainedText.text = "Points achieved: $targetNumber"
                 numCorrectTextView.text= pointsGained.getNumCorrectAnswer().toString() + "/" + quizLength.toString() + "Correct Answers!"
             }

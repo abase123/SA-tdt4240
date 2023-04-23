@@ -1,7 +1,8 @@
 package com.example.QuizBattle.model.FirestoreRepoes
-import com.example.QuizBattle.model.QuizModel.Option
-import com.example.QuizBattle.model.QuizModel.Question
-import com.example.QuizBattle.model.QuizModel.Quiz
+import com.example.QuizBattle.model.QuizModel.*
+import com.example.QuizBattle.model.QuizModel.MainQuizComponents.Option
+import com.example.QuizBattle.model.QuizModel.MainQuizComponents.Question
+import com.example.QuizBattle.model.QuizModel.MainQuizComponents.Quiz
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.coroutines.resume
@@ -19,6 +20,7 @@ class FirestoreRepoQuiz(dataBasePath:String) {
 
     private val database = FirebaseFirestore.getInstance()
     private val quizRef = database.collection(dataBasePath)
+
     suspend fun loadQuizById(quizId: String): Quiz {
         return suspendCoroutine { continuation ->
             quizRef.document(quizId).get().addOnSuccessListener { documentSnapshot ->
@@ -57,9 +59,12 @@ class FirestoreRepoQuiz(dataBasePath:String) {
         val type = snapshot.get("Type") as String
         val theme = snapshot.get("Theme") as String
         val diff = snapshot.getString("Diff") as String
-        return Quiz(type, id, diff, theme)
+
+        val quizBuilder = QuizBuilder(type, id, diff, theme)
+        return quizBuilder.build()
     }
-    suspend fun loadQuestions(quiz: Quiz):MutableList<Question>{
+
+    suspend fun loadQuestions(quiz: Quiz): MutableList<Question> {
         return suspendCoroutine { continuation ->
             quizRef.document(quiz.getId()).collection("questions").get()
                 .addOnSuccessListener { querySnapshot ->
@@ -73,11 +78,14 @@ class FirestoreRepoQuiz(dataBasePath:String) {
                 }
         }
     }
+
     private fun documentToQuestion(document: DocumentSnapshot): Question {
         val questionId = document.id
         val questionText = document.get("text") as String
         val correctAnswer = document.get("correctAnswer") as String
-        val question= Question(questionId,questionText,correctAnswer)
+
+        val questionBuilder = QuestionBuilder(questionId, questionText, correctAnswer)
+
         val options = listOf(
             Option(document.getString("option1") as String),
             Option(document.getString("option2") as String),
@@ -85,10 +93,7 @@ class FirestoreRepoQuiz(dataBasePath:String) {
             Option(document.getString("option4") as String)
         )
 
-        options.forEach { option -> question.addOption(option) }
-        return question
-
+        options.forEach { option -> questionBuilder.addOption(option) }
+        return questionBuilder.build()
     }
-
-
 }

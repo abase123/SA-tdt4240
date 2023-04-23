@@ -8,7 +8,7 @@ import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.GameState
 import com.example.QuizBattle.model.QuizModel.QuizHolder
-import com.example.QuizBattle.model.QuizModel.Question
+import com.example.QuizBattle.model.QuizModel.MainQuizComponents.Question
 /**
 
 The PlayQuiz class handles the logic for playing a quiz, including presenting questions,

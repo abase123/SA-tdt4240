@@ -29,7 +29,7 @@ class HandleQuizResults(override var quizHolder: QuizHolder, private var playerV
             if (quizHolder.quiz.getType()=="Daily"){
                 handleDailyResults(context,player)
             }
-            showResults(player.allTimeScore, quizHolder.gainedPoints, context)
+            showResults( quizHolder.gainedPoints, context)
         }
     }
 
@@ -39,16 +39,16 @@ class HandleQuizResults(override var quizHolder: QuizHolder, private var playerV
             player.allTimeScore=player.allTimeScore+quizHolder.gainedPoints.getScore()
             player.numQuizzesTaken+=1
             updateFireStore(player)
-            showResults(player.allTimeScore, quizHolder.gainedPoints, context)
+            showResults(quizHolder.gainedPoints, context)
         } else {
-            showResults(player.allTimeScore, quizHolder.gainedPoints, context)
+            showResults(quizHolder.gainedPoints, context)
         }
     }
 
     private fun updateFireStore(player: Player){
        playerViewModel.updatePlayerDataInFirestore(player)
     }
-    private fun showResults(score:Int ,pointsGained:GainedPoints,context: GameActivity){
+    private fun showResults(pointsGained:GainedPoints,context: GameActivity){
         val currentFragment=getCurrentFragment(context)
         (currentFragment as? ResultsView)?.presentQuizResults(pointsGained,quizHolder.timer.getTotalTimeUsed(), quizHolder.quiz.getQuestionsLength())
     }

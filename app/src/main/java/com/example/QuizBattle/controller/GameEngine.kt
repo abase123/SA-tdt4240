@@ -7,7 +7,7 @@ import com.example.QuizBattle.controller.gameStates.PlayQuizState.PlayQuiz
 import com.example.QuizBattle.controller.gameStates.LoadPlayGroundQuiz
 import com.example.QuizBattle.controller.gameStates.HandleQuizResults
 import com.example.QuizBattle.model.QuizModel.GainedPoints
-import com.example.QuizBattle.model.QuizModel.Quiz
+import com.example.QuizBattle.model.QuizModel.MainQuizComponents.Quiz
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.model.QuizModel.QuizTimer
 import kotlinx.coroutines.flow.first

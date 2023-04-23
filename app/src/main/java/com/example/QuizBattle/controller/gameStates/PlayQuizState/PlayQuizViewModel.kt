@@ -3,7 +3,7 @@ package com.example.QuizBattle.controller.gameStates.PlayQuizState
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.QuizBattle.model.QuizModel.Question
+import com.example.QuizBattle.model.QuizModel.MainQuizComponents.Question
 /**
 
 PlayQuizViewModel is a ViewModel class for managing the UI state during the PlayQuiz game state.

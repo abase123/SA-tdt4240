@@ -13,7 +13,10 @@ import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.UserInputEvent
 import com.example.QuizBattle.controller.EventListener
+/**
 
+This class represents the fragment responsible for displaying the screen where the user can choose a theme for the quiz. It listens for user input to change the theme and load the quiz questions based on the selected theme. It also communicates with the GameActivity to indicate the loading state. The OnThemeChangeListener interface is implemented to notify other components of the application about the theme change.
+ */
 
 class ChooseThemeView : Fragment(){
     private var eventListener: EventListener? = null
@@ -53,7 +56,6 @@ class ChooseThemeView : Fragment(){
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         setup(view)
         gameActivity = activity as GameActivity
         gameActivity.gameEngine.fragmentLoadingState.setLoading(false)
