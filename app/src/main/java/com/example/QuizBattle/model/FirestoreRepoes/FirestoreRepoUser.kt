@@ -81,6 +81,17 @@ class FirestoreRepoUser {
         }
     }
 
+    suspend fun getAllFriendRequests(): List<FriendRequest>? {
+        val querySnapshot = db.collection("friendRequests")
+            .get()
+            .await()
+        return if (!querySnapshot.isEmpty) {
+            querySnapshot.toObjects(FriendRequest::class.java)
+        } else {
+            null
+        }
+    }
+
     suspend fun removeFriendRequest(friendRequest: FriendRequest) {
         db.collection("friendRequests")
             .whereEqualTo("receiverId", friendRequest.receiverId)
@@ -96,11 +107,11 @@ class FirestoreRepoUser {
             }
     }
 
-    suspend fun searchUsersByName(name: String): MutableList<Player> {
+    suspend fun searchUsersByEmail(email: String): MutableList<Player> {
         val querySnapshot = userCollection
-            .orderBy("displayName")
-            .startAt(name)
-            .endAt(name + "\uf8ff")
+            .orderBy("userEmail")
+            .startAt(email.lowercase())
+            .endAt(email.lowercase() + "\uf8ff")
             .get()
             .await()
 

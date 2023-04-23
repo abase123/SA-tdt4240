@@ -2,6 +2,7 @@ package com.example.QuizBattle.controller.FriendframgmentsControllers
 
 import android.util.Log
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.QuizBattle.R
 import com.example.QuizBattle.databinding.FragmentSearchFriendsBinding
@@ -35,9 +36,10 @@ class SearchFController (private val adapter: SearchFriendsAdapter){
             if (user != null) {
                 currentUser = firestoreRepoUser.getAsPlayer(user.uid)
                 if (currentUser != null) {
-                    // Query Firestore to search for players with matching display names
-                    val players = firestoreRepoUser.searchUsersByName(query)
+                    // Query Firestore to search for players with matching emails
+                    val players = firestoreRepoUser.searchUsersByEmail(query)
                     getFriendList(players, currentUser!!)
+
                 }
             }
         }
@@ -49,11 +51,16 @@ class SearchFController (private val adapter: SearchFriendsAdapter){
             // Get friend list for current user
             firestoreRepoUser.getFriendList(userId)?.let { friendList ->
                 val friendEmails = friendList.friendsList.map { it.userEmail }
-
                 // Add players who are not already friends
                 val playersList =
                     players.filter { it.userEmail != currentUser.userEmail && it.userEmail !in friendEmails }
-                adapter.setPlayers(playersList.toMutableList())
+                playersList.let { playersList ->
+                    val allFriendRequests = firestoreRepoUser.getAllFriendRequests()
+                    if(allFriendRequests!!.none {(it.senderId==playersList.get(0).userUid && it.receiverId == userId)
+                                || (it.senderId == userId && it.receiverId == playersList.get(0).userUid)}){
+                        adapter.setPlayers(playersList.toMutableList())
+                        }
+                }
                 searchCallback?.onSearchComplete()
             }
         }
@@ -78,8 +85,9 @@ class SearchFController (private val adapter: SearchFriendsAdapter){
             for (document in querySnapshot.documents) {
                 val receiverId = document.id
                 coroutineScope.launch {
+                    val currentUser = firestoreRepoUser.getAsPlayer(auth.currentUser?.uid!!)
                     val friendRequests = firestoreRepoUser.getFriendRequests(receiverId)
-                    if (friendRequests == null || friendRequests.none { it.senderId == auth.currentUser!!.uid }) {
+                    if (friendRequests == null || friendRequests.none { it.senderId == currentUser?.userUid }) {
                         sendRequest(holder, receiverId)
                     }
                 }
@@ -100,6 +108,7 @@ class SearchFController (private val adapter: SearchFriendsAdapter){
             try {
                 firestoreRepoUser.sendFriendRequest(auth.currentUser!!.uid, receiverId)
                 disableButton(holder)
+
             } catch (e: Exception) {
                 val binding = FragmentSearchFriendsBinding.inflate(
                     LayoutInflater.from(holder.itemView.context)

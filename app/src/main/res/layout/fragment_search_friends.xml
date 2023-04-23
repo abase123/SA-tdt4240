@@ -8,7 +8,7 @@
             android:id="@+id/etSearch"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Enter username"
+            android:hint="Enter email"
             android:inputType="text"
             android:maxLines="1"
             android:layout_marginStart="8dp"
