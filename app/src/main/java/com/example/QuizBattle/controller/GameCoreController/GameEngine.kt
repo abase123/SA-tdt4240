@@ -1,4 +1,4 @@
-package com.example.QuizBattle.controller
+package com.example.QuizBattle.controller.GameCoreController
 
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.example.QuizBattle.controller.ScreenAndMediaControllers.ScreenNavigator
@@ -14,7 +14,10 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import com.example.QuizBattle.controller.*
 import com.example.QuizBattle.controller.gameStates.SelectTheme.SelectTheme
+import dagger.hilt.android.scopes.ActivityScoped
+import javax.inject.Inject
 
 
 /**
@@ -24,18 +27,17 @@ within a quiz-based game. It utilizes a ScreenNavigator to handle fragment navig
 the PlayerViewModel to manage player data. This class also coordinates the game states, which are represented
 by GameState objects, and handles UserInputEvents to drive game progression.
  */
-
-class GameEngine(
+@ActivityScoped
+class GameEngine @Inject constructor(
     private val context: GameActivity,
     private val lifecycleScope: LifecycleCoroutineScope,
-    viewModelStoreOwner: ViewModelStoreOwner
+    private val playerViewModel: PlayerViewModel,
+    private val screenNavigator: ScreenNavigator,
+    val fragmentLoadingState: FragmentLoadingState
 ){
     private lateinit var state: GameState
     private var quizHolder = QuizHolder("", Quiz("xx", "xx", "xx", "xx"),
         GainedPoints(0,0), QuizTimer())
-    private val playerViewModel: PlayerViewModel = ViewModelProvider(viewModelStoreOwner)[PlayerViewModel::class.java]
-    val fragmentLoadingState = FragmentLoadingState()
-    private val screenNavigator = ScreenNavigator(context, fragmentLoadingState)
 
     init {
         playerViewModel.loadPlayerData()

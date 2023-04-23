@@ -18,8 +18,8 @@ import com.example.QuizBattle.R
 import androidx.core.content.ContextCompat
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.gameStates.PlayQuizState.PlayQuizViewModel
-import com.example.QuizBattle.controller.UserInputEvent
-import com.example.QuizBattle.controller.EventListener
+import com.example.QuizBattle.controller.GameCoreController.UserInputEvent
+import com.example.QuizBattle.controller.GameCoreController.EventListener
 
 /**
 

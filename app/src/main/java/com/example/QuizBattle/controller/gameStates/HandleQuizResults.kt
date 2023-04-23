@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
-import com.example.QuizBattle.controller.GameState
-import com.example.QuizBattle.controller.PlayerViewModel
+import com.example.QuizBattle.controller.GameCoreController.GameState
+import com.example.QuizBattle.controller.GameCoreController.PlayerViewModel
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.QuizHolder

@@ -1,5 +1,6 @@
-package com.example.QuizBattle.controller
+package com.example.QuizBattle.controller.GameCoreController
 
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 /**
 The GameState interface represents a specific game state within the quiz-based game. It provides a handleState

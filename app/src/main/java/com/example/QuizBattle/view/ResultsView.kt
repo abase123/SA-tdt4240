@@ -16,8 +16,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
-import com.example.QuizBattle.controller.UserInputEvent
-import com.example.QuizBattle.controller.EventListener
+import com.example.QuizBattle.controller.GameCoreController.UserInputEvent
+import com.example.QuizBattle.controller.GameCoreController.EventListener
 import com.example.QuizBattle.model.QuizModel.GainedPoints
 
 import nl.dionsegijn.konfetti.models.Shape

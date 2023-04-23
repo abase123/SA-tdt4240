@@ -1,4 +1,4 @@
-package com.example.QuizBattle.controller
+package com.example.QuizBattle.controller.GameCoreController
 
 import android.util.Log
 import androidx.lifecycle.LiveData

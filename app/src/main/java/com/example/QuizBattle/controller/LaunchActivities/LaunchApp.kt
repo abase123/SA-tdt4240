@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
-import com.example.QuizBattle.controller.GameState
+import com.example.QuizBattle.controller.GameCoreController.GameState
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch

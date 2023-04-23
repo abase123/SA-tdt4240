@@ -6,8 +6,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
-import com.example.QuizBattle.controller.UserInputEvent
-import com.example.QuizBattle.controller.FragmentLoadingState
+import com.example.QuizBattle.controller.GameCoreController.UserInputEvent
+import com.example.QuizBattle.controller.GameCoreController.FragmentLoadingState
 import com.google.android.material.bottomnavigation.BottomNavigationView
 /**
 

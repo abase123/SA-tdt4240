@@ -1,6 +1,6 @@
 package com.example.QuizBattle.view
 
-import OnThemeChangeListener
+import com.example.QuizBattle.controller.gameStates.SelectTheme.OnThemeChangeListener
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,14 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
-import com.example.QuizBattle.controller.UserInputEvent
-import com.example.QuizBattle.controller.EventListener
+import com.example.QuizBattle.controller.GameCoreController.UserInputEvent
+import com.example.QuizBattle.controller.GameCoreController.EventListener
 /**
 
-This class represents the fragment responsible for displaying the screen where the user can choose a theme for the quiz. It listens for user input to change the theme and load the quiz questions based on the selected theme. It also communicates with the GameActivity to indicate the loading state. The OnThemeChangeListener interface is implemented to notify other components of the application about the theme change.
+This class represents the fragment responsible for displaying the screen where the user can choose a theme for the quiz. It listens for user input to change the theme and load the quiz questions based on the selected theme. It also communicates with the GameActivity to indicate the loading state. The com.example.QuizBattle.controller.gameStates.SelectTheme.OnThemeChangeListener interface is implemented to notify other components of the application about the theme change.
  */
 
 class ChooseThemeView : Fragment(){

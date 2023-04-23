@@ -8,7 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoQuiz
 import com.example.QuizBattle.controller.GameActivity
-import com.example.QuizBattle.controller.GameState
+import com.example.QuizBattle.controller.GameCoreController.GameState
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.view.LoadingQuizView
 import kotlinx.coroutines.Dispatchers

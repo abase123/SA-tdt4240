@@ -4,7 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.QuizBattle.R
-import com.google.firebase.messaging.FirebaseMessaging
+import com.example.QuizBattle.controller.GameCoreController.EventListener
+import com.example.QuizBattle.controller.GameCoreController.GameEngine
+import com.example.QuizBattle.controller.GameCoreController.UserInputEvent
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 /**
@@ -15,14 +19,15 @@ game's core logic. It implements the EventListener interface to handle UserInput
 the event handling to the GameEngine.
  */
 
+
+@AndroidEntryPoint
 class GameActivity : AppCompatActivity(), EventListener {
-     lateinit var gameEngine: GameEngine
+    @Inject
+    lateinit var gameEngine: GameEngine
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        gameEngine = GameEngine(this, lifecycleScope, this)
-        FirebaseMessaging.getInstance().subscribeToTopic("new_quiz");
     }
 
     override fun onUserInput(event: UserInputEvent) {

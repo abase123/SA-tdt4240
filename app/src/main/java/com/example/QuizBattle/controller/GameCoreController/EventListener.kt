@@ -1,4 +1,4 @@
-package com.example.QuizBattle.controller
+package com.example.QuizBattle.controller.GameCoreController
 
 /**
 
@@ -21,5 +21,5 @@ enum class UserInputEvent{
 }
 
 interface EventListener {
-     fun onUserInput(event:UserInputEvent)
+     fun onUserInput(event: UserInputEvent)
 }

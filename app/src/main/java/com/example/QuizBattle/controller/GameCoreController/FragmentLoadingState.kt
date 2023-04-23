@@ -1,4 +1,4 @@
-package com.example.QuizBattle.controller
+package com.example.QuizBattle.controller.GameCoreController
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
