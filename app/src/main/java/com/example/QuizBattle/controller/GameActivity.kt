@@ -27,7 +27,9 @@ class GameActivity : AppCompatActivity(), EventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        gameEngine = GameEngine(this, lifecycleScope, this)
+
+        val myApp = applicationContext as QuizBattleApplication
+        gameEngine = myApp.gameEngineFactory(this, lifecycleScope, this)
     }
 
     override fun onUserInput(event: UserInputEvent) {

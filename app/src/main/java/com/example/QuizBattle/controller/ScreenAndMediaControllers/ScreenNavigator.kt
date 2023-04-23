@@ -1,5 +1,6 @@
 package com.example.QuizBattle.controller.ScreenAndMediaControllers
 
+import android.content.Context
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -18,8 +19,7 @@ based on user input events, manage bottom navigation visibility, and control bac
 @param fragmentLoading A helper class to handle loading states of fragments.
  */
 
-
-class ScreenNavigator(private val gameActivity: GameActivity, private  val fragmentLoading: FragmentLoading) {
+class ScreenNavigator(private val gameActivity: GameActivity, private val fragmentLoading: FragmentLoading) {
     private val mediaController: MediaController = MediaController(gameActivity)
    private lateinit var bottomNavigationMenu:BottomNavigationView
 
