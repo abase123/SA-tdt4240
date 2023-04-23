@@ -23,7 +23,7 @@ private val db = FirebaseFirestore.getInstance()
 private val friendListController = FriendListController(auth, db)
 private val coroutineScope = CoroutineScope(Dispatchers.Main)
 private lateinit var friendsListAdapter: FriendsListAdapter
-    private lateinit var friendRequestsView: FriendsRequestsView
+private lateinit var friendRequestsView: FriendsRequestsView
 
 override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,

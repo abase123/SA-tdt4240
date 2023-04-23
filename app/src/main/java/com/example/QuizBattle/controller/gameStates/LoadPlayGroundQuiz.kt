@@ -1,6 +1,6 @@
 package com.example.QuizBattle.controller.gameStates
 
-import android.app.AlertDialog
+
 import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -14,7 +14,15 @@ import com.example.QuizBattle.model.QuizModel.QuizHolder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+/**
 
+LoadPlayGroundQuiz is a class responsible for loading a playground quiz
+from Firestore based on the chosen theme by the user. This class handles
+the state of loading the playground quiz, updates the quiz holder with
+the fetched quiz data, and interacts with the UI to show the status of
+the quiz loading process.
+@property quizHolder Holds the current quiz data, including the chosen theme.
+ */
 class LoadPlayGroundQuiz(override var quizHolder: QuizHolder) : GameState {
     private val repoPlayGroundQuiz: FirestoreRepoQuiz = FirestoreRepoQuiz("playGround_quiz")
     override fun handleState(context: GameActivity) {

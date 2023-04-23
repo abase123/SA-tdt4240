@@ -5,7 +5,7 @@ import com.example.QuizBattle.controller.ScreenAndMediaControllers.ScreenNavigat
 import com.example.QuizBattle.controller.gameStates.LoadDailyQuiz
 import com.example.QuizBattle.controller.gameStates.PlayQuizState.PlayQuiz
 import com.example.QuizBattle.controller.gameStates.LoadPlayGroundQuiz
-import com.example.QuizBattle.controller.gameStates.PresentQuizResults
+import com.example.QuizBattle.controller.gameStates.HandleQuizResults
 import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.Quiz
 import com.example.QuizBattle.model.QuizModel.QuizHolder
@@ -56,7 +56,7 @@ class GameEngine(
                 UserInputEvent.SELECT_THEME -> newState(SelectTheme(quizHolder))
                 UserInputEvent.LOAD_PLAYGROUND_QUIZ -> newState(LoadPlayGroundQuiz(quizHolder))
                 UserInputEvent.PLAY_PLAYGROUND -> newState(PlayQuiz(quizHolder))
-                UserInputEvent.RESULTS -> newState(PresentQuizResults(quizHolder, playerViewModel))
+                UserInputEvent.RESULTS -> newState(HandleQuizResults(quizHolder, playerViewModel))
                 UserInputEvent.RETURN_HOME -> return@launch
             }
         }

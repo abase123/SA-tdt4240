@@ -11,7 +11,16 @@ import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 import com.example.QuizBattle.view.ResultsView
 
-class PresentQuizResults(override var quizHolder: QuizHolder, private var playerViewModel: PlayerViewModel) : GameState {
+/**
+ * HandleQuizResults is a class responsible for handling and updating the quiz results
+ * after a quiz is completed. It is used for both daily and playground quizzes.
+ * The class is responsible for updating player statistics, presenting the results
+ * to the user, and updating the player data in Firestore if necessary.
+ *
+ * @property quizHolder Holds the current quiz data, including gained points and timer.
+ * @property playerViewModel ViewModel instance to interact with the player data and Firestore.
+ */
+class HandleQuizResults(override var quizHolder: QuizHolder, private var playerViewModel: PlayerViewModel) : GameState {
 
     override fun handleState(context: GameActivity) {
         val player= playerViewModel.player.value
