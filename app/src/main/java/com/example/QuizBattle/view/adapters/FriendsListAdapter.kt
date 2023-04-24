@@ -46,6 +46,7 @@ class FriendsListAdapter(private val friendListController: FriendListController)
         holder.bind(friend)
 
         holder.itemView.findViewById<TextView>(R.id.usernameUsercard).text = friend?.displayName
+        holder.itemView.findViewById<TextView>(R.id.userScore).text= "AllTimeScore: " + friend?.allTimeScore.toString()
 
     }
 

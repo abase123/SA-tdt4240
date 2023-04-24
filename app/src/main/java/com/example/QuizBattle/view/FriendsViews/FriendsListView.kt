@@ -11,7 +11,6 @@ import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.FriendControllers.FriendListController
 import com.example.QuizBattle.view.adapters.FriendsListAdapter
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -19,7 +18,6 @@ import kotlinx.coroutines.launch
 
 class FriendsListView : Fragment() {
 private val auth = FirebaseAuth.getInstance()
-private val db = FirebaseFirestore.getInstance()
 private val friendListController = FriendListController()
 private val coroutineScope = CoroutineScope(Dispatchers.Main)
 private lateinit var friendsListAdapter: FriendsListAdapter
