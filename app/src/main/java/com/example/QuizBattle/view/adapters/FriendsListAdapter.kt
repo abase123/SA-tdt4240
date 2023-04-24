@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.PlayerModel.Player
-import com.example.QuizBattle.controller.FriendframgmentsControllers.FriendListController
+import com.example.QuizBattle.controller.FriendControllers.FriendListController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

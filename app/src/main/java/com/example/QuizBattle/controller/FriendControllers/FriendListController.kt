@@ -1,13 +1,14 @@
-package com.example.QuizBattle.controller.FriendframgmentsControllers
+package com.example.QuizBattle.controller.FriendControllers
 
+import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoFriend
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 
-class FriendListController(private val auth: FirebaseAuth, private val db: FirebaseFirestore) {
+class FriendListController() {
     private val fireStoreRepoUser = FirestoreRepoUser()
-
+    private val firestoreRepoFriend = FirestoreRepoFriend()
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     suspend fun getCurrentPlayer(): Player? {
         return fireStoreRepoUser.getAsPlayer(auth.currentUser!!.uid)
     }
@@ -16,13 +17,13 @@ class FriendListController(private val auth: FirebaseAuth, private val db: Fireb
         val playerId = auth.currentUser?.uid
 
         if (playerId != null && friend != null) {
-            fireStoreRepoUser.removeFriend(playerId, friend)
+            firestoreRepoFriend.removeFriend(playerId, friend)
         }
     }
 
 
     suspend fun getFriendsList(playerId: String): MutableList<Player> {
-        return fireStoreRepoUser.getFriendList(playerId)?.friendsList ?: mutableListOf()
+        return firestoreRepoFriend.getFriendList(playerId)?.friendsList ?: mutableListOf()
     }
 
 

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
-import com.example.QuizBattle.controller.FriendframgmentsControllers.FriendListController
+import com.example.QuizBattle.controller.FriendControllers.FriendListController
 import com.example.QuizBattle.view.adapters.FriendsListAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 class FriendsListView : Fragment() {
 private val auth = FirebaseAuth.getInstance()
 private val db = FirebaseFirestore.getInstance()
-private val friendListController = FriendListController(auth, db)
+private val friendListController = FriendListController()
 private val coroutineScope = CoroutineScope(Dispatchers.Main)
 private lateinit var friendsListAdapter: FriendsListAdapter
 private lateinit var friendRequestsView: FriendsRequestsView

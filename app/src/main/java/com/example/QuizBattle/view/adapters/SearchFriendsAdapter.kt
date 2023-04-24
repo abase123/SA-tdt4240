@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.PlayerModel.Player
-import com.example.QuizBattle.controller.FriendframgmentsControllers.SearchFController
+import com.example.QuizBattle.controller.FriendControllers.SearchFController
 
 class SearchFriendsAdapter : RecyclerView.Adapter<SearchFriendsAdapter.PlayerViewHolder>() {
 
