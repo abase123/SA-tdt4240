@@ -23,7 +23,6 @@ import kotlinx.coroutines.launch
 
 @SuppressLint("CustomSplashScreen")
 class LaunchActivity:AppCompatActivity() {
-    private lateinit var currentState: GameState
     private lateinit var mAuth:FirebaseAuth
     private val firebaseRepoUser: FirestoreRepoUser = FirestoreRepoUser()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +53,7 @@ class LaunchActivity:AppCompatActivity() {
     }
 
 
+    // extra check on whether the user is in firestore database.
     private suspend fun addUserToFireStore(uid: String) {
         val userSnapshot = firebaseRepoUser.getUser(uid)
         if (!userSnapshot.exists()) {

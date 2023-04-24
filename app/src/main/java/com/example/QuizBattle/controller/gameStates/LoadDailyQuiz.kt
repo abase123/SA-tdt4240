@@ -28,6 +28,7 @@ the LoadingQuizView class to show the status of the quiz loading process.
 class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
     private val repoDailyQuiz: FirestoreRepoQuiz = FirestoreRepoQuiz("daily_quizzes")
     override fun handleState(context: GameActivity) {
+        // In the real application the getTodaysQuizId will be called to find the active quiz.
         val quizId = "20230412" //getTodaysQuizID()
         loadQuizFromFirebase(context, repoDailyQuiz, quizId)
     }
@@ -65,7 +66,7 @@ class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
     }
 
 
-    private fun getCurrentFragment(context: GameActivity): Fragment {
+    override fun getCurrentFragment(context: GameActivity): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.childFragmentManager.fragments[0]
     }

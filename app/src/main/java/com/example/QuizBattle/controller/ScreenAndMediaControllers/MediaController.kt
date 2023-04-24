@@ -50,11 +50,4 @@ class MediaController(private val context: GameActivity)
         mediaPlayer?.pause()
     }
 
-    fun stop(){
-        mediaPlayer?.stop()
-    }
-    fun release(){
-        mediaPlayer?.release()
-        mediaPlayer=null
-    }
 }
