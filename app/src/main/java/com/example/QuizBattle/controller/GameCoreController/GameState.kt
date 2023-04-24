@@ -12,5 +12,4 @@ to store and manage the current QuizHolder object throughout the game.
 interface GameState {
    fun handleState(context: GameActivity)
    var quizHolder: QuizHolder
-
 }

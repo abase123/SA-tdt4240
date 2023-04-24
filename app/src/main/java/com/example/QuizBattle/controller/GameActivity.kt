@@ -3,13 +3,11 @@ package com.example.QuizBattle.controller
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.QuizBattle.QuizBattleApplication
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameCoreController.EventListener
 import com.example.QuizBattle.controller.GameCoreController.GameEngine
 import com.example.QuizBattle.controller.GameCoreController.UserInputEvent
-import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
 
 
 /**

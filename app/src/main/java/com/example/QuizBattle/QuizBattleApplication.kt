@@ -1,12 +1,13 @@
-package com.example.QuizBattle.controller
+package com.example.QuizBattle
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.GameCoreController.FragmentLoading
 import com.example.QuizBattle.controller.GameCoreController.GameEngine
+import com.example.QuizBattle.controller.PlayerViewModel
 import com.example.QuizBattle.controller.ScreenAndMediaControllers.ScreenNavigator
 /**
  * The QuizBattleApplication class is a custom application class that manages the initialization
