@@ -17,10 +17,8 @@ import com.example.QuizBattle.view.FriendsViews.FriendsRequestsView
 import com.example.QuizBattle.view.FriendsViews.SearchFriendsView
 import com.google.android.material.tabs.TabLayout
 
-
 private lateinit var tabLayout: TabLayout
 private lateinit var viewPager: ViewPager
-
 
 class FriendsView : Fragment(){
     private lateinit var playerViewModel: PlayerViewModel
@@ -62,7 +60,6 @@ class FriendsView : Fragment(){
                 numQuizTakenText.text=it.numQuizzesTaken.toString()
             }
         }
-
     }
 
     // PagerAdapter for the ViewPager

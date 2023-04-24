@@ -14,11 +14,9 @@ import com.example.QuizBattle.view.adapters.FriendRequestsAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 
-
 class FriendsRequestsView() : Fragment() {
     private lateinit var rvFriendRequests: RecyclerView
     private val friendRequestsList = mutableListOf<FriendRequest>()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +48,6 @@ class FriendsRequestsView() : Fragment() {
             friendRequestsList.addAll(friendRequests)
             friendRequestsAdapter.notifyDataSetChanged()
         }
-
 
         return view
     }

@@ -64,6 +64,4 @@ class FriendRequestsAdapter(private val friendRequests: List<FriendRequest>, pri
     override fun getItemCount(): Int {
         return friendRequests.size
     }
-
-
 }

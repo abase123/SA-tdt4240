@@ -115,6 +115,7 @@ class FirestoreRepoFriend {
                 val newFriendList = FriendList(senderId, mutableListOf(receiver))
                 updateFriendList(senderId, newFriendList)
             }
+            removeFriendRequest(friendRequest)
         }
     }
 

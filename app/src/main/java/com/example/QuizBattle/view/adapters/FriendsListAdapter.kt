@@ -58,9 +58,4 @@ class FriendsListAdapter(private val friendListController: FriendListController)
         this.friendsList = friendsList
         notifyDataSetChanged()
     }
-
-    fun clearFriendsList() {
-        this.friendsList = mutableListOf()
-        notifyDataSetChanged()
-    }
 }
