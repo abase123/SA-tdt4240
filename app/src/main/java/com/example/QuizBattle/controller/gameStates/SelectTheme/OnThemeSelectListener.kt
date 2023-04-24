@@ -1,9 +1,9 @@
 package com.example.QuizBattle.controller.gameStates.SelectTheme
 
-interface OnThemeChangeListener {
+interface OnThemeSelectListener {
     /*
     This method is called when a theme change event occurs.
     @param theme The new theme that has been selected.
     */
-    fun onThemeChanged(theme: String)
+    fun onThemeSelected(theme: String)
 }

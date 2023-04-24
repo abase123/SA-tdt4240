@@ -49,7 +49,7 @@ class PlayQuiz(override var quizHolder:QuizHolder) : GameState {
     }
 
 
-    private fun calTimePenalty():Float{
+    private fun calculateTimePenalty():Float{
         val timeUsed=quizHolder.timer.getElapsedTime()
         Log.d("timeUsed", "Quiz accessed: $timeUsed")
         val penalty= (10-timeUsed) / 10.0f
@@ -60,7 +60,7 @@ class PlayQuiz(override var quizHolder:QuizHolder) : GameState {
     }
     fun checkAnswer(choseOption:String):Boolean{
         val isCorrectOption=choseOption==activeQuestion.getCorrectAnswer()
-        val timePenalty = calTimePenalty()
+        val timePenalty = calculateTimePenalty()
         val pointsToAdd= (200f * timePenalty)
         quizHolder.timer.resetTimer()
         if(isCorrectOption){
@@ -90,7 +90,7 @@ class PlayQuiz(override var quizHolder:QuizHolder) : GameState {
         playDailyQuizViewModel.endQuiz(quizEnded)
     }
 
-    private fun getCurrentFragment(context: GameActivity): Fragment {
+    override fun getCurrentFragment(context: GameActivity): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.childFragmentManager.fragments[0]
     }

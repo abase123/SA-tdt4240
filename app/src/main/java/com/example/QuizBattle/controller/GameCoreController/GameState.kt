@@ -1,5 +1,6 @@
 package com.example.QuizBattle.controller.GameCoreController
 
+import androidx.fragment.app.Fragment
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 /**
@@ -11,5 +12,8 @@ to store and manage the current QuizHolder object throughout the game.
 
 interface GameState {
    fun handleState(context: GameActivity)
+   fun getCurrentFragment(context: GameActivity): Fragment
    var quizHolder: QuizHolder
+
+
 }

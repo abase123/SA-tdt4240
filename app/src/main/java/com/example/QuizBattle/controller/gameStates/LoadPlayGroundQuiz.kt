@@ -52,7 +52,7 @@ class LoadPlayGroundQuiz(override var quizHolder: QuizHolder) : GameState {
         val currentFragment=getCurrentFragment(context)
         (currentFragment as? LoadingPlaygroundQuizView)?.onQuizNotAvailable()
     }
-    private fun getCurrentFragment(context: GameActivity): Fragment {
+    override fun getCurrentFragment(context: GameActivity): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.childFragmentManager.fragments[0]
     }

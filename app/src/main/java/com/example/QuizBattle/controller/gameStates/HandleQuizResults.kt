@@ -23,11 +23,11 @@ import com.example.QuizBattle.view.ResultsView
 class HandleQuizResults(override var quizHolder: QuizHolder, private var playerViewModel: PlayerViewModel) : GameState {
 
     override fun handleState(context: GameActivity) {
-        val player= playerViewModel.player.value
+        val currentPlayer= playerViewModel.player.value
 
-        if (player!=null){
+        if (currentPlayer!=null){
             if (quizHolder.quiz.getType()=="Daily"){
-                handleDailyResults(context,player)
+                handleDailyResults(context,currentPlayer)
             }
             showResults( quizHolder.gainedPoints, context)
         }
@@ -53,7 +53,7 @@ class HandleQuizResults(override var quizHolder: QuizHolder, private var playerV
         (currentFragment as? ResultsView)?.presentQuizResults(pointsGained,quizHolder.timer.getTotalTimeUsed(), quizHolder.quiz.getQuestionsLength())
     }
 
-    private fun getCurrentFragment(context: GameActivity): Fragment {
+    override fun getCurrentFragment(context: GameActivity): Fragment {
         val navHostFragment = context.supportFragmentManager.findFragmentById(R.id.mainPageFragment) as NavHostFragment
         return navHostFragment.childFragmentManager.fragments[0]
     }

@@ -1,6 +1,6 @@
 package com.example.QuizBattle.view
 
-import com.example.QuizBattle.controller.gameStates.SelectTheme.OnThemeChangeListener
+import com.example.QuizBattle.controller.gameStates.SelectTheme.OnThemeSelectListener
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,12 +14,12 @@ import com.example.QuizBattle.controller.GameCoreController.UserInputEvent
 import com.example.QuizBattle.controller.GameCoreController.EventListener
 /**
 
-This class represents the fragment responsible for displaying the screen where the user can choose a theme for the quiz. It listens for user input to change the theme and load the quiz questions based on the selected theme. It also communicates with the GameActivity to indicate the loading state. The com.example.QuizBattle.controller.gameStates.SelectTheme.OnThemeChangeListener interface is implemented to notify other components of the application about the theme change.
+This class represents the fragment responsible for displaying the screen where the user can choose a theme for the quiz. It listens for user input to change the theme and load the quiz questions based on the selected theme. It also communicates with the GameActivity to indicate the loading state. The com.example.QuizBattle.controller.gameStates.SelectTheme.OnThemeSelectListener interface is implemented to notify other components of the application about the theme change.
  */
 
 class ChooseThemeView : Fragment(){
     private var eventListener: EventListener? = null
-    var themeChangeListener: OnThemeChangeListener? = null
+    var themeChangeListener: OnThemeSelectListener? = null
     private lateinit var gameActivity: GameActivity
     private lateinit var sportsButton: RadioButton
     private lateinit var historyButton: RadioButton
@@ -64,24 +64,24 @@ class ChooseThemeView : Fragment(){
 
     private fun listenForThemes(){
         sportsButton.setOnClickListener {
-            themeChangeListener?.onThemeChanged("Sports")
+            themeChangeListener?.onThemeSelected("Sports")
             eventListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
 
         }
 
         historyButton.setOnClickListener {
-            themeChangeListener?.onThemeChanged("History")
+            themeChangeListener?.onThemeSelected("History")
             eventListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
 
         }
 
         geographyButton.setOnClickListener {
-            themeChangeListener?.onThemeChanged("Geography")
+            themeChangeListener?.onThemeSelected("Geography")
             eventListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
         }
 
         generalKnowledgeButton.setOnClickListener {
-            themeChangeListener?.onThemeChanged("General Knowledge")
+            themeChangeListener?.onThemeSelected("General Knowledge")
             eventListener?.onUserInput(UserInputEvent.LOAD_PLAYGROUND_QUIZ)
         }
     }
