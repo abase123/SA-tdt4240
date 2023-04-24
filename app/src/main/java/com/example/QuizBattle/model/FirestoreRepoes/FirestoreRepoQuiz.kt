@@ -80,11 +80,10 @@ class FirestoreRepoQuiz(dataBasePath:String) {
     }
 
     private fun documentToQuestion(document: DocumentSnapshot): Question {
-        val questionId = document.id
         val questionText = document.get("text") as String
         val correctAnswer = document.get("correctAnswer") as String
 
-        val questionBuilder = QuestionBuilder(questionId, questionText, correctAnswer)
+        val questionBuilder = QuestionBuilder(questionText, correctAnswer)
 
         val options = listOf(
             Option(document.getString("option1") as String),

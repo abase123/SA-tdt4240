@@ -36,7 +36,7 @@ class HandleQuizResults(override var quizHolder: QuizHolder, private var playerV
     private fun handleDailyResults(context: GameActivity, player: Player){
         if (!player.dailyQuizTaken) {
             player.dailyQuizTaken=true
-            player.allTimeScore=player.allTimeScore+quizHolder.gainedPoints.getScore()
+            player.allTimeScore=player.allTimeScore+quizHolder.gainedPoints.getPoints()
             player.numQuizzesTaken+=1
             updateFireStore(player)
             showResults(quizHolder.gainedPoints, context)

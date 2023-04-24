@@ -33,7 +33,7 @@ class PlayQuiz(override var quizHolder:QuizHolder) : GameState {
      */
     override fun handleState(context: GameActivity) {
         quizEnded=false
-        quizHolder.gainedPoints.resetPoint()
+        quizHolder.gainedPoints.resetPoints()
         quizHolder.gainedPoints.resetNumCorrectAnswer()
         questionIndex=0
         quizHolder.timer.initTimer()

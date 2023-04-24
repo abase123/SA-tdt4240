@@ -12,7 +12,7 @@ A builder class for creating Question objects with options.
 
 @param correct The correct answer for the question
  */
-class QuestionBuilder(private val id: String, private val text: String, private val correct: String) {
+class QuestionBuilder(private val text: String, private val correct: String) {
     private val options = mutableListOf<Option>()
 
     fun addOption(option: Option): QuestionBuilder {
@@ -21,7 +21,7 @@ class QuestionBuilder(private val id: String, private val text: String, private 
     }
 
     fun build(): Question {
-        val question = Question(id, text, correct)
+        val question = Question(text, correct)
         question.setOptions(options)
         return question
     }

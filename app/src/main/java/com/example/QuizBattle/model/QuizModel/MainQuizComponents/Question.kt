@@ -1,8 +1,7 @@
 package com.example.QuizBattle.model.QuizModel.MainQuizComponents
 
 
-class Question(@JvmField val id: String, val text: String, private val correct: String)  {
-    private var questionId: String = id
+class Question(val text: String, correct: String)  {
     private var questionText: String = text
     private var options: MutableList<Option>  // Initialize the options list
     private var correctAnswer: String = correct

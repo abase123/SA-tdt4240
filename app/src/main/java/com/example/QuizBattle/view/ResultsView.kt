@@ -103,7 +103,7 @@ class ResultsView:Fragment()
         showGainedPoints(pointsGained, quizLength)
         showTimeUsed(timeUsed)
         Handler(Looper.getMainLooper()).postDelayed({
-            animateScoreBar(pointsGained.getScore())
+            animateScoreBar(pointsGained.getPoints())
         }, 1000)
 
         Handler(Looper.getMainLooper()).postDelayed({
@@ -122,7 +122,7 @@ class ResultsView:Fragment()
 
     @SuppressLint("SetTextI18n")
     private fun showGainedPoints(pointsGained: GainedPoints, quizLength: Int){
-        val targetNumber = pointsGained.getScore()
+        val targetNumber = pointsGained.getPoints()
         val animationDuration=2000L
 
         val valueAnimator = ValueAnimator.ofInt(0, targetNumber).apply {

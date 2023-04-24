@@ -7,15 +7,15 @@ GainedPoints is a class that keeps track of the score and the number of correct 
 
 @property numCorrectAnswer The current number of correct answers given by the user during the quiz.
  */
-class GainedPoints(private var score:Int=0,private var numCorrectAnswer:Int=0 ) {
-    fun addPoints(point:Int){
-        score += point
+class GainedPoints(private var points:Int=0, private var numCorrectAnswer:Int=0 ) {
+    fun addPoints(newPoint:Int){
+        points += newPoint
     }
-    fun getScore():Int{
-        return score
+    fun getPoints():Int{
+        return points
     }
-    fun resetPoint(){
-        score = 0
+    fun resetPoints(){
+        points = 0
     }
 
     fun incrementNumCorrectAnswer(){
