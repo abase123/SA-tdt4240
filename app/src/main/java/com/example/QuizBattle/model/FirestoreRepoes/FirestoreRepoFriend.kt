@@ -9,6 +9,11 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
+/**
+ * The FirestoreRepoFriend class handles interactions with the Firebase Firestore 'FriendList' and 'friendRequests'
+ * collections for the QuizBattle application. It includes methods for fetching, updating, adding, and removing
+ * friend lists, friend requests, and friends.
+ */
 class FirestoreRepoFriend {
     private val db = FirebaseFirestore.getInstance()
     private val friendListCollection = db.collection("FriendList")

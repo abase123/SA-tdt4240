@@ -15,7 +15,11 @@ import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
+/**
+ * The SearchFController class is responsible for managing the search functionality in the QuizBattle
+ * application. It performs searching for players based on email, sending friend requests,
+ * and updating the UI to show the results.
+ */
 class SearchFController (private val adapter: SearchFriendsAdapter){
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val firestoreRepoUser = FirestoreRepoUser()

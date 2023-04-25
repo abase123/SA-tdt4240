@@ -4,7 +4,10 @@ import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoFriend
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.google.firebase.auth.FirebaseAuth
-
+/**
+ * The FriendListController class is responsible for managing the friends list in the QuizBattle application.
+ * It handles retrieving the current player, removing friends, and getting the friends list.
+ */
 class FriendListController() {
     private val fireStoreRepoUser = FirestoreRepoUser()
     private val firestoreRepoFriend = FirestoreRepoFriend()

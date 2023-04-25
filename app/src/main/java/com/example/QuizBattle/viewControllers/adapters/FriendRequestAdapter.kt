@@ -12,7 +12,12 @@ import com.example.QuizBattle.model.FriendModel.FriendRequest
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
+/**
+ * The FriendRequestsAdapter class is a custom RecyclerView.Adapter used to display a list of friend
+ * requests within the QuizBattle application. It takes a list of FriendRequest objects and a
+ * FriendRequestClickListener as parameters. The adapter handles the layout and data binding for each
+ * friend request item, while also providing click listeners for the accept and reject actions.
+ */
 class FriendRequestsAdapter(private val friendRequests: List<FriendRequest>, private val listener: FriendRequestClickListener) :
     RecyclerView.Adapter<FriendRequestsAdapter.FriendRequestViewHolder>() {
 

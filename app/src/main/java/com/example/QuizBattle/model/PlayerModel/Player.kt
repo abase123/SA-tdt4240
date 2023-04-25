@@ -1,7 +1,15 @@
 package com.example.QuizBattle.model.PlayerModel
 
 import com.google.firebase.firestore.DocumentSnapshot
-
+/**
+ * The Player class represents a user within the QuizBattle application. It stores important
+ * information about the user, such as their unique user ID, display name, email address,
+ * all-time score, daily quiz participation, and the number of quizzes they've taken.
+ *
+ * This class includes multiple constructors for different use cases, such as creating a
+ * Player object from a DocumentSnapshot (for Firestore deserialization), an empty constructor
+ * for Firestore deserialization, and a primary constructor for general use.
+ */
 class Player(
     var userUid:String,
     var displayName: String,

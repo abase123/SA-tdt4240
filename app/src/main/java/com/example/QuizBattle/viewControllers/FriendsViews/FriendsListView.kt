@@ -15,7 +15,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-
+/**
+ * The FriendsListView class is a Fragment used to display a list of friends within the QuizBattle
+ * application. It shows the friends list for the current user, allowing them to manage their friends
+ * and view friend requests. This Fragment utilizes a FriendsListAdapter to display the friends list
+ * and a FriendsRequestsView to handle incoming friend requests.
+ */
 class FriendsListView : Fragment() {
 private val auth = FirebaseAuth.getInstance()
 private val friendListController = FriendListController()

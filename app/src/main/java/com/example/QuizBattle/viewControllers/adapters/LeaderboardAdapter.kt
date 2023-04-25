@@ -8,7 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.PlayerModel.Player
-
+/**
+ * The LeaderboardAdapter class is a custom RecyclerView.Adapter used to display a list of players
+ * within the QuizBattle application's leaderboard. It takes a list of Player objects as input and
+ * manages their ranking based on the all-time score. The adapter handles the layout and data binding
+ * for each player item, displaying the player's name, score, and rank.
+ */
 class LeaderboardAdapter(private var players: List<Player>) :
     RecyclerView.Adapter<LeaderboardAdapter.ViewHolder>() {
 

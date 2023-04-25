@@ -9,7 +9,10 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
+/**
+ * The RequestsController class is responsible for managing friend requests in the QuizBattle application.
+ * It handles adding friends, getting friend requests, and removing friend requests.
+ */
 class RequestsController(private val rvFriendRequests: RecyclerView){
 
     private val firestoreRepoFriend = FirestoreRepoFriend()

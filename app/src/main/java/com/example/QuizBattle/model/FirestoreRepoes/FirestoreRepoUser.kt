@@ -9,7 +9,11 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
-
+/**
+ * The FirestoreRepoUser class handles interactions with the Firebase Firestore 'Users' collection
+ * for the QuizBattle application. It includes methods for fetching, updating, adding, and searching
+ * users by their display name or email.
+ */
 class FirestoreRepoUser {
     private val db = Firebase.firestore
     private val userCollection = db.collection("Users")

@@ -19,7 +19,13 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
+/**
+ * The SearchFriendsView class is a Fragment used to search for friends within the QuizBattle
+ * application. It provides a search bar for users to enter a search query and a RecyclerView
+ * to display the search results. Users can send friend requests to other players from the
+ * search results. This Fragment utilizes a SearchFriendsAdapter to display the search results
+ * and a SearchFController to handle the search functionality.
+ */
 class SearchFriendsView : Fragment(), SearchFController.SearchCallback {
 
     private lateinit var binding: FragmentSearchFriendsBinding

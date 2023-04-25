@@ -9,7 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.example.QuizBattle.controller.FriendControllers.SearchFController
-
+/**
+ * The SearchFriendsAdapter class is a custom RecyclerView.Adapter used to display a list of players
+ * within the QuizBattle application's search friends feature. It manages a list of Player objects and
+ * allows users to send friend requests to other players. The adapter handles the layout and data binding
+ * for each player item, displaying the player's name and a button to send a friend request.
+ */
 class SearchFriendsAdapter : RecyclerView.Adapter<SearchFriendsAdapter.PlayerViewHolder>() {
 
     private var players: MutableList<Player> = mutableListOf()

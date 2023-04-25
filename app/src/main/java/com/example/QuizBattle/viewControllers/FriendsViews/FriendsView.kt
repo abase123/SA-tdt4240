@@ -19,7 +19,13 @@ import com.google.android.material.tabs.TabLayout
 
 private lateinit var tabLayout: TabLayout
 private lateinit var viewPager: ViewPager
-
+/**
+ * The FriendsView class is a Fragment that serves as the main view for the friends management
+ * section of the QuizBattle application. It displays a TabLayout and ViewPager that allow users
+ * to navigate between three different tabs: Search Friends, See Friends List, and Friends Requests.
+ * Each tab displays a different Fragment, providing functionality for searching for friends,
+ * viewing the user's friends list, and managing incoming friend requests.
+ */
 class FriendsView : Fragment(){
     private lateinit var playerViewModel: PlayerViewModel
     private lateinit var userNameText: TextView

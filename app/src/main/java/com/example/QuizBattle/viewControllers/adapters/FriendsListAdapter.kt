@@ -11,7 +11,12 @@ import com.example.QuizBattle.controller.FriendControllers.FriendListController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-
+/**
+ * The FriendsListAdapter class is a custom RecyclerView.Adapter used to display a list of friends
+ * within the QuizBattle application. It takes a FriendListController as a parameter and manages a
+ * list of Player objects representing friends. The adapter handles the layout and data binding for
+ * each friend item, while also providing a click listener for the remove friend action.
+ */
 class FriendsListAdapter(private val friendListController: FriendListController) : RecyclerView.Adapter<FriendsListAdapter.FriendViewHolder>() {
     private var friendsList: MutableList<Player> = mutableListOf()
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
@@ -21,7 +26,7 @@ class FriendsListAdapter(private val friendListController: FriendListController)
 
         fun bind(friend: Player?) {
             removeButton.setOnClickListener {
-                // remove locally
+
                 val position = friendsList.indexOf(friend)
                 if (position != -1) {
                     friendsList.removeAt(position)
