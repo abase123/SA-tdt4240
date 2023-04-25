@@ -175,7 +175,61 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
                 </view>
+
+                <view
+                        android:id="@+id/view3"
+                        class="com.google.android.material.card.MaterialCardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:elevation="@dimen/cardview_default_elevation"
+                        android:outlineSpotShadowColor="@color/cardview_dark_background"
+                >
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                        <!-- Media -->
+                        <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="194dp"
+                                android:contentDescription="@string/versusBannerDesc"
+                                android:scaleType="centerCrop"
+                                app:srcCompat="@drawable/versus_banner"/>
+                        <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingTop="10dp"
+                                android:gravity="center">
+
+                            <!-- Title, secondary and supporting text -->
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="COMING SOON"
+                                    android:textSize="40dp"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"/>
+                            <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textAlignment="center"
+                                    android:text="Brand new Game Mode \n Loading ....."
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textColor="?android:attr/textColorSecondary"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </view>
+
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
