@@ -1,4 +1,4 @@
-package com.example.QuizBattle.view.FriendsViews
+package com.example.QuizBattle.viewControllers.FriendsViews
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,9 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.FriendControllers.RequestsController
 import com.example.QuizBattle.model.FriendModel.FriendRequest
-import com.example.QuizBattle.view.adapters.FriendRequestsAdapter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.example.QuizBattle.viewControllers.adapters.FriendRequestsAdapter
 
 class FriendsRequestsView() : Fragment() {
     private lateinit var rvFriendRequests: RecyclerView

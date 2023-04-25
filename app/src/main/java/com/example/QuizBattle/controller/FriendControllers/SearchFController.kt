@@ -8,10 +8,9 @@ import com.example.QuizBattle.databinding.FragmentSearchFriendsBinding
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoFriend
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoUser
 import com.example.QuizBattle.model.PlayerModel.Player
-import com.example.QuizBattle.view.adapters.SearchFriendsAdapter
+import com.example.QuizBattle.viewControllers.adapters.SearchFriendsAdapter
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -1,4 +1,4 @@
-package com.example.QuizBattle.view.FriendsViews
+package com.example.QuizBattle.viewControllers.FriendsViews
 
 import android.graphics.Rect
 import android.view.View

@@ -1,4 +1,4 @@
-package com.example.QuizBattle.view
+package com.example.QuizBattle.viewControllers
 
 import android.content.Context
 import android.os.Bundle

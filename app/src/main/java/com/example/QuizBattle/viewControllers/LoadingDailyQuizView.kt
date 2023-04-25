@@ -1,4 +1,4 @@
-package com.example.QuizBattle.view
+package com.example.QuizBattle.viewControllers
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -22,10 +22,10 @@ import com.example.QuizBattle.controller.GameCoreController.EventListener
  *
  * This fragment handles loading the daily quiz in the game application, including displaying a loading screen and information about the quiz theme and difficulty level. It also provides buttons for starting the quiz or returning to the home screen. This class extends the Android `Fragment` class and is designed to be used with the Android framework.
  *
- * @constructor Creates a new instance of the `LoadingQuizView` fragment.
+ * @constructor Creates a new instance of the `LoadingDailyQuizView` fragment.
  */
 
-class LoadingQuizView: Fragment(){
+class LoadingDailyQuizView: Fragment(){
     private lateinit var descriptionTextView: TextView
     private lateinit var startQuizButton: Button
     private lateinit var goBackButton: Button

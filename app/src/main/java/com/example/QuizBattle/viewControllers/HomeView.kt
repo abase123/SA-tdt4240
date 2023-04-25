@@ -1,4 +1,4 @@
-package com.example.QuizBattle.view
+package com.example.QuizBattle.viewControllers
 
 import android.app.AlertDialog
 import android.content.Context

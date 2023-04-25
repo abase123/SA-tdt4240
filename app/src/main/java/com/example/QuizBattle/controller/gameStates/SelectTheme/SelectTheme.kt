@@ -5,7 +5,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.GameCoreController.GameState
-import com.example.QuizBattle.view.ChooseThemeView
+import com.example.QuizBattle.viewControllers.ChooseThemeView
 import com.example.QuizBattle.model.QuizModel.QuizHolder
 
 /**

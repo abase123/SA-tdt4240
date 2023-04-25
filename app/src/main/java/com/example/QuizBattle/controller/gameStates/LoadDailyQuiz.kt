@@ -10,7 +10,7 @@ import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoQuiz
 import com.example.QuizBattle.controller.GameActivity
 import com.example.QuizBattle.controller.GameCoreController.GameState
 import com.example.QuizBattle.model.QuizModel.QuizHolder
-import com.example.QuizBattle.view.LoadingQuizView
+import com.example.QuizBattle.viewControllers.LoadingDailyQuizView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,7 +21,7 @@ import java.util.*
 LoadDailyQuiz is a class responsible for loading the daily quiz from Firestore
 based on the current date. This class handles the state of loading the daily
 quiz, updates the quiz holder with the fetched quiz data, and interacts with
-the LoadingQuizView class to show the status of the quiz loading process.
+the LoadingDailyQuizView class to show the status of the quiz loading process.
 @property quizHolder Holds the current quiz data, including the quiz ID.
  */
 
@@ -57,12 +57,12 @@ class LoadDailyQuiz(override var quizHolder: QuizHolder): GameState {
 
     private fun onQuizAvailable(context: GameActivity, theme:String, difficulty:String) {
         val currentFragment=getCurrentFragment(context)
-        (currentFragment as? LoadingQuizView)?.onQuizLoaded(theme,difficulty)
+        (currentFragment as? LoadingDailyQuizView)?.onQuizLoaded(theme,difficulty)
     }
 
     private fun onQuizNotAvailable(context: GameActivity) {
         val currentFragment=getCurrentFragment(context)
-        (currentFragment as? LoadingQuizView)?.onQuizNotAvailable()
+        (currentFragment as? LoadingDailyQuizView)?.onQuizNotAvailable()
     }
 
 

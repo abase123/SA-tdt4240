@@ -9,7 +9,7 @@ import com.example.QuizBattle.controller.PlayerViewModel
 import com.example.QuizBattle.model.PlayerModel.Player
 import com.example.QuizBattle.model.QuizModel.GainedPoints
 import com.example.QuizBattle.model.QuizModel.QuizHolder
-import com.example.QuizBattle.view.ResultsView
+import com.example.QuizBattle.viewControllers.ResultsView
 
 /**
  * HandleQuizResults is a class responsible for handling and updating the quiz results

@@ -1,4 +1,4 @@
-package com.example.QuizBattle.view
+package com.example.QuizBattle.viewControllers
 
 import com.example.QuizBattle.controller.gameStates.SelectTheme.OnThemeSelectListener
 import android.content.Context

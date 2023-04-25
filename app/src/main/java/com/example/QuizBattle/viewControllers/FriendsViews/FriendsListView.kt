@@ -1,4 +1,4 @@
-package com.example.QuizBattle.view.FriendsViews
+package com.example.QuizBattle.viewControllers.FriendsViews
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.controller.FriendControllers.FriendListController
-import com.example.QuizBattle.view.adapters.FriendsListAdapter
+import com.example.QuizBattle.viewControllers.adapters.FriendsListAdapter
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -6,12 +6,12 @@
             app:startDestination="@id/home">
     <fragment
             android:id="@+id/leaderboard"
-            android:name="com.example.QuizBattle.view.LeaderboardView"
+            android:name="com.example.QuizBattle.viewControllers.LeaderboardView"
             android:label="fragment_leaderboard"
             tools:layout="@layout/fragment_leaderboard"/>
     <fragment
         android:id="@+id/home"
-        android:name="com.example.QuizBattle.view.HomeView"
+        android:name="com.example.QuizBattle.viewControllers.HomeView"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_friends" />
     <fragment
             android:id="@+id/loadingQuiz"
-            android:name="com.example.QuizBattle.view.LoadingQuizView"
+            android:name="com.example.QuizBattle.viewControllers.LoadingDailyQuizView"
             android:label="fragment_loading_quiz"
             tools:layout="@layout/fragment_loading_dailyquiz" />
 
@@ -33,19 +33,19 @@
 
     <fragment
             android:id="@+id/quiz"
-            android:name="com.example.QuizBattle.view.QuizView"
+            android:name="com.example.QuizBattle.viewControllers.QuizView"
             android:label="fragment_quiz"
             tools:layout="@layout/fragment_quiz"/>
 
     <fragment
             android:id="@+id/results"
-            android:name="com.example.QuizBattle.view.ResultsView"
+            android:name="com.example.QuizBattle.viewControllers.ResultsView"
             android:label="fragment_results"
             tools:layout="@layout/fragment_results"/>
 
     <fragment
             android:id="@+id/themes"
-            android:name="com.example.QuizBattle.view.ChooseThemeView"
+            android:name="com.example.QuizBattle.viewControllers.ChooseThemeView"
             android:label="fragment_chose_theme"
             tools:layout="@layout/fragment_chose_theme"/>
 

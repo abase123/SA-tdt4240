@@ -1,4 +1,4 @@
-package com.example.QuizBattle.view.adapters
+package com.example.QuizBattle.viewControllers.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

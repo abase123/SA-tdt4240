@@ -1,4 +1,4 @@
-package com.example.QuizBattle.view
+package com.example.QuizBattle.viewControllers
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.QuizBattle.R
 import com.example.QuizBattle.model.FirestoreRepoes.FirestoreRepoLeaderboard
-import com.example.QuizBattle.view.adapters.LeaderboardAdapter
+import com.example.QuizBattle.viewControllers.adapters.LeaderboardAdapter
 import kotlinx.coroutines.launch
 /**
  * Fragment for displaying the leaderboard screen of the game application.

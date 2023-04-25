@@ -1,4 +1,4 @@
-package com.example.QuizBattle.view.adapters
+package com.example.QuizBattle.viewControllers.adapters
 
 import android.view.LayoutInflater
 import android.view.View
