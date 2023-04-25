@@ -7,7 +7,7 @@ scores on a leaderboard. The daily quiz will be an asynchronous activity, meanin
 they wish to, regardless of their schedules. By doing well over time, a player will be able to climb the leaderboards 
 by collecting points. 
 
-![alt text](/Users/pravinthevakan/SA-tdt4240/app/src/main/res/drawable/QuizBattle_img.png)
+![alt text](/Users/pravinthevakan/SA-tdt4240/app/src/main/res/drawable/quizbattle_img.png)
 _______________________________________________________
 
 <h3>Requirements by the user</h3>
